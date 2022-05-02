@@ -1,0 +1,1440 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="Reinforcement Learning, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>Reinforcement Learning | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Reinforcement Learning</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Reinforcement-Learning/">
+                                <span class="chip bg-color">Reinforcement Learning</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Notes-on-RL-Course-of-Hung-yi-Lee"><a href="#Notes-on-RL-Course-of-Hung-yi-Lee" class="headerlink" title=" Notes on RL Course of Hung-yi Lee"></a><h1> Notes on RL Course of Hung-yi Lee</h1><h1 id="Outline"><a href="#Outline" class="headerlink" title=" Outline"></a><h2> Outline</h2></h1><h1 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title=" Lecture 1"></a><h3> <a href="#L1">Lecture 1</a></h3></h1><h1 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title=" Lecture 2"></a><h3> <a href="#L2">Lecture 2</a></h3></h1><h1 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title=" Lecture 3"></a><h3> <a href="#L3">Lecture 3</a></h3></h1><h1 id="Lecture-4"><a href="#Lecture-4" class="headerlink" title=" Lecture 4"></a><h3> <a href="#L4">Lecture 4</a></h3></h1><h1 id="Lecture-5"><a href="#Lecture-5" class="headerlink" title=" Lecture 5"></a><h3> <a href="#L5">Lecture 5</a></h3></h1><h1 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title=" Lecture 6"></a><h3> <a href="#L6">Lecture 6</a></h3></h1><h1 id="Lecture-7"><a href="#Lecture-7" class="headerlink" title=" Lecture 7"></a><h3> <a href="#L7">Lecture 7</a></h3></h1><p>Appendix 1</p>
+<h1 id="Lecture-1-1"><a href="#Lecture-1-1" class="headerlink" title=" Lecture 1"></a><h2> <span id="L1">Lecture 1</span></h2></h1><p>&emsp;&emsp;强化学习的基本思想是通过<strong>Agent与环境的不断交互</strong>，通过一些<strong>奖赏</strong>机制来使Agent逐渐学习出一条最优的决策。Agent在Environment中进行交互，由于Agent采取不同的Action会对Environment的State(对应到Agent的Observation)产生不同的影响，因而Environment会相应地返回不同的Reward，而RL的目标就是最大化最后的reward。</p>
+<p>&emsp;&emsp;当环境的State完全可测时，则该问题可以被建模为马尔可夫决策过程（Markov Decision Process, MDP），此时State就等同于Observation。但事实上环境的State通常是部分可测的，因而也衍生了部分可观测马尔可夫决策过程（Partial Observable Markov Decision Process, POMDP）。</p>
+<blockquote>
+<p>State是环境的状态，而Observation才是Agent的状态。</p>
+</blockquote>
+<p><img src="/2022/03/25/RL/RL_diagram.png" alt></p>
+<ol>
+<li>难点</li>
+</ol>
+<ul>
+<li>延迟性的Reward</li>
+<li>Agent的Action会影响Environment<ul>
+<li>探索</li>
+<li>利用 </li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>RL通常分为Value-based和Policy-based两种，二者结合则是Actor-Critic(AC)。</li>
+</ol>
+<ul>
+<li>Value-based对应的是Critic, 而Policy-based则是Actor.<blockquote>
+<p><strong>Asynchronous Advantage Actor-critic(A3C)</strong><br>Volodymyr Mnih, Adria Puigdomenech Badia, Mehdi Mirza, Alex Graves, Timothy P. Lillicrap, Tim Harley, David Silver Koray Kavukcuoglu, “Asynchronous Methods for Deep Reinforcement Learning”, ICML, 2016.</p>
+</blockquote>
+</li>
+<li><p>Policy-based Approach(Actor is the policy)</p>
+<ul>
+<li>Action = $\pi$(Observation)</li>
+<li><p>DRL三步走</p>
+<ul>
+<li>决定网络的形式：Neural Network<ul>
+<li>Input of NN: Observation</li>
+<li>Output of NN: 每个Action的概率(但不会直接选概率最大的Action)</li>
+</ul>
+</li>
+<li><p>决定评判标准: 整个episode的Reward(类似分类问题中的Loss)</p>
+<ul>
+<li>让Actor $\pi_\theta (s)$进行一个Episode，其中$\theta$为网路的参数，$s$则是state, 在$s_i$时采取$a_i$会获得奖励 $r_i$, 则整个Episode的Reward为：$R_\theta =  \sum_{i=1}^T r_i$.</li>
+<li>由于采用随机性策略，加之环境的随性因素，对于相同的Actor，$R_\theta$都是不尽相同的.</li>
+<li>目标不是使得某一个Episode的Reward最大，而是使得$\mathbb{E}(R_\theta)$最大. </li>
+<li><p>因此，衡量标准就是$\mathbb{E}(R_\theta)$.</p>
+<blockquote>
+<p>$\mathbb{E}(R_\theta)$的计算方法</p>
+<ul>
+<li>An episode is considered as a trajectory $\tau$<br>$\tau = \{s_1, a_1, r_1, s_2, a_2, r_2, …, s_T, a_T, r_T\}$<br>$R(\tau) = \sum\limits^{N}\limits_{n=1}r_n$</li>
+<li>由于随机性，每个$\tau$都对应一个概率$P(\tau|\theta)$,因而可得：<script type="math/tex; mode=display">\mathbb{E}(R_\theta) = \sum_\tau R(\tau)P(\tau|\theta) \approx \frac{1}{N}\sum_{n=1}^N R(\tau^n)</script>其中$\{\tau^1, \tau^2,…, \tau^N\}$为多条trajectory.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>更新参数$\theta$: Gradient Ascent 梯度上升</p>
+<ul>
+<li>$\theta^* = \argmax\limits_{\theta}\bar{R}_\theta$ s.t. $\bar{R}_\theta = \sum\limits_{\tau} R(\tau)P(\tau|\theta)$</li>
+<li><p>Gradient ascent:</p>
+<ul>
+<li>start with $\theta^0$</li>
+<li>$\theta^{new} \leftarrow \theta^{old}+\eta\nabla\bar{R}_{\theta^{old}}$<blockquote>
+<ul>
+<li>$\nabla\bar{R}_\theta$的计算方法<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+\nabla\bar{R}_\theta &= \sum\limits_{\tau}R(\tau)\nabla P(\tau|\theta)\\
+&= \sum\limits_{\tau}R(\tau)P(\tau|\theta)\frac{\nabla P(\tau|\theta)}{P(\tau|\theta)}\\
+&= \sum\limits_{\tau}R(\tau)P(\tau|\theta)\nabla logP(\tau|\theta)\\
+&\approx \frac{1}{N}\sum_{n=1}^N R(\tau^n)\nabla logP(\tau|\theta)\\
+&= E_{\tau \sim p_\theta(\tau)}[R(\tau)\nabla logp_\theta(\tau)]
+\end{split}
+\end{equation*}</script></li>
+<li>$\nabla logP(\tau|\theta)$的计算：<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+P(\tau|\theta) &=\\
+&p(s_1)p(a_1|s_1,\theta)p(r_1, s_2|s_1, a_1)p(a_2|s_2, \theta)p(r_2, s_3|s_2, a_2)...\\
+&= p(s_1)\prod\limits_{t=1}\limits^{T}p(a_t|s_t,\theta)p(r_t,s_{t+1}|s_t,a_t)
+\end{split}
+\end{equation*}</script><script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+logP(\tau|\theta)&\\
+&=p(s_1) + \sum\limits_{t=1}\limits^{T}logp(a_t|s_t,\theta) + logp(r_t,s_{t+1}|s_t,a_t)\\
+\end{split}
+\end{equation*}</script>因而可得：<script type="math/tex; mode=display">\nabla logP(\tau|\theta) = \sum\limits_{t=1}\limits^{T}\nabla logp(a_t|s_t,\theta)</script></li>
+<li>最终得到<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+\nabla\bar{R}_\theta &\approx \frac{1}{N}\sum_{n=1}^N R(\tau^n)\nabla logP(\tau^n|\theta)\\
+&= \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\sum\limits_{t=1}\limits^{T_n}\nabla logp(a_t^n|s_t^n,\theta)\\
+&= \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\nabla logp(a_t^n|s_t^n,\theta)
+\end{split}
+\end{equation*}</script></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Tricks 1: Add a Baseline</p>
+<ul>
+<li><p>上述推导中，可以得到：$\nabla\bar{R}_\theta \approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\nabla logp(a_t^n|s_t^n,\theta)$.</p>
+</li>
+<li><p>上式的目的其实就是<strong>提高能够使Reward增加的Action的概率增大</strong>，而为负的则会减少，且<strong>对于Reward贡献大的Action增加的概率相比贡献少的提升率要高</strong>(可以把Reward的值当作分类问题中的权重，假设某个Trajectory的Reward为2，那么上式就相当于把这条Trajectory复制两遍，从而更好地提高该Trajectory的概率)。但实际上可能出现某个Action可以使得最后的Reward变大，然而并没有被Sample到，而其他Action也可以使Reward增加，但是增加率不高，根据上式，这些“不是很好的”Action的概率将被提高，而对于没被Sample到的“好”Action概率却被降低了。因此，为避免上面所述的情况，更改上式为：</p>
+<script type="math/tex; mode=display">\nabla\bar{R}_\theta \approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}(R(\tau^n)-b)\nabla logp(a_t^n|s_t^n,\theta)</script><p>即增加一个Baseline作为标准，<strong>“不是很好的”Action的贡献低于Baseline，那么这些Action的概率就会被降低，从而间接地提高了没被Sample到地“好”Action的概率</strong>。</p>
+<p>Baseline的设计方法通常是：$b \approx \mathbb{E}[R(\tau)]$.</p>
+</li>
+</ul>
+</li>
+<li>Trick 2：Assign Suitable Credit<ul>
+<li>根据推导出来的公式，对于某一个Trajectory $\tau^i$，其中每个Action的权重都是那个Trajectory的Reward(即$R[\tau^i]$), 但并不是$\tau^i$中的每个$a^i_t$都是利于增加$R[\tau^i]$. 因此，<strong>对不同的Action给予不同的权重Weight更为合理</strong>。</li>
+<li>实现方式：修改上式为<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+\nabla\bar{R}_\theta &\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}(\sum\limits_{t^{\prime}=t}\limits^{T_n}r^n_{t^\prime}-b)\nabla logp(a_t^n|s_t^n,\theta)\\
+&\Rightarrow \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}(\sum\limits_{t^{\prime}=t}\limits^{T_n}\gamma ^{t^\prime-t}r^n_{t^\prime}-b)\nabla logp(a_t^n|s_t^n,\theta)
+\end{split}
+\end{equation*}</script><blockquote>
+<p>加入discount factor(好像变成了MDP了)</p>
+</blockquote>
+</li>
+<li>然后将以上式子中的$(\sum\limits_{t^{\prime}=t}\limits^{T_n}\gamma ^{t^\prime-t}r^n_{t^\prime}-b)$用一个<strong>Advantage Function</strong> $A^\theta(s_t, a_t)$来代替.（<strong>由Critic评估</strong>），则变成：<script type="math/tex; mode=display">
+\nabla\bar{R}_\theta = E_{(s_t,a_t)\sim \pi_\theta}[A^\theta(s_t, a_t)\nabla log p_{\theta}(a_t|s_t)]</script></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Value-based Approach（Critic）<ul>
+<li><ol>
+<li>Value-based的方法并不直接决定Agent的Action，而是给出Actor $\pi$在状态$s_t$时的评价，即给出$V^\pi(s)$</li>
+</ol>
+<ul>
+<li>Mante-Carlo(对整个Episode)</li>
+<li>Temporal Difference(对每一步)</li>
+</ul>
+</li>
+<li><ol>
+<li>给出Actor $\pi$在状态$s_t$采取$a_t$时的评价$Q^\pi(s, a)$</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/03/25/RL/Q_learning.png" alt></p>
+<ul>
+<li><p>Actor + Critic: 由于<strong>环境具有随机性</strong>，AC算法让Agent不再跟环境反馈的奖励进行学习，而是跟着Critic学习</p>
+<ul>
+<li>Advantage Actor-Critic(A2C)</li>
+<li>Asynchronous Advantage Actor-Critic(A3C)<ul>
+<li>有一个global Actor和global Critic</li>
+<li>开“分身”复制global param进行采样、计算梯度，最后对global param进行同步更新(要多个machine)<h1 id="Lecture-2-1"><a href="#Lecture-2-1" class="headerlink" title=" Lecture 2"></a><h2> <span id="L2">Lecture 2</span></h2></h1></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Policy Gradient属于on-policy的方法，而Proximal Policy Optimization(PPO)则是PG的变型，属于off-policy方法，并加上某些约束。</p>
+<ul>
+<li>on-policy: 训练的Agent和与环境互动的Agent是同一个(一边互动一边学习)。</li>
+<li><p>off-policy：训练的Agent和与环境互动的Agent不是同一个。</p>
+<ul>
+<li><strong>PG中每次Sample的数据都只用一次</strong>，更新完参数$\theta$后需要Sample新的数据进行训练。<blockquote>
+<p>Importance Sampling:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+E_{x\sim p}[f(x)] &= \int f(x)p(x)dx = \int f(x)\frac{p(x)}{q(x)}q(x)dx\\
+&= E_{x\sim q}[f(x)\frac{p(x)}{q(x)}]
+\end{split}
+\end{equation*}</script><p>注意：p(x)和q(x)区别不能过大，否则采样不准确。</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+Var_{x\sim p}[f(x)] = E_{x\sim p}[f(x)^2] - (E_{x\sim p}[f(x)])^2
+\end{equation*}</script><script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+Var_{x\sim q}[f(x)] &= E_{x\sim q}[(f(x)\frac{p(x)}{q(x)})^2] - (E_{x\sim q}[f(x)\frac{p(x)}{q(x)}])^2\\
+&= \int f(x)^2\frac{p(x)^2}{q(x)^2}q(x)dx - (E_{x\sim p}[f(x)])^2\\
+&= \int f(x)^2\frac{p(x)}{q(x)}p(x)dx - (E_{x\sim p}[f(x)])^2\\
+&= E_{x\sim p}[f(x)^2\frac{p(x)}{q(x)}] - - (E_{x\sim p}[f(x)])^2
+\end{split}
+\end{equation*}</script><p>如果p(x)和q(x)区别过大，则$Var_{x\sim p}[f(x)]$和$Var_{x\sim q}[f(x)]$不对等，导致采样失真。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>应用Importance Sampling，可以将期望奖励的梯度做如下转换：<blockquote>
+<script type="math/tex; mode=display">
+\nabla \bar{R}_\theta =  E_{\tau \sim p_\theta(\tau)}[R(\tau)\nabla logp_\theta(\tau)] = E_{\tau \sim p_\theta^\prime(\tau)}[\frac{p_\theta(\tau)}{p_{\theta^\prime}(\tau)}R(\tau)\nabla log p_{\theta}(\tau)]</script></blockquote>
+</li>
+</ul>
+<p>从而实现在$\theta^\prime$下采集数据喂给$\theta$，即实现on-policy到off-policy的转换。</p>
+<ul>
+<li>加上L1中提到的Trick后，则变成：<blockquote>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{split}
+\nabla\bar{R}_\theta &= E_{(s_t,a_t)\sim \pi_\theta}[A^\theta(s_t, a_t)\nabla log p_{\theta}(a_t|s_t)]\\
+&= E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{P_\theta(s_t, a_t)}{P_{\theta^\prime}(s_t, a_t)}A^{\theta^\prime}(s_t, a_t)\nabla log p_{\theta}(a_t|s_t)]\\
+&=E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{p_\theta(a_t|s_t)}{p_{\theta^\prime}(a_t|s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t, a_t)\nabla log p_{\theta}(a_t|s_t)]\\
+&\approx E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{p_\theta(a_t|s_t)}{p_{\theta^\prime}(a_t|s_t)}A^{\theta^\prime}(s_t, a_t)\nabla log p_{\theta}(a_t|s_t)]
+\end{split}
+\end{equation*}</script></blockquote>
+</li>
+</ul>
+<p>从而得到新的Objective Function为：$J^{\theta^\prime}(\theta) = E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{p_\theta(a_t|s_t)}{p_{\theta^\prime}(a_t|s_t)}A^{\theta^\prime}(s_t, a_t)]$</p>
+</li>
+<li><p>PPO: <script type="math/tex">J_{PPO}^{\theta^\prime} = J^{\theta^\prime}(\theta) - \beta KL(\theta, \theta^\prime), J^{\theta^\prime}(\theta) = E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{p_\theta(a_t|s_t)}{p_{\theta^\prime}(a_t|s_t)}A^{\theta^\prime}(s_t, a_t)]</script></p>
+</li>
+<li>PPO2: <script type="math/tex">J_{PPO2}^{\theta^k} \approx \sum\limits_{(s_t, a_t)}\min \Bigg(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}A^{\theta^k}(s_t, a_t), clip \Big(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}, 1-\epsilon, 1+\epsilon \Big)A^{\theta^k}(s_t, a_t)\Bigg)</script><br>其中，$clip()$定义为：<script type="math/tex; mode=display">
+\begin{equation*}
+clip(X, Y, Z) = \left\{
+ \begin{matrix}
+ X, other   \\
+ Y, if X < Y\\
+ Z, if X > Z\\
+ \end{matrix}
+ \right.
+\end{equation*}</script></li>
+<li>TRPO:<script type="math/tex">J_{RRPO}^{\theta^\prime} = E_{(s_t,a_t)\sim \pi_{\theta^\prime}}[\frac{p_\theta(a_t|s_t)}{p_{\theta^\prime}(a_t|s_t)}A^{\theta^\prime}(s_t, a_t)], KL(\theta, \theta^\prime)<\delta</script><blockquote>
+<p>这里的KL距离并不是指参数上的距离，而是其行为上的区别。，即喂同样的State，输出的Action类似。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Lecture-3-1"><a href="#Lecture-3-1" class="headerlink" title=" Lecture 3"></a><h2> <span id="L3">Lecture 3</span></h2></h1><ol>
+<li>Q-learning是一种Value-based的方法，不直接决定Action，只评估Actor的好坏。</li>
+</ol>
+<ul>
+<li>状态价值函数： $V^\pi(s)$, 在某个状态$s$时给出Actor $\pi$的Reward(可以看作获得奖励的潜力). $V^\pi(s)$的值<strong>取决于Actor本身以及环境的状态$s$</strong>.<ul>
+<li>评价方法：<ul>
+<li>Monte-Carlo based approach: 需要跑完整个trajectory才更新一次参数<blockquote>
+<p>$V^\pi(s_a) = G_a$<br>$V^\pi(s_b) = G_b$<br>&emsp;&emsp;&emsp;…</p>
+</blockquote>
+</li>
+<li>Temporal-difference(TD) approach<blockquote>
+<p>$V^\pi(s_t) - V^\pi(s_{t+1}) \rightarrow r_t$<br><img src="/2022/03/25/RL/mc_vs_td.png" alt></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>状态行为价值函数：$Q^\pi(s,a)$, 在某个状态$s$下强制采取动作$a$带来的Reward(但实际并不一定采取该行为，即这个Reward是preditive)，这种方法由于需要穷举每个可能的Action，所以只适合具有有限个Action的情况.<ul>
+<li>Trick 1: 固定$Q^\pi(s_{t+1},a_{t+1})$的Q-Table，只更新$Q^\pi(s_{t},a_{t})$的Q-Table，经过若干个Step再将后者复制到前者中。</li>
+<li>Trick 2: 加入Exploration机制<ul>
+<li>Epsilon Greedy：当(random() &lt; $\epsilon$时采取随机Action，当random()&gt;1-$\epsilon$时采取$\arg \max\limits_{a} Q(s,a)$).($\epsilon$随学习的进行而减小).</li>
+<li>Boltzmann Exploration: $P(a|s) = \frac{\exp{Q(s,a)}}{\sum\limits_{a}{\exp{Q(s,a)}}}$(相当于把Q-Table某一行的每一个Action对应的Value进行归一化，然后按照归一化后的数值作为概率选择Action)</li>
+</ul>
+</li>
+<li>Trick 3: 创建一个缓冲区，存放过往的数据，每次都从缓冲区随机取若干个数据进行学习，并将新的数据存进缓冲区(因而缓冲区的数据可能来自不同的policy)，当缓冲区满了才将旧数据丢弃。<blockquote>
+<p>采用Trick3，实际上变成了off-policy-like方法.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Q-learning的实质：使得$Q^\pi(s_t,a_t)$和$Q^\pi(s_{t+1},a_{t+1})$的差变小。</li>
+</ul>
+<p><img src="/2022/03/25/RL/Q_learning.png" alt></p>
+<ol>
+<li><p>DQN的一些改进版本</p>
+<ul>
+<li><p>Double DQN</p>
+<ul>
+<li>解决DQN中的Q-value被高估的问题</li>
+<li>神经网络的估计误差的存在会导致某些Action的Q-value被高估，而DQN中会选择Q-value中最大值加上Reward来作为Target，从而使得原本的Q-value接近于Target，进而导致被“高估”的动作的Q-value越来越大。</li>
+<li>Double DQN的解决办法: 用一个Q-network选择价值最高的Action，而Action的Q-value由另一个Q-network来评估。即：<script type="math/tex; mode=display">Q(s_t,a_t) \leftarrow r_t + Q^\prime\Big(s_{t+1}, arg \max\limits_{a}Q(s_{t+1}, a)\Big)</script><ul>
+<li>实现：用DQN中待更新的Q-network来选Action，用Target Q-network来评估Q-value.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Dueling DQN</p>
+<ul>
+<li>更改了DQN的架构：两个输出，一个为$V(s)$, 另一个为$A(s,a)$, 二者的加和为Q-value, 即$Q(s,a) = A(s,a) + V(s)$</li>
+<li>好处：即使某个A-S没被Sample到，其对应的Q-value可以通过修改V(s)来修改，即不需要所有的动作-状态对都被采样，提高数据的利用效率。<ul>
+<li>由于希望Network尽可能地修改$V(s)$而不是修改$A(s,a)$，可以添加一个约束：即$A(s,a)$每一列的加和为0</li>
+<li>实现方法：将Q-network的输出中的$A(s,a)$先进行处理，使其列的加和为0，再进行输出的合并得到Q-table。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Noisy Net: 在<strong>每个Episode开始前</strong>对Q-network的参数加上Gaussian noise<ul>
+<li>与$\epsilon$-greedy的区别：Noisy Net是直接在参数上加noise，但最后对于相同(相似)的State,采取的动作都会是最优的，其<strong>探索是与状态有关的</strong>，即State-dependent Exploration；而后者则是在Action上加noise,即对于同样的State，Actor采取的动作可能是不同的,因而这种的做法的<strong>探索都是随机的</strong>。</li>
+</ul>
+</li>
+<li>Distributional Q-function：原本的DQN的输出的Q-value的期望，而这种方法则是输出其分布<ul>
+<li>应用：不同的分布可能具有相同的期望值，但是其方差不同，方差较大者风险也较大，因而可以加入一个网络来进行风险的规避.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对于动作空间是连续性，可以采用：①对动作空间进行采样，但这种办法会降低精确度；②通过梯度上升法来解决最优问题；③人为设计Q-function.<br><img src="/2022/03/25/RL/tip%20on%20q%20learning2.png" alt></li>
+</ol>
+<h1 id="Lecture-4-1"><a href="#Lecture-4-1" class="headerlink" title=" Lecture 4"></a><h2> <span id="L4">Lecture 4</span></h2></h1><ol>
+<li><p>Advantage Actor-Critic(A2C)</p>
+<script type="math/tex; mode=display">\nabla \bar{R}_\theta \approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\Big(r_t^n + V^\pi(s_{t+1}^n) - V^\pi(s_t^n)\Big) \nabla log p_\theta(a_t^n|s_t^n)</script><ul>
+<li>Tips<ul>
+<li>Actor和Critic共享参数<br><img src="/2022/03/25/RL/A2C.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Asynchronous Advantage Actor-Critic(A3C)<br> <img src="/2022/03/25/RL/A3C.png" alt></p>
+</li>
+<li><h1 id="Lecture-5-1"><a href="#Lecture-5-1" class="headerlink" title=" Lecture 5"></a><h2> <span id="L5">Lecture 5</span></h2></h1></li>
+<li><p>Model-free和Model-based的区别<br>&emsp;<br>Model-based: 概率函数(Probability function)和奖励函数(Reward Function)均已知（值迭代和策略迭代都是Model-based的方法，二者均需要得到环境的转移和奖励函数，迭代过程中不需要和环境进行交互）</p>
+<blockquote>
+<p>概率函数实际上是反映环境的随机性。</p>
+</blockquote>
+<p>Model-free: 采用V函数来评价当前状态的好坏，使用Q函数来判断某个状态下某一动作的好坏，通过交互、试错的方法进行环境的探索和策略的优化。Model-free没有获取环境的状态转移和奖励函数，我们让 agent 跟环境进行交互，采集到很多的轨迹数据，agent 从轨迹中获取信息来改进策略，从而获得更多的奖励。</p>
+</li>
+</ol>
+<p>&emsp;</p>
+<ol>
+<li><p>Model-free Prediciton</p>
+<ul>
+<li><p>Monte-Carlo Policy Evaluation</p>
+<ul>
+<li>采用策略$\pi$计算折扣奖励Return：$G_t = R_{t+1} + \gamma R_{t+2}+ \gamma^2 R_{t+3} + …$</li>
+<li>Sample足够多的Trajectory，循环计算每条Trajectory对应的折扣奖励，最后进行平均得到价值函数$V^\pi(s)$<blockquote>
+<p>MC采取经验平均回报(Empirial mean return)的方式来估计价值函数；只能应用在有限回合的MDP问题(Episodic MDPs)</p>
+</blockquote>
+</li>
+<li>增量MC<ul>
+<li>MC算法如下：<blockquote>
+<p>估计V(s)<br>&emsp;&emsp;$N(s)\leftarrow N(s) + 1$<br>&emsp;&emsp;$S(S)\Leftarrow S(s) + G_t$<br>&emsp;&emsp;$v(s) = S(s)/N(s)$<br>根据大数定律，当$N(s)\rightarrow \infty$时，有$V(s)\rightarrow V^\pi(s)$</p>
+</blockquote>
+</li>
+<li>增量MC：<blockquote>
+<p>估计V(s)<br>&emsp;&emsp;$N(S_t)\leftarrow N(S_t) + 1$<br>&emsp;&emsp;$V(S_t)\Leftarrow V(s) + \frac{1}{N(S_t)}(G_t - V(S_t))$<br>将$\frac{1}{N(S_t)}$视为学习率，则</p>
+<script type="math/tex; mode=display">V(S_t)\Leftarrow V(s) + \alpha(G_t - V(S_t))</script></blockquote>
+</li>
+</ul>
+</li>
+<li>MC和DP的区别：前者是通过上一时刻的下一状态的价值函数来更新当前时刻当前状态的价值函数，即用$V_{i-1}(s^\prime)$来更新$V_{i}(s)$(其中i为迭代次数)；后者则是通过empirical mean return （实际得到的收益）来更新，采用的是实际发生的Trajectory，并且只更新与这条Trajectory有关的状态(直接通过轨迹来更新，其实已经暗含了环境的随机性，只要轨迹的数量足够多，Agent仍然可以学会环境的随机性)</li>
+</ul>
+</li>
+<li><p>Temporal Difference(TD) learning</p>
+<ul>
+<li>对于某个给定的策略，在线(online)地算出它的价值函数，每往前若干步就更新上一时刻的V值<ul>
+<li>TD(0):<blockquote>
+<p>$V(s_t)\leftarrow v(s_t) + \alpha\big(R_{t+1}+\gamma v(s_{t+1}) - v(s_t)\big)$     </p>
+</blockquote>
+</li>
+<li>n步TD：<blockquote>
+<p>$G_t^n = R_{t+1} + \gamma R_{t+2} + … + \gamma^{n-1} R_{t+n}+\gamma^n v(S_{t+n})$<br>$v(S_t) \leftarrow v(S_t) + \alpha(G^n_t - v(S_t))$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Model-free control</p>
+<ul>
+<li>Model-based Policy Iteration: 对以下两个式子进行迭代直至收敛<blockquote>
+<script type="math/tex; mode=display">q_{\pi_i}(s,a) = R(s,a) + \gamma \sum\limits_{s^\prime \in S}P(s^\prime|s,a)v_{\pi_i}(s^\prime)</script><script type="math/tex; mode=display">\pi_{i+1}(s) = arg \max\limits_{a}q_{\pi_i}(s,a)</script></blockquote>
+</li>
+<li>Model-free中$R(s,a)$和$P(s^\prime|s,a)$均未知，因而采用MC的方法估计Q函数，然后同样采用贪心的想法更新改进策略。</li>
+</ul>
+</li>
+<li><p>Sarsa: 同策略时序差分控制<br>将时序差分法更新V值的过程，更改为更新Q，即：</p>
+<script type="math/tex; mode=display">Q(s_t,a_t)\leftarrow Q(s_t, a_t) + \alpha\Big(r + \gamma Q(s_{t+1},a_{t+1})-Q(s_t,a_t)\Big)</script><blockquote>
+<p>对于一条轨迹而言，Q值就等同于V值，且有：$Q(s_t,a_t) = r + \gamma Q(s_{t+1},a_{t+1})$</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p>n步Sarsa</p>
+<script type="math/tex; mode=display">q_t^{(n)} = R_{t+1}+\gamma R_{t+2} + ... + \gamma^{n-1}Q(S_{t+n},A_{t+n})</script><ul>
+<li>更新方式：<script type="math/tex; mode=display">Q(s_t,a_t)\leftarrow Q(s_t, a_t) + \alpha\Big(q^{(n)}_t-Q(s_t,a_t)\Big)</script><blockquote>
+<p>n = 1(Sarsa) $q_t^{(1)} = R_{t+1}+\gamma Q(S_{t+1}, A_{t+1})$<br>n = 2        $q_t^{(2)} = R_{t+1}+\gamma R_{t+2} + \gamma^2Q(S_{t+2}, A_{t+2})$<br>…<br>n = $\infty$(MC)  $q_t^\infty = R_{t+1}+\gamma R_{t+2} + … + \gamma^{T-t-1}R_T$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Sarsa($\lambda$)</p>
+<script type="math/tex; mode=display">q^\lambda_t = (1-\lambda)\sum\limits_{n=1}\limits^{\infty}\lambda^{n-1}q_t^{n}</script><script type="math/tex; mode=display">Q(s_t,a_t)\leftarrow Q(s_t, a_t) + \alpha\Big(q^{(\lambda)}_t-Q(s_t,a_t)\Big)</script></li>
+</ul>
+<h1 id="Lecture-6-1"><a href="#Lecture-6-1" class="headerlink" title=" Lecture 6"></a><h2> <span id="L6">Lecture 6</span></h2></h1><h1 id="Lecture-7-1"><a href="#Lecture-7-1" class="headerlink" title=" Lecture 7"></a><h2> <span id="L7">Lecture 7</span></h2></h1></h1>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Vyron Su</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/03/25/RL/">http://example.com/2022/03/25/RL/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Vyron Su</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Reinforcement-Learning/">
+                                    <span class="chip bg-color">Reinforcement Learning</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/03/26/leetcode-77/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="leetcode-77">
+                        
+                        <span class="card-title">leetcode-77</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                        <span class="chip bg-color">回溯</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/24/simple_example_qn/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Simple Example of Q-learning">
+                        
+                        <span class="card-title">Simple Example of Q-learning</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Reinforcement-Learning/">
+                        <span class="chip bg-color">Reinforcement Learning</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%9E%E4%BE%8B/">
+                        <span class="chip bg-color">实例</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: Vyron Su<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    
+
+
+    
+
+</main>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Vyron Su</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "3";
+                    var startDate = "23";
+                    var startHour = "19";
+                    var startMinute = "17";
+                    var startSecond = "37";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+            
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/vvvvvyron" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1640385879@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1640385879" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1640385879" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
