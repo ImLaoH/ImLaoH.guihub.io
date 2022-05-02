@@ -722,7 +722,7 @@
 <ul>
 <li>切片，使用<code>substr()</code>将<code>s</code>切为两部分，然后进行拼接即可。</li>
 <li>思路与第一种一样，只是不调用库函数，采用取余的方式<code>res[i] = s[(i+n)%s.length()]</code>,这样就可以把大于<code>n</code> 的部分前移<code>n</code>位，小于<code>n</code>的放在最后。</li>
-<li>进行三次反转，首先翻转<code>0-n-1</code>,然后翻转<code>n-s.length()-1</code>，最后再对整个字符串进行翻转。</li>
+<li>进行三次反转，首先翻转<code>0~(n-1)</code>,然后翻转<code>n~(s.length()-1)</code>，最后再对整个字符串进行翻转。</li>
 </ul>
 <p><span id="codeof_tag5">完整代码如下：</span></p>
 <ul>
