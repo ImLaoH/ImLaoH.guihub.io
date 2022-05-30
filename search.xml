@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JZOffer-60</title>
+      <link href="/2022/05/30/JZOffer-60/"/>
+      <url>/2022/05/30/JZOffer-60/</url>
+      
+        <content type="html"><![CDATA[<h1 id="��ָ-Offer-60-n�����ӵj���"><a href="#��ָ-Offer-60-n�����ӵj���" class="headerlink" title=" ��ָ Offer 60. n�����ӵĵ���"></a><h2> ��ָ Offer 60. n�����ӵĵ���</h2></h1><h1 id="1-��L����"><a href="#1-��L����" class="headerlink" title=" 1 ��Ŀ����"></a><h3> 1 ��Ŀ����</h3></h1><ul><li>��Ŀ���ӣ�<a href="https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/" title="��ָ Offer 60. n�����ӵĵ���">��ָ Offer 60. n�����ӵĵ���</a></li></ul><p>��<code>n</code>���������ڵ��ϣ��������ӳ���һ��ĵ���֮��Ϊ<code>s</code>������<code>n</code>����ӡ��<code>s</code>�����п��ܵ�ֵ���ֵĸ��ʡ�</p><p>?</p><p>����Ҫ��һ�����������鷵�ش𰸣����е� <code>i</code> ��Ԫ�ش����� <code>n</code> ���������������ĵ��������е� <code>i</code> С���Ǹ��ĸ��ʡ�</p><p><strong>ʾ��1��</strong></p><blockquote><p><strong>����:</strong>  1<br><strong>���:</strong>  [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]</p></blockquote><p><strong>ʾ��2��</strong></p><blockquote><p><strong>����:</strong>  2<br><strong>���:</strong>  [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]</p></blockquote><h2 id="2-˼·"><a href="#2-˼·" class="headerlink" title=" 2 ˼·"></a><h3> 2 ˼·</h3></h2><p>&emsp;&emsp;���ö�̬�滮����������Ϊ<code>n</code>ʱ���������ӵ��ܵ�����Ϊ<code>x</code>�����Ӧ�ĸ�����Ϊ<code>f[n][x]</code>,��Ӧ���У�</p><script type="math/tex; mode=display">f[n][x] = \frac{1}{6}\sum\limits_{i=1}\limits^{6} f[n-1][x-i]</script><p>��ˣ�����д�����´��룺</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span><span class="token keyword">public</span><span class="token operator">:</span>    vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">dicesProbability</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">double</span> dp<span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token operator">*</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">6.0</span><span class="token punctuation">;</span>                    <span class="token punctuation">&#125;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> i<span class="token operator">*</span><span class="token number">6</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token operator">&amp;&amp;</span> k <span class="token operator">&lt;</span> j<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+=</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span>k<span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">6.0</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> res<span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span>  n <span class="token operator">*</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            res<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>�Ż��洢�ռ䣺�ڱ�������ʱ�������飬Ȼ�������ɺ����鸳�������顣</li></ul><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span><span class="token keyword">public</span><span class="token operator">:</span>    vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">dicesProbability</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">res</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">tmp</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> res<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                    tmp<span class="token punctuation">[</span>j<span class="token operator">+</span>k<span class="token punctuation">]</span> <span class="token operator">+=</span> res<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">6.0</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>            res <span class="token operator">=</span> tmp<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> ˢ�� </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ��ָOffer </tag>
+            
+            <tag> Cpp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>bitwise-operation</title>
       <link href="/2022/05/28/bitwise-operation/"/>
       <url>/2022/05/28/bitwise-operation/</url>
@@ -138,11 +165,11 @@
             
             <tag> C </tag>
             
-            <tag> 代码随想录 </tag>
-            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -171,11 +198,11 @@
             
             <tag> C </tag>
             
-            <tag> 代码随想录 </tag>
-            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -204,11 +231,11 @@
             
             <tag> C </tag>
             
-            <tag> 代码随想录 </tag>
-            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -410,11 +437,11 @@
             
             <tag> C </tag>
             
-            <tag> 代码随想录 </tag>
-            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -715,9 +742,9 @@
             
             <tag> C </tag>
             
-            <tag> 数组 </tag>
-            
             <tag> 代码随想录 </tag>
+            
+            <tag> 数组 </tag>
             
             <tag> 二分 </tag>
             
@@ -881,9 +908,9 @@
       
         <tags>
             
-            <tag> 链表 </tag>
-            
             <tag> Cpp </tag>
+            
+            <tag> 链表 </tag>
             
         </tags>
       
@@ -987,11 +1014,11 @@
       
         <tags>
             
+            <tag> Cpp </tag>
+            
             <tag> C </tag>
             
             <tag> 链表 </tag>
-            
-            <tag> Cpp </tag>
             
         </tags>
       
@@ -1016,9 +1043,9 @@
       
         <tags>
             
-            <tag> map </tag>
-            
             <tag> Cpp </tag>
+            
+            <tag> map </tag>
             
         </tags>
       
@@ -1043,9 +1070,9 @@
       
         <tags>
             
-            <tag> 单调栈 </tag>
-            
             <tag> Cpp </tag>
+            
+            <tag> 单调栈 </tag>
             
         </tags>
       
