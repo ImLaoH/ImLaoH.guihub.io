@@ -330,8 +330,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer/">
-                                <span class="chip bg-color">��ָOffer</span>
+                            <a href="/tags/%E5%89%91%E6%8C%87Offer/">
+                                <span class="chip bg-color">剑指Offer</span>
                             </a>
                         
                             <a href="/tags/Cpp/">
@@ -346,8 +346,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                刷题
                             </a>
                         
                     </div>
@@ -383,22 +383,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="��ָ-Offer-60-n�����ӵj���"><a href="#��ָ-Offer-60-n�����ӵj���" class="headerlink" title=" ��ָ Offer 60. n�����ӵĵ���"></a><h2> ��ָ Offer 60. n�����ӵĵ���</h2></h1><h1 id="1-��L����"><a href="#1-��L����" class="headerlink" title=" 1 ��Ŀ����"></a><h3> 1 ��Ŀ����</h3></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/" title="��ָ Offer 60. n�����ӵĵ���">��ָ Offer 60. n�����ӵĵ���</a></li>
+                <h1 id="剑指-Offer-60-n个骰子的点数"><a href="#剑指-Offer-60-n个骰子的点数" class="headerlink" title=" 剑指 Offer 60. n个骰子的点数"></a><h2> 剑指 Offer 60. n个骰子的点数</h2></h1><h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title=" 1 题目描述"></a><h3> 1 题目描述</h3></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/" title="剑指 Offer 60. n个骰子的点数">剑指 Offer 60. n个骰子的点数</a></li>
 </ul>
-<p>��<code>n</code>���������ڵ��ϣ��������ӳ���һ��ĵ���֮��Ϊ<code>s</code>������<code>n</code>����ӡ��<code>s</code>�����п��ܵ�ֵ���ֵĸ��ʡ�</p>
+<p>把<code>n</code>个骰子扔在地上，所有骰子朝上一面的点数之和为<code>s</code>。输入<code>n</code>，打印出<code>s</code>的所有可能的值出现的概率。</p>
 <p>?</p>
-<p>����Ҫ��һ�����������鷵�ش𰸣����е� <code>i</code> ��Ԫ�ش����� <code>n</code> ���������������ĵ��������е� <code>i</code> С���Ǹ��ĸ��ʡ�</p>
-<p><strong>ʾ��1��</strong></p>
+<p>你需要用一个浮点数数组返回答案，其中第 <code>i</code> 个元素代表这 <code>n</code> 个骰子所能掷出的点数集合中第 <code>i</code> 小的那个的概率。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  1<br><strong>���:</strong>  [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]</p>
+<p><strong>输入:</strong>  1<br><strong>输出:</strong>  [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  2<br><strong>���:</strong>  [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]</p>
+<p><strong>输入:</strong>  2<br><strong>输出:</strong>  [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]</p>
 </blockquote>
-<h2 id="2-˼·"><a href="#2-˼·" class="headerlink" title=" 2 ˼·"></a><h3> 2 ˼·</h3></h2><p>&emsp;&emsp;���ö�̬�滮����������Ϊ<code>n</code>ʱ���������ӵ��ܵ�����Ϊ<code>x</code>�����Ӧ�ĸ�����Ϊ<code>f[n][x]</code>,��Ӧ���У�</p>
-<script type="math/tex; mode=display">f[n][x] = \frac{1}{6}\sum\limits_{i=1}\limits^{6} f[n-1][x-i]</script><p>��ˣ�����д�����´��룺</p>
+<h2 id="2-思路"><a href="#2-思路" class="headerlink" title=" 2 思路"></a><h3> 2 思路</h3></h2><p>&emsp;&emsp;采用动态规划，当骰子数为<code>n</code>时，所有骰子的总点数即为<code>x</code>，其对应的概率设为<code>f[n][x]</code>,则应该有：</p>
+<script type="math/tex; mode=display">f[n][x] = \frac{1}{6}\sum\limits_{i=1}\limits^{6} f[n-1][x-i]</script><p>因此，不难写出以下代码：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">dicesProbability</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -423,7 +423,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>�Ż��洢�ռ䣺�ڱ�������ʱ�������飬Ȼ�������ɺ����鸳�������顣</li>
+<li>优化存储空间：在遍历骰子时创建数组，然后遍历完成后将数组赋给答案数组。</li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -505,8 +505,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer/">
-                                    <span class="chip bg-color">��ָOffer</span>
+                                <a href="/tags/%E5%89%91%E6%8C%87Offer/">
+                                    <span class="chip bg-color">剑指Offer</span>
                                 </a>
                             
                                 <a href="/tags/Cpp/">
@@ -554,18 +554,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/30/JZOffer-60/">
+                <a href="/2022/05/31/JZOffer-44/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JZOffer-60">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JZOffer-44">
                         
-                        <span class="card-title">JZOffer-60</span>
+                        <span class="card-title">JZOffer-44</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -575,27 +574,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                    ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer/">
-                        <span class="chip bg-color">��ָOffer</span>
+                    <a href="/tags/%E5%89%91%E6%8C%87Offer/">
+                        <span class="chip bg-color">剑指Offer</span>
                     </a>
                     
                     <a href="/tags/Cpp/">

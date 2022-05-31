@@ -334,16 +334,16 @@
                                 <span class="chip bg-color">Cpp</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                <span class="chip bg-color">��������</span>
+                            <a href="/tags/%E5%93%88%E5%B8%8C/">
+                                <span class="chip bg-color">哈希</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                <span class="chip bg-color">����</span>
+                            <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                <span class="chip bg-color">排序</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                                <span class="chip bg-color">��ϣ</span>
+                            <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                                <span class="chip bg-color">力扣周赛</span>
                             </a>
                         
                     </div>
@@ -354,8 +354,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                刷题
                             </a>
                         
                     </div>
@@ -392,32 +392,32 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Problem-List"><a href="#Problem-List" class="headerlink" title=" Problem List"></a><h2> Problem List</h2></h1><ul>
-<li>[1] <a href="#Tag1">�Ƴ���ĸ��λ�ʺ�Ľ������</a></li>
-<li>[2] <a href="#Tag2">��������¥����������¥����</a></li>
-<li>[3] <a href="#Tag3">��λ���������������</a></li>
-<li>[4] <a href="#Tag4">ͳ�������е�������Ŀ</a></li>
+<li>[1] <a href="#Tag1">移除字母异位词后的结果数组</a></li>
+<li>[2] <a href="#Tag2">不含特殊楼层的最大连续楼层数</a></li>
+<li>[3] <a href="#Tag3">按位与结果大于零的最长组合</a></li>
+<li>[4] <a href="#Tag4">统计区间中的整数数目</a></li>
 </ul>
-<h3 id="1-�Y���ĸ��λ�ʺ�L������"><a href="#1-�Y���ĸ��λ�ʺ�L������" class="headerlink" title="  1 �Ƴ���ĸ��λ�ʺ�Ľ������ "></a><h3> <span id="Tag1"> 1 �Ƴ���ĸ��λ�ʺ�Ľ������ </span></h3><h1 id="1-1-��L����"><a href="#1-1-��L����" class="headerlink" title=" 1.1 ��Ŀ����"></a><h4> 1.1 ��Ŀ����</h4></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-resultant-array-after-removing-anagrams/" title="2273. �Ƴ���ĸ��λ�ʺ�Ľ������">2273. �Ƴ���ĸ��λ�ʺ�Ľ������</a></li>
+<h3 id="1-移除字母异位词后的结果数组"><a href="#1-移除字母异位词后的结果数组" class="headerlink" title="  1 移除字母异位词后的结果数组 "></a><h3> <span id="Tag1"> 1 移除字母异位词后的结果数组 </span></h3><h1 id="1-1-题目描述"><a href="#1-1-题目描述" class="headerlink" title=" 1.1 题目描述"></a><h4> 1.1 题目描述</h4></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-resultant-array-after-removing-anagrams/" title="2273. 移除字母异位词后的结果数组">2273. 移除字母异位词后的结果数组</a></li>
 </ul>
-<p>����һ���±�� <code>0</code> ��ʼ���ַ��� <code>words</code> ������ <code>words[i]</code> ��СдӢ���ַ���ɡ�</p>
-<p>��һ�������У���Ҫѡ����һ�±� <code>i</code> ���� <code>words</code> �� ɾ�� <code>words[i]</code> �������±� <code>i</code> ��Ҫͬʱ������������������</p>
+<p>给你一个下标从 <code>0</code> 开始的字符串 <code>words</code> ，其中 <code>words[i]</code> 由小写英文字符组成。</p>
+<p>在一步操作中，需要选出任一下标 <code>i</code> ，从 <code>words</code> 中 删除 <code>words[i]</code> 。其中下标 <code>i</code> 需要同时满足下述两个条件：</p>
 <ol>
 <li><code>0 &lt; i &lt; words.length</code></li>
-<li><code>words[i - 1]</code> �� <code>words[i]</code> �� <em>��ĸ��λ��</em> ��</li>
+<li><code>words[i - 1]</code> 和 <code>words[i]</code> 是 <em>字母异位词</em> 。</li>
 </ol>
-<p>ֻҪ����ѡ�������������±꣬��һֱִ�����������</p>
-<p>��ִ�����в����󣬷��� <code>words</code> ������֤����������˳��Ϊÿ������ѡ���±궼��õ���ͬ�Ľ����</p>
-<p><strong>��ĸ��λ��</strong> ������������Դ���ʵ���ĸ�õ���һ���µ��ʣ�����Դ�����е���ĸͨ��ǡ��ֻ��һ�Ρ����磬<code>&quot;dacb&quot;</code> �� <code>&quot;abdc&quot;</code> ��һ����ĸ��λ�ʡ�</p>
-<p><strong>ʾ��1��</strong></p>
+<p>只要可以选出满足条件的下标，就一直执行这个操作。</p>
+<p>在执行所有操作后，返回 <code>words</code> 。可以证明，按任意顺序为每步操作选择下标都会得到相同的结果。</p>
+<p><strong>字母异位词</strong> 是由重新排列源单词的字母得到的一个新单词，所有源单词中的字母通常恰好只用一次。例如，<code>&quot;dacb&quot;</code> 是 <code>&quot;abdc&quot;</code> 的一个字母异位词。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  words = [“abba”,”baba”,”bbaa”,”cd”,”cd”]<br><strong>���:</strong>  [“abba”,”cd”]</p>
+<p><strong>输入:</strong>  words = [“abba”,”baba”,”bbaa”,”cd”,”cd”]<br><strong>输出:</strong>  [“abba”,”cd”]</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  words = [“a”,”b”,”c”,”d”,”e”]<br><strong>���:</strong>  [“a”,”b”,”c”,”d”,”e”]</p>
+<p><strong>输入:</strong>  words = [“a”,”b”,”c”,”d”,”e”]<br><strong>输出:</strong>  [“a”,”b”,”c”,”d”,”e”]</p>
 </blockquote>
-<h2 id="1-2-˼·"><a href="#1-2-˼·" class="headerlink" title=" 1.2 ˼·"></a><h3> 1.2 ˼·</h3></h2><p>&emsp;&emsp;Ҳ��������������� <code>word</code> Ϊ <em>��ĸ��λ��</em> ������ǰ��һ�����ʣ�ɾȥ��һ������ֱ�������������ʲ�Ϊ <em>��ĸ��λ��</em> ����ˣ����Ա������� <code>words</code>, ����������ϣ���ֱ��¼ǰһ�����ʵ�ÿ����ĸ���ֵĴ����Լ���һ�����ʵ���ĸ������Ȼ����жԱȣ�������ߵ�ÿ����ĸ���ֵĴ�����һ�£�˵�����߻�Ϊ��ĸ��λ�ʣ�������������ǰ����(ǰһ�����ʲ�����У���һ��������)��</p>
+<h2 id="1-2-思路"><a href="#1-2-思路" class="headerlink" title=" 1.2 思路"></a><h3> 1.2 思路</h3></h2><p>&emsp;&emsp;也就是如果相邻两个 <code>word</code> 为 <em>字母异位词</em> ，则保留前边一个单词，删去后一个单词直至相邻两个单词不为 <em>字母异位词</em> 。因此，可以遍历整个 <code>words</code>, 并用两个哈希表分别记录前一个单词的每个字母出现的次数以及后一个单词的字母次数，然后进行对比，如果二者的每个字母出现的次数均一致，说明二者互为字母异位词，进而不跳过当前单词(前一个单词插入答案中，后一个不插入)。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">removeAnagrams</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> words<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -451,23 +451,23 @@
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-��������¥����������¥����"><a href="#2-��������¥����������¥����" class="headerlink" title="  2 ��������¥����������¥���� "></a><h3> <span id="Tag2"> 2 ��������¥����������¥���� </span></h3><h1 id="2-1-��L����"><a href="#2-1-��L����" class="headerlink" title=" 2.1 ��Ŀ����"></a><h4> 2.1 ��Ŀ����</h4></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-consecutive-floors-without-special-floors/" title="2274. ��������¥����������¥����">2274. ��������¥����������¥����</a></li>
+<h3 id="2-不含特殊楼层的最大连续楼层数"><a href="#2-不含特殊楼层的最大连续楼层数" class="headerlink" title="  2 不含特殊楼层的最大连续楼层数 "></a><h3> <span id="Tag2"> 2 不含特殊楼层的最大连续楼层数 </span></h3><h1 id="2-1-题目描述"><a href="#2-1-题目描述" class="headerlink" title=" 2.1 题目描述"></a><h4> 2.1 题目描述</h4></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-consecutive-floors-without-special-floors/" title="2274. 不含特殊楼层的最大连续楼层数">2274. 不含特殊楼层的最大连续楼层数</a></li>
 </ul>
-<p>Alice ������һ�ҹ�˾�������ô�¥�Ĳ���¥����Ϊ�칫�ռ䡣Alice ������һЩ¥����Ϊ <strong>����¥��</strong> �������ڷ��ɡ�</p>
-<p>������������ <code>bottom</code> �� <code>top</code> ����ʾ Alice �����˴� <code>bottom</code> �� <code>top</code>���� <code>bottom</code> �� <code>top</code> ���ڣ�������¥�㡣������һ���������� <code>special</code> ������ <code>special[i]</code> ��ʾ? Alice ָ�����ڷ��ɵ�����¥�㡣</p>
-<p>���ز�������¥��� <strong>���</strong> ����¥������</p>
-<p><strong>ʾ��1��</strong></p>
+<p>Alice 管理着一家公司，并租用大楼的部分楼层作为办公空间。Alice 决定将一些楼层作为 <strong>特殊楼层</strong> ，仅用于放松。</p>
+<p>给你两个整数 <code>bottom</code> 和 <code>top</code> ，表示 Alice 租用了从 <code>bottom</code> 到 <code>top</code>（含 <code>bottom</code> 和 <code>top</code> 在内）的所有楼层。另给你一个整数数组 <code>special</code> ，其中 <code>special[i]</code> 表示? Alice 指定用于放松的特殊楼层。</p>
+<p>返回不含特殊楼层的 <strong>最大</strong> 连续楼层数。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  bottom = 2, top = 9, special = [4,6]<br><strong>���:</strong>  3</p>
+<p><strong>输入:</strong>  bottom = 2, top = 9, special = [4,6]<br><strong>输出:</strong>  3</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  bottom = 6, top = 8, special = [7,6,8]<br><strong>���:</strong>  0</p>
+<p><strong>输入:</strong>  bottom = 6, top = 8, special = [7,6,8]<br><strong>输出:</strong>  0</p>
 </blockquote>
-<h2 id="2-2-˼·"><a href="#2-2-˼·" class="headerlink" title=" 2.2 ˼·"></a><h3> 2.2 ˼·</h3></h2><p>&emsp;&emsp;�Ҳ�������¥��� <strong>���</strong> ����¥������ʵ���Ͼ�����<code>bottom</code> ������¥���е���Ͳ�֮��Ĳ���������¥����㵽 <code>top</code> ֮��Ĳ���������¥���еļ�����������е����ֵ�����ֱ�Ӷ�����¥������<code>special</code>��������Ȼ��<code>m1 = max(special[0]-bottom, top - special[special.size()-1])</code>��Ϊǰ���ߵ����ֵ��Ȼ���������<code>special</code>��������ȡ����¥������������<code>m2 = max(m, special[i]-special[i-1]-1)</code>, ���<code>max(m1, m2)</code>��Ϊ�𰸡�</p>
+<h2 id="2-2-思路"><a href="#2-2-思路" class="headerlink" title=" 2.2 思路"></a><h3> 2.2 思路</h3></h2><p>&emsp;&emsp;找不含特殊楼层的 <strong>最大</strong> 连续楼层数，实际上就是找<code>bottom</code> 到特殊楼层中的最低层之间的层数、特殊楼层最顶层到 <code>top</code> 之间的层数和特殊楼层中的间隔层数三者中的最大值。因而直接对特殊楼层数组<code>special</code>进行排序，然后<code>m1 = max(special[0]-bottom, top - special[special.size()-1])</code>即为前二者的最大值，然后遍历整个<code>special</code>数组来求取特殊楼层间最大间隔层数<code>m2 = max(m, special[i]-special[i-1]-1)</code>, 最后<code>max(m1, m2)</code>即为答案。</p>
 <blockquote>
-<p>ע�⣺����¥��������Ҫ��<code>special[i]-special[i-1]</code>�Ļ������ټ�ȥ<code>1</code>����Ϊ���������˵ı߽硣</p>
+<p>注意：特殊楼层间隔层数要在<code>special[i]-special[i-1]</code>的基础上再减去<code>1</code>，因为不包括两端的边界。</p>
 </blockquote>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -480,22 +480,22 @@
         <span class="token keyword">return</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>special<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> bottom<span class="token punctuation">,</span> top <span class="token operator">-</span> special<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-��λ���������������"><a href="#3-��λ���������������" class="headerlink" title="  3 ��λ��������������� "></a><h3> <span id="Tag3"> 3 ��λ��������������� </span></h3><h1 id="3-1-��L����"><a href="#3-1-��L����" class="headerlink" title=" 3.1 ��Ŀ����"></a><h4> 3.1 ��Ŀ����</h4></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-combination-with-bitwise-and-greater-than-zero/" title="2275. ��λ���������������">2275. ��λ���������������</a></li>
+<h3 id="3-按位与结果大于零的最长组合"><a href="#3-按位与结果大于零的最长组合" class="headerlink" title="  3 按位与结果大于零的最长组合 "></a><h3> <span id="Tag3"> 3 按位与结果大于零的最长组合 </span></h3><h1 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title=" 3.1 题目描述"></a><h4> 3.1 题目描述</h4></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-combination-with-bitwise-and-greater-than-zero/" title="2275. 按位与结果大于零的最长组合">2275. 按位与结果大于零的最长组合</a></li>
 </ul>
-<p>������?<code>nums</code> ִ�� <strong>��λ��</strong> �൱�ڶ�����?<code>nums</code> �е���������ִ�� <strong>��λ��</strong> ��</p>
-<p>���磬�� <code>nums = [1, 5, 3]</code> ��˵����λ����� <code>1 &amp; 5 &amp; 3 = 1</code> ��<br>ͬ������ <code>nums = [7]</code> ���ԣ���λ����� <code>7</code> ��<br>����һ������������ <code>candidates</code> ������ <code>candidates</code> �е�����ÿ������� <strong>��λ��</strong> �Ľ���� <code>candidates</code> �е�ÿ��������ÿ�������ֻ��ʹ�� <strong>һ��</strong> ��</p>
-<p>���ذ�λ�������� <code>0</code> �� <strong>�</strong> ��ϵĳ��ȡ�</p>
-<p><strong>ʾ��1��</strong></p>
+<p>对数组?<code>nums</code> 执行 <strong>按位与</strong> 相当于对数组?<code>nums</code> 中的所有整数执行 <strong>按位与</strong> 。</p>
+<p>例如，对 <code>nums = [1, 5, 3]</code> 来说，按位与等于 <code>1 &amp; 5 &amp; 3 = 1</code> 。<br>同样，对 <code>nums = [7]</code> 而言，按位与等于 <code>7</code> 。<br>给你一个正整数数组 <code>candidates</code> 。计算 <code>candidates</code> 中的数字每种组合下 <strong>按位与</strong> 的结果。 <code>candidates</code> 中的每个数字在每种组合中只能使用 <strong>一次</strong> 。</p>
+<p>返回按位与结果大于 <code>0</code> 的 <strong>最长</strong> 组合的长度。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  candidates = [16,17,71,62,12,24,14]<br><strong>���:</strong>  4</p>
+<p><strong>输入:</strong>  candidates = [16,17,71,62,12,24,14]<br><strong>输出:</strong>  4</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  candidates = [8,8]<br><strong>���:</strong>  2</p>
+<p><strong>输入:</strong>  candidates = [8,8]<br><strong>输出:</strong>  2</p>
 </blockquote>
-<h2 id="3-2-˼·"><a href="#3-2-˼·" class="headerlink" title=" 3.2 ˼·"></a><h3> 3.2 ˼·</h3></h2><p>&emsp;&emsp;�Լ���˼·������forѭ����λ�����������飬����ǰ����͵�ǰ���������鰴λ���Ϊ0��ѡȡ�����֣�������ѡȡ��ǰ���֡���ʵ�������������������������ȡ�</p>
-<p>&emsp;&emsp;���е��뷨��ͳ��������32��bit��ÿ��Ԫ����Ϊ1��������ĳһ��bitΪ1���ļ�Ϊ��λ���������<code>0</code>�����ϳ��ȡ�</p>
+<h2 id="3-2-思路"><a href="#3-2-思路" class="headerlink" title=" 3.2 思路"></a><h3> 3.2 思路</h3></h2><p>&emsp;&emsp;自己的思路是两个for循环逐位遍历整个数组，当当前结果和当前遍历的数组按位与后为0则不选取该数字，否则则选取当前数字。但实际上这种做法并不能求得最长长度。</p>
+<p>&emsp;&emsp;大佬的想法是统计数组中32个bit上每个元素上为1的数量，某一个bit为1最多的即为按位与后结果大于<code>0</code>的最长组合长度。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">largestCombination</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> candidates<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -513,30 +513,30 @@
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="4-ͳ�������е�������L"><a href="#4-ͳ�������е�������L" class="headerlink" title="  4 ͳ�������е�������Ŀ "></a><h3> <span id="Tag4"> 4 ͳ�������е�������Ŀ </span></h3><h1 id="4-1-��L����"><a href="#4-1-��L����" class="headerlink" title=" 4.1 ��Ŀ����"></a><h4> 4.1 ��Ŀ����</h4></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-integers-in-intervals/" title="2276. ͳ�������е�������Ŀ">2276. ͳ�������е�������Ŀ</a></li>
+<h3 id="4-统计区间中的整数数目"><a href="#4-统计区间中的整数数目" class="headerlink" title="  4 统计区间中的整数数目 "></a><h3> <span id="Tag4"> 4 统计区间中的整数数目 </span></h3><h1 id="4-1-题目描述"><a href="#4-1-题目描述" class="headerlink" title=" 4.1 题目描述"></a><h4> 4.1 题目描述</h4></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-integers-in-intervals/" title="2276. 统计区间中的整数数目">2276. 统计区间中的整数数目</a></li>
 </ul>
-<p>��������� <strong>��</strong> ����������Ʋ�ʵ������Ҫ������ݽṹ��</p>
+<p>给你区间的 <strong>空</strong> 集，请你设计并实现满足要求的数据结构：</p>
 <ul>
-<li>����������һ�����䵽������伯���С�</li>
-<li>ͳ�ƣ���������� ����һ�� �����е�����������</li>
+<li>新增：添加一个区间到这个区间集合中。</li>
+<li>统计：计算出现在 至少一个 区间中的整数个数。</li>
 </ul>
-<p>ʵ�� <code>CountIntervals</code> �ࣺ</p>
+<p>实现 <code>CountIntervals</code> 类：</p>
 <ul>
-<li><code>CountIntervals()</code> ʹ������Ŀռ���ʼ������</li>
-<li><code>void add(int left, int right)</code> �������� <code>[left, right]</code> �����伯��֮�С�</li>
-<li><code>int count()</code> ���س����� <strong>����һ��</strong> �����е�����������</li>
+<li><code>CountIntervals()</code> 使用区间的空集初始化对象</li>
+<li><code>void add(int left, int right)</code> 添加区间 <code>[left, right]</code> 到区间集合之中。</li>
+<li><code>int count()</code> 返回出现在 <strong>至少一个</strong> 区间中的整数个数。</li>
 </ul>
-<p><strong>ע��</strong>������ <code>[left, right]</code> ��ʾ���� <code>left &lt;= x &lt;= right</code> ���������� <code>x</code> ��</p>
-<p><strong>ʾ��1��</strong></p>
+<p><strong>注意</strong>：区间 <code>[left, right]</code> 表示满足 <code>left &lt;= x &lt;= right</code> 的所有整数 <code>x</code> 。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  [“CountIntervals”, “add”, “add”, “count”, “add”, “count”]<br>&emsp; &emsp; [[], [2, 3], [7, 10], [], [5, 8], []]<br><strong>���:</strong>  [null, null, null, 6, null, 8]</p>
+<p><strong>输入:</strong>  [“CountIntervals”, “add”, “add”, “count”, “add”, “count”]<br>&emsp; &emsp; [[], [2, 3], [7, 10], [], [5, 8], []]<br><strong>输出:</strong>  [null, null, null, 6, null, 8]</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  words = [“a”,”b”,”c”,”d”,”e”]<br><strong>���:</strong>  CountIntervals countIntervals = new CountIntervals(); // ��һ������ռ���ʼ������<br>countIntervals.add(2, 3);&emsp;&emsp;// �� [2, 3] ���ӵ����伯����<br>countIntervals.add(7, 10);&emsp; // �� [7, 10] ���ӵ����伯����<br>countIntervals.count(); &emsp; &emsp; // ���� 6<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // ���� 2 �� 3 ���������� [2, 3] ��<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;                           // ���� 7��8��9��10 ���������� [7, 10] ��<br>countIntervals.add(5, 8);&emsp;&emsp;// �� [5, 8] ���ӵ����伯����<br>countIntervals.count(); &emsp; &emsp; // ���� 8<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // ���� 2 �� 3 ���������� [2, 3] ��<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // ���� 5 �� 6 ���������� [5, 8] ��<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // ���� 7 �� 8 ���������� [5, 8] ������ [7, 10] ��<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // ���� 9 �� 10 ���������� [7, 10] ��</p>
+<p><strong>输入:</strong>  words = [“a”,”b”,”c”,”d”,”e”]<br><strong>输出:</strong>  CountIntervals countIntervals = new CountIntervals(); // 用一个区间空集初始化对象<br>countIntervals.add(2, 3);&emsp;&emsp;// 将 [2, 3] 添加到区间集合中<br>countIntervals.add(7, 10);&emsp; // 将 [7, 10] 添加到区间集合中<br>countIntervals.count(); &emsp; &emsp; // 返回 6<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // 整数 2 和 3 出现在区间 [2, 3] 中<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;                           // 整数 7、8、9、10 出现在区间 [7, 10] 中<br>countIntervals.add(5, 8);&emsp;&emsp;// 将 [5, 8] 添加到区间集合中<br>countIntervals.count(); &emsp; &emsp; // 返回 8<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // 整数 2 和 3 出现在区间 [2, 3] 中<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // 整数 5 和 6 出现在区间 [5, 8] 中<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // 整数 7 和 8 出现在区间 [5, 8] 和区间 [7, 10] 中<br>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; // 整数 9 和 10 出现在区间 [7, 10] 中</p>
 </blockquote>
-<h2 id="4-2-˼·"><a href="#4-2-˼·" class="headerlink" title=" 4.2 ˼·"></a><h4> 4.2 ˼·</h4></h2><p>&emsp;&emsp;��ʵ���� <strong>����ϲ�</strong>����һ����ϣ�����洢��ǰ�����䣬Ȼ����Ҵ����������λ�ã�������<code>set.lower_bound</code>���Ҵ�����������˵�λ�ڵ�ǰ���伯��λ��(��ǰ���伯Ϊ���򼯺�), Ȼ���ٿ��Ǵ�����������Ҷ˵㡣ѭ���������伯������ǰ���������������˵���ڴ�����������Ҷ˵�ʱ˵���Ҷ˵��λ���Ѿ��ҵ�������������������䣬�������伯��ɾȥ�ص����֡�</p>
+<h2 id="4-2-思路"><a href="#4-2-思路" class="headerlink" title=" 4.2 思路"></a><h4> 4.2 思路</h4></h2><p>&emsp;&emsp;其实就是 <strong>区间合并</strong>，用一个哈希表来存储当前的区间，然后查找待插入区间的位置，这里用<code>set.lower_bound</code>来找待插入区间左端点位于当前区间集的位置(当前区间集为有序集合), 然后再考虑待插入区间的右端点。循环遍历区间集，当当前遍历到的区间的左端点大于待插入区间的右端点时说明右端点的位置已经找到，进而插入待插入区间，并从区间集中删去重叠部分。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">CountIntervals</span> <span class="token punctuation">&#123;</span>
     set<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span> s<span class="token punctuation">;</span>
     <span class="token keyword">int</span> cnt<span class="token punctuation">;</span>
@@ -546,24 +546,24 @@
     <span class="token punctuation">&#125;</span>
     
     <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">auto</span> iter <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//����˵�</span>
+        <span class="token keyword">auto</span> iter <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//找左端点</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>iter <span class="token operator">!=</span> s<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             iter<span class="token operator">--</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">int</span> l <span class="token operator">=</span> left<span class="token punctuation">,</span> r <span class="token operator">=</span> right<span class="token punctuation">;</span>
         vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span> to_erase<span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>iter <span class="token operator">!=</span> s<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> iter<span class="token operator">-></span>first <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">//���Ҷ˵�</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>iter <span class="token operator">!=</span> s<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> iter<span class="token operator">-></span>first <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">//找右端点</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>iter<span class="token operator">-></span>second <span class="token operator">&lt;</span> left <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
                 iter<span class="token operator">++</span><span class="token punctuation">;</span>
                 <span class="token keyword">continue</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
-            to_erase<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span><span class="token operator">*</span>iter<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//��¼��ɾȥ������</span>
+            to_erase<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span><span class="token operator">*</span>iter<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//记录待删去的区间</span>
             l <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>iter<span class="token operator">-></span>first<span class="token punctuation">,</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
             r <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> iter<span class="token operator">-></span>second<span class="token punctuation">)</span><span class="token punctuation">;</span>
             iter<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
-        <span class="token comment">//����Ҫ��ɾȥ������ٽ��������������</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> i<span class="token operator">:</span> to_erase<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>             <span class="token comment">//ɾȥ����</span>
+        <span class="token comment">//必须要先删去区间后再将待插入区间插入</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> i<span class="token operator">:</span> to_erase<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>             <span class="token comment">//删去区间</span>
             cnt <span class="token operator">-=</span> i<span class="token punctuation">.</span>second <span class="token operator">-</span> i<span class="token punctuation">.</span>first <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
             s<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
@@ -576,7 +576,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>ע�⣺����Ҫɾȥ�ص����ֵ�����֮���ٽ��д���������Ĳ��롣����Ȳ����ɾ�������ܻ���ִ��������䱾���ʹ��������伯����ʱ������伯����Ҫ��ɾȥ�ģ���ô�Ȳ�������䣬��set������ͬ��key�Ĳ��룬��������ʧ�ܣ�Ȼ��ɾ��ʱ��Ѹ�����ɾȥ�������������ʧ�ܣ���������伯�д��ڴ���������ʱ��ʵ��������ɾȥ�����������²�������䡣</p>
+<p>注意：必须要删去重叠部分的区间之后再进行待插入区间的插入。如果先插入后删除，可能会出现待插入区间本身就存在于区间集，此时这个区间集是需要被删去的，那么先插入该区间，而set不允许同个key的插入，因而会插入失败，然后删除时会把该区间删去，导致区间插入失败，即如果区间集中存在待插入区间时，实际上是先删去该区间再重新插入该区间。</p>
 </blockquote>
 </h3></h3></h3></h3>
                 
@@ -646,16 +646,16 @@
                                     <span class="chip bg-color">Cpp</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                    <span class="chip bg-color">��������</span>
+                                <a href="/tags/%E5%93%88%E5%B8%8C/">
+                                    <span class="chip bg-color">哈希</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                    <span class="chip bg-color">����</span>
+                                <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                    <span class="chip bg-color">排序</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                                    <span class="chip bg-color">��ϣ</span>
+                                <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                                    <span class="chip bg-color">力扣周赛</span>
                                 </a>
                             
                         </div>
@@ -715,7 +715,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ���۵� 294 ������
+                            力扣第 294 场周赛
                         
                     </div>
                     <div class="publish-info">
@@ -726,8 +726,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                    ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
                                 </a>
                             
                             
@@ -741,16 +741,16 @@
                         <span class="chip bg-color">Cpp</span>
                     </a>
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                        <span class="chip bg-color">��������</span>
+                    <a href="/tags/%E5%93%88%E5%B8%8C/">
+                        <span class="chip bg-color">哈希</span>
                     </a>
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                        <span class="chip bg-color">����</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                        <span class="chip bg-color">��ϣ</span>
+                    <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                        <span class="chip bg-color">力扣周赛</span>
                     </a>
                     
                 </div>
@@ -776,7 +776,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ���������ѧϰ�ʼǡ�
+                            计算机网络学习笔记。
                         
                     </div>
                     <div class="publish-info">
@@ -787,8 +787,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%D1%A7%CF%B0/" class="post-category">
-                                    ѧϰ
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
@@ -798,8 +798,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                        <span class="chip bg-color">���������</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
                     </a>
                     
                 </div>
