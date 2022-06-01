@@ -334,16 +334,16 @@
                                 <span class="chip bg-color">Cpp</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                                <span class="chip bg-color">��ϣ</span>
+                            <a href="/tags/%E5%93%88%E5%B8%8C/">
+                                <span class="chip bg-color">哈希</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer-II/">
-                                <span class="chip bg-color">��ָOffer II</span>
+                            <a href="/tags/%E5%89%91%E6%8C%87Offer-II/">
+                                <span class="chip bg-color">剑指Offer II</span>
                             </a>
                         
-                            <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                <span class="chip bg-color">��������</span>
+                            <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                                <span class="chip bg-color">滑动窗口</span>
                             </a>
                         
                     </div>
@@ -354,8 +354,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                刷题
                             </a>
                         
                     </div>
@@ -392,38 +392,37 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><a href="#Tag1">��ָ Offer II 014. �ַ����еı�λ��</a><ul>
-<li><a href="#thoughtof_tag1">˼·</a></li>
-<li><a href="#codeof_tag1">����</a></li>
+<li><a href="#Tag1">剑指 Offer II 014. 字符串中的变位词</a><ul>
+<li><a href="#thoughtof_tag1">思路</a></li>
+<li><a href="#codeof_tag1">代码</a></li>
 </ul>
 </li>
-<li><a href="#Tag2">��ָ Offer II 015. �ַ����е����б�λ��</a><ul>
-<li><a href="#thoughtof_tag2">˼·</a></li>
-<li><a href="#codeof_tag2">����</a></li>
+<li><a href="#Tag2">剑指 Offer II 015. 字符串中的所有变位词</a><ul>
+<li><a href="#thoughtof_tag2">思路</a></li>
+<li><a href="#codeof_tag2">代码</a></li>
 </ul>
 </li>
-<li><a href="#Tag3">��ָ Offer II 016. �����ظ��ַ�������ַ���</a><ul>
-<li><a href="#thoughtof_tag3">˼·</a></li>
-<li><a href="#codeof_tag3">����</a></li>
+<li><a href="#Tag3">剑指 Offer II 016. 不含重复字符的最长子字符串</a><ul>
+<li><a href="#thoughtof_tag3">思路</a></li>
+<li><a href="#codeof_tag3">代码</a></li>
 </ul>
 </li>
-<li><a href="#Tag4">TITLE1</a></li>
 </ul>
-<h3 id="1-�ַ����еi�λ��"><a href="#1-�ַ����еi�λ��" class="headerlink" title="  1 �ַ����еı�λ�� "></a><h2> <span id="Tag1"> 1 �ַ����еı�λ�� </span></h2></h3><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/MPnaiL/" title="��ָ Offer II 014. �ַ����еı�λ��">��ָ Offer II 014. �ַ����еı�λ��</a></li>
+<h3 id="1-字符串中的变位词"><a href="#1-字符串中的变位词" class="headerlink" title="  1 字符串中的变位词 "></a><h2> <span id="Tag1"> 1 字符串中的变位词 </span></h2></h3><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/MPnaiL/" title="剑指 Offer II 014. 字符串中的变位词">剑指 Offer II 014. 字符串中的变位词</a></li>
 </ul>
-<h3 id="1-1-��L����"><a href="#1-1-��L����" class="headerlink" title=" 1.1 ��Ŀ����"></a><h3> 1.1 ��Ŀ����</h3><p>���������ַ��� <code>s1</code> �� <code>s2</code>��дһ���������ж� <code>s2</code> �Ƿ���� <code>s1</code> ��ĳ����λ�ʡ�</p>
-<p>���仰˵����һ���ַ���������֮һ�ǵڶ����ַ����� <strong>�Ӵ�</strong> ��</p>
-<p><strong>ʾ��1:</strong></p>
+<h3 id="1-1-题目描述"><a href="#1-1-题目描述" class="headerlink" title=" 1.1 题目描述"></a><h3> 1.1 题目描述</h3><p>给定两个字符串 <code>s1</code> 和 <code>s2</code>，写一个函数来判断 <code>s2</code> 是否包含 <code>s1</code> 的某个变位词。</p>
+<p>换句话说，第一个字符串的排列之一是第二个字符串的 <strong>子串</strong> 。</p>
+<p><strong>示例1:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s1 = “ab” s2 = “eidbaooo”<br><strong>���:</strong> true<br><strong>����:</strong> s2 ���� s1 ������֮һ (“ba”).</p>
+<p><strong>输入:</strong> s1 = “ab” s2 = “eidbaooo”<br><strong>输出:</strong> true<br><strong>解释:</strong> s2 包含 s1 的排列之一 (“ba”).</p>
 </blockquote>
-<p><strong>ʾ��2:</strong></p>
+<p><strong>示例2:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s1= “ab” s2 = “eidboaoo”<br><strong>���:</strong> false</p>
+<p><strong>输入:</strong> s1= “ab” s2 = “eidboaoo”<br><strong>输出:</strong> false</p>
 </blockquote>
-<h3 id="1-2-˼·"><a href="#1-2-˼·" class="headerlink" title=" 1.2 ˼·"></a><h3> 1.2 <span id="thoughtof_tag1">˼·</span></h3><p>&emsp;&emsp;���ƻ������ڵ�˼·�������ù�ϣ�����洢�����е��ַ����ֵĴ�����Ȼ�����ַ���<code>s1</code>�е��ַ����ִ������Ƚϣ�����ȫ���ʱ˵����ǰ�����ڵ��ַ���Ϊ<code>s1</code>�ı�λ�ʣ�����<code>true</code>,���򽫴����������ַ��ӹ�ϣ����ȥ��(��Ӧ�ַ��Ĵ�����1)���������Ҳ��ַ����뵽��ϣ���У���ȻΪ����ҿ����䣩��</p>
-<p><span id="codeof_tag1">�����������£�</span></p>
+<h3 id="1-2-思路"><a href="#1-2-思路" class="headerlink" title=" 1.2 思路"></a><h3> 1.2 <span id="thoughtof_tag1">思路</span></h3><p>&emsp;&emsp;类似滑动窗口的思路，但采用哈希表来存储窗口中的字符出现的次数，然后与字符串<code>s1</code>中的字符出现次数作比较，当完全相等时说明当前窗口内的字符串为<code>s1</code>的变位词，返回<code>true</code>,否则将窗口最左侧的字符从哈希表中去掉(对应字符的次数减1)、窗口最右侧字符加入到哈希表中（仍然为左闭右开区间）。</p>
+<p><span id="codeof_tag1">完整代码如下：</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">bool</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">26</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -454,21 +453,21 @@
         <span class="token keyword">return</span> <span class="token function">check</span><span class="token punctuation">(</span>hash1<span class="token punctuation">,</span> hash2<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>   
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-�ַ����е����б�λ��"><a href="#2-�ַ����е����б�λ��" class="headerlink" title="  2 �ַ����е����б�λ�� "></a><h2> <span id="Tag2"> 2 �ַ����е����б�λ�� </span></h2></h3><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/VabMRr/" title="��ָ Offer II 015. �ַ����е����б�λ��">��ָ Offer II 015. �ַ����е����б�λ��</a></li>
+<h3 id="2-字符串中的所有变位词"><a href="#2-字符串中的所有变位词" class="headerlink" title="  2 字符串中的所有变位词 "></a><h2> <span id="Tag2"> 2 字符串中的所有变位词 </span></h2></h3><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/VabMRr/" title="剑指 Offer II 015. 字符串中的所有变位词">剑指 Offer II 015. 字符串中的所有变位词</a></li>
 </ul>
-<h3 id="2-1-��L����"><a href="#2-1-��L����" class="headerlink" title=" 2.1 ��Ŀ����"></a><h3> 2.1 ��Ŀ����</h3><p>���������ַ���?<code>s</code>?��?<code>p</code>���ҵ�?<code>s</code>?������ <code>p</code> ��?<strong>��λ��</strong>?���Ӵ���������Щ�Ӵ�����ʼ�����������Ǵ������˳��</p>
-<p><strong>��λ��</strong> ָ��ĸ��ͬ�������в�ͬ���ַ�����</p>
-<p><strong>ʾ��1:</strong></p>
+<h3 id="2-1-题目描述"><a href="#2-1-题目描述" class="headerlink" title=" 2.1 题目描述"></a><h3> 2.1 题目描述</h3><p>给定两个字符串 <code>s</code> 和 <code>p</code>，找到 <code>s</code> 中所有 <code>p</code> 的 <strong>变位词</strong> 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。</p>
+<p><strong>变位词</strong> 指字母相同，但排列不同的字符串。</p>
+<p><strong>示例1:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “cbaebabacd”, p = “abc”<br><strong>���:</strong> [0,6]<br><strong>����:</strong><br>��ʼ�������� 0 ���Ӵ��� “cba”, ���� “abc” �ı�λ�ʡ�<br>��ʼ�������� 6 ���Ӵ��� “bac”, ���� “abc” �ı�λ�ʡ�</p>
+<p><strong>输入:</strong> s = “cbaebabacd”, p = “abc”<br><strong>输出:</strong> [0,6]<br><strong>解释:</strong><br>起始索引等于 0 的子串是 “cba”, 它是 “abc” 的变位词。<br>起始索引等于 6 的子串是 “bac”, 它是 “abc” 的变位词。</p>
 </blockquote>
-<p><strong>ʾ��2:</strong></p>
+<p><strong>示例2:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “abab”, p = “ab”<br><strong>���:</strong> [0,1,2]<br><strong>����:</strong><br>��ʼ�������� 0 ���Ӵ��� “ab”, ���� “ab” �ı�λ�ʡ�<br>��ʼ�������� 1 ���Ӵ��� “ba”, ���� “ab” �ı�λ�ʡ�<br>��ʼ�������� 2 ���Ӵ��� “ab”, ���� “ab” �ı�λ�ʡ� </p>
+<p><strong>输入:</strong> s = “abab”, p = “ab”<br><strong>输出:</strong> [0,1,2]<br><strong>解释:</strong><br>起始索引等于 0 的子串是 “ab”, 它是 “ab” 的变位词。<br>起始索引等于 1 的子串是 “ba”, 它是 “ab” 的变位词。<br>起始索引等于 2 的子串是 “ab”, 它是 “ab” 的变位词。 </p>
 </blockquote>
-<h3 id="2-2-˼·"><a href="#2-2-˼·" class="headerlink" title=" 2.2 ˼·"></a><h3> 2.2 <span id="thoughtof_tag2">˼·</span></h3><p>&emsp;&emsp;˼·ͬ��һ�⣬ֻ������һ����Ҫ��ȫ�������ַ���<code>s</code>,����⵽���������е��ַ������ַ����ִ������ַ���<code>p</code>���ַ����ִ�����ȫһ��ʱ��˵�������е��ַ���Ϊ�ַ���<code>p</code>�ı�λ�ʣ���<strong>������˵�</strong>���뵽�������У������������ظ������������Ԫ��ȥ�����������Ҳ�Ԫ��(����ҿ�����)��</p>
-<p><span id="codeof_tag2">�����������£�</span></p>
+<h3 id="2-2-思路"><a href="#2-2-思路" class="headerlink" title=" 2.2 思路"></a><h3> 2.2 <span id="thoughtof_tag2">思路</span></h3><p>&emsp;&emsp;思路同上一题，只不过这一题需要完全遍历完字符串<code>s</code>,当检测到滑动窗口中的字符串中字符出现次数与字符串<code>p</code>中字符出现次数完全一致时，说明窗口中的字符串为字符串<code>p</code>的变位词，将<strong>窗口左端点</strong>加入到答案数组中，遍历过程中重复将窗口最左侧元素去除并加入左右侧元素(左闭右开区间)。</p>
+<p><span id="codeof_tag2">完整代码如下：</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">findAnagrams</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> string p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -491,28 +490,28 @@
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-�����ظ��ַ�������ַ���"><a href="#3-�����ظ��ַ�������ַ���" class="headerlink" title="  3 �����ظ��ַ�������ַ��� "></a><h2> <span id="Tag3"> 3 �����ظ��ַ�������ַ��� </span></h2></h3><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/wtcaE1/" title="��ָ Offer II 016. �����ظ��ַ�������ַ���">��ָ Offer II 016. �����ظ��ַ�������ַ���</a></li>
+<h3 id="3-不含重复字符的最长子字符串"><a href="#3-不含重复字符的最长子字符串" class="headerlink" title="  3 不含重复字符的最长子字符串 "></a><h2> <span id="Tag3"> 3 不含重复字符的最长子字符串 </span></h2></h3><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/wtcaE1/" title="剑指 Offer II 016. 不含重复字符的最长子字符串">剑指 Offer II 016. 不含重复字符的最长子字符串</a></li>
 </ul>
-<h3 id="3-1-��L����"><a href="#3-1-��L����" class="headerlink" title=" 3.1 ��Ŀ����"></a><h3> 3.1 ��Ŀ����</h3><p>����һ���ַ��� <code>s</code> �������ҳ����в������ظ��ַ��� <strong>��������ַ���</strong> �ĳ��ȡ�</p>
-<p><strong>ʾ��1:</strong></p>
+<h3 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title=" 3.1 题目描述"></a><h3> 3.1 题目描述</h3><p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长连续子字符串</strong> 的长度。</p>
+<p><strong>示例1:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “abcabcbb”<br><strong>���:</strong> 3<br><strong>����:</strong> ��Ϊ���ظ��ַ�������ַ����� “abc”�������䳤��Ϊ 3��</p>
+<p><strong>输入:</strong> s = “abcabcbb”<br><strong>输出:</strong> 3<br><strong>解释:</strong> 因为无重复字符的最长子字符串是 “abc”，所以其长度为 3。</p>
 </blockquote>
-<p><strong>ʾ��2:</strong></p>
+<p><strong>示例2:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “bbbbb”<br><strong>���:</strong> 1<br><strong>����:</strong> ��Ϊ���ظ��ַ�������ַ����� “b”�������䳤��Ϊ 1��</p>
+<p><strong>输入:</strong> s = “bbbbb”<br><strong>输出:</strong> 1<br><strong>解释:</strong> 因为无重复字符的最长子字符串是 “b”，所以其长度为 1。</p>
 </blockquote>
-<p><strong>ʾ��3:</strong></p>
+<p><strong>示例3:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “pwwkew”<br><strong>���:</strong> 3<br><strong>����:</strong> ��Ϊ���ظ��ַ�����Ӵ��� “wke”�������䳤��Ϊ 3��<br>&emsp; &emsp;    ��ע�⣬��Ĵ𰸱����� <strong>�Ӵ�</strong> �ĳ��ȣ�”pwke” ��һ�������У������Ӵ���</p>
+<p><strong>输入:</strong> s = “pwwkew”<br><strong>输出:</strong> 3<br><strong>解释:</strong> 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>&emsp; &emsp;    请注意，你的答案必须是 <strong>子串</strong> 的长度，”pwke” 是一个子序列，不是子串。</p>
 </blockquote>
-<p><strong>ʾ��4:</strong></p>
+<p><strong>示例4:</strong></p>
 <blockquote>
-<p><strong>����:</strong> s = “”<br><strong>���:</strong> 0</p>
+<p><strong>输入:</strong> s = “”<br><strong>输出:</strong> 0</p>
 </blockquote>
-<h3 id="3-2-˼·"><a href="#3-2-˼·" class="headerlink" title=" 3.2 ˼·"></a><h3> 3.2 <span id="thoughtof_tag3">˼·</span></h3><p>&emsp;&emsp;�������ڵ�����Ŀ�����ڵĳ��ȼ�Ϊ�������ַ����ĳ��ȣ���ʼ������Ϊ<code>1</code>���Ӷ�������˵�<code>left = 0</code>���Ҷ˵�<code>right = 1</code>(����Ϊ<strong>����ҿ�</strong>����),Ȼ����б������Ҷ˵��<code>1</code>��ʼ��ѭ�����������ַ�����Ȼ����ѭ�������ڵ��ַ�������⵽�����е��ַ���<code>s[right]</code>��ͬʱ�����𰸸���Ϊ��ǰ���ڳ�����ԭ���еĴ��ߣ�����������˵����Ϊ�ص�λ�õ��¸��ַ���</p>
-<p><span id="codeof_tag3">�����������£�</span></p>
+<h3 id="3-2-思路"><a href="#3-2-思路" class="headerlink" title=" 3.2 思路"></a><h3> 3.2 <span id="thoughtof_tag3">思路</span></h3><p>&emsp;&emsp;滑动窗口典型题目，窗口的长度即为连续子字符串的长度，初始化长度为<code>1</code>，从而窗口左端点<code>left = 0</code>，右端点<code>right = 1</code>(窗口为<strong>左闭右开</strong>区间),然后进行遍历，右端点从<code>1</code>开始，循环遍历整个字符串，然后内循环窗口内的字符，当检测到窗口中的字符与<code>s[right]</code>相同时，将答案更新为当前窗口长度与原答案中的大者，并将窗口左端点更新为重叠位置的下个字符。</p>
+<p><span id="codeof_tag3">完整代码如下：</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -599,16 +598,16 @@
                                     <span class="chip bg-color">Cpp</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                                    <span class="chip bg-color">��ϣ</span>
+                                <a href="/tags/%E5%93%88%E5%B8%8C/">
+                                    <span class="chip bg-color">哈希</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer-II/">
-                                    <span class="chip bg-color">��ָOffer II</span>
+                                <a href="/tags/%E5%89%91%E6%8C%87Offer-II/">
+                                    <span class="chip bg-color">剑指Offer II</span>
                                 </a>
                             
-                                <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">
-                                    <span class="chip bg-color">��������</span>
+                                <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                                    <span class="chip bg-color">滑动窗口</span>
                                 </a>
                             
                         </div>
@@ -679,8 +678,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                    ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
                                 </a>
                             
                             
@@ -694,12 +693,12 @@
                         <span class="chip bg-color">Cpp</span>
                     </a>
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%CF%A3/">
-                        <span class="chip bg-color">��ϣ</span>
+                    <a href="/tags/%E5%93%88%E5%B8%8C/">
+                        <span class="chip bg-color">哈希</span>
                     </a>
                     
-                    <a href="/tags/%EF%BF%BD%EF%BF%BD%D6%B8Offer-II/">
-                        <span class="chip bg-color">��ָOffer II</span>
+                    <a href="/tags/%E5%89%91%E6%8C%87Offer-II/">
+                        <span class="chip bg-color">剑指Offer II</span>
                     </a>
                     
                 </div>
