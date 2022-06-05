@@ -342,8 +342,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%CB%A2%EF%BF%BD%EF%BF%BD/" class="post-category">
-                                ˢ��
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                刷题
                             </a>
                         
                     </div>
@@ -379,25 +379,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="LeetCode-1419-������"><a href="#LeetCode-1419-������" class="headerlink" title=" LeetCode 1419. ������"></a><h2> LeetCode 1419. ������</h2></h1><h1 id="1-��L����"><a href="#1-��L����" class="headerlink" title=" 1 ��Ŀ����"></a><h3> 1 ��Ŀ����</h3></h1><ul>
-<li>��Ŀ���ӣ�<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-frogs-croaking/" title="1419. ������">1419. ������</a></li>
+                <h1 id="LeetCode-1419-数青蛙"><a href="#LeetCode-1419-数青蛙" class="headerlink" title=" LeetCode 1419. 数青蛙"></a><h2> LeetCode 1419. 数青蛙</h2></h1><h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title=" 1 题目描述"></a><h3> 1 题目描述</h3></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-frogs-croaking/" title="1419. 数青蛙">1419. 数青蛙</a></li>
 </ul>
-<p>����һ���ַ��� <code>croakOfFrogs</code>������ʾ��ͬ���ܷ��������������ַ��� <code>&quot;croak&quot;</code> ������ϡ�����ͬһʱ������ж�ֻ�����������죬����?<code>croakOfFrogs</code> �л��϶�� <code>��croak��</code> ��</p>
-<p>���㷵��ģ���ַ����������������費ͬ���ܵ�������Ŀ��</p>
-<p>Ҫ�뷢������ <code>&quot;croak&quot;</code>�����ܱ��� ���� ��� <code>��c��</code>, <code>��r��</code>, <code>��o��</code>, <code>��a��</code>, <code>��k��</code>�� <code>5</code> ����ĸ�����û�����ȫ�������ĸ����ô���Ͳ��ᷢ������������ַ��� <code>croakOfFrogs</code> ������������Ч�� <code>&quot;croak&quot;</code> �ַ���϶��ɣ��뷵�� <code>-1</code> ��</p>
-<p><strong>ʾ��1��</strong></p>
+<p>给你一个字符串 <code>croakOfFrogs</code>，它表示不同青蛙发出的蛙鸣声（字符串 <code>&quot;croak&quot;</code> ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 <code>croakOfFrogs</code> 中会混合多个 <code>“croak”</code> 。</p>
+<p>请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。</p>
+<p>要想发出蛙鸣 <code>&quot;croak&quot;</code>，青蛙必须 依序 输出 <code>‘c’</code>, <code>’r’</code>, <code>’o’</code>, <code>’a’</code>, <code>’k’</code>这 <code>5</code> 个字母。如果没有输出全部五个字母，那么它就不会发出声音。如果字符串 <code>croakOfFrogs</code> 不是由若干有效的 <code>&quot;croak&quot;</code> 字符混合而成，请返回 <code>-1</code> 。</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  croakOfFrogs = “croakcroak”<br><strong>���:</strong>  1<br><strong>����:</strong> һֻ���� �����ɡ� ����</p>
+<p><strong>输入:</strong>  croakOfFrogs = “croakcroak”<br><strong>输出:</strong>  1<br><strong>解释:</strong> 一只青蛙 “呱呱” 两次</p>
 </blockquote>
-<p><strong>ʾ��2��</strong></p>
+<p><strong>示例2：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  croakOfFrogs = “crcoakroak”<br><strong>���:</strong>  2<br><strong>����:</strong> ������Ҫ��ֻ���ܣ������ɡ� ���ú����ע<br>��һֻ���� “<strong>cr</strong>c<strong>oak</strong>roak”<br>�ڶ�ֻ���� “cr<strong>c</strong>oak<strong>roak</strong>“</p>
+<p><strong>输入:</strong>  croakOfFrogs = “crcoakroak”<br><strong>输出:</strong>  2<br><strong>解释:</strong> 最少需要两只青蛙，“呱呱” 声用黑体标注<br>第一只青蛙 “<strong>cr</strong>c<strong>oak</strong>roak”<br>第二只青蛙 “cr<strong>c</strong>oak<strong>roak</strong>“</p>
 </blockquote>
-<p><strong>ʾ��3��</strong></p>
+<p><strong>示例3：</strong></p>
 <blockquote>
-<p><strong>����:</strong>  croakOfFrogs = “croakcrook”<br><strong>���:</strong>  -1<br><strong>����:</strong> �������ַ������� “croak” ����Ч���.</p>
+<p><strong>输入:</strong>  croakOfFrogs = “croakcrook”<br><strong>输出:</strong>  -1<br><strong>解释:</strong> 给出的字符串不是 “croak” 的有效组合.</p>
 </blockquote>
-<h2 id="2-˼·"><a href="#2-˼·" class="headerlink" title=" 2 ˼·"></a><h3> 2 ˼·</h3></h2><p>&emsp;&emsp;��һ������<code>vec[5]</code>����¼<code>croak</code>�и����ַ����ֵĴ�����������<code>vec</code>���ǵ����ݼ�ʱ˵����ǰ���ַ���������Ч��ϣ�ֱ�ӷ���<code>false</code>; ÿһ��<code>����</code>������<code>c</code>��ͷ����˿��Խ����ܵ�������Ŀת��Ϊͬʱ��<code>����</code>������������ͬʱ<code>����</code>��������������һ����������ʵ�֣�������<code>c</code>ʱ��������1����ʾ��ǰ�ж���ֻ�ڽУ�������<code>k</code>ʱ˵����һֻ���ڵ������Ѿ����<code>����</code>����ʱ��Ϊ����״̬����һ��<code>c</code>���������µ����������롣��һ����������ͨ����⵱ǰ���ַ��Ƿ�Ϊ<code>k</code>�������򽫼�������<code>1</code>���Ӷ�ʵ������һ�μ�⵽<code>c</code>�ġ������롱�µ����ܵĲ������������Ϊͬʱ<code>����</code>�������������ֵ��</p>
+<h2 id="2-思路"><a href="#2-思路" class="headerlink" title=" 2 思路"></a><h3> 2 思路</h3></h2><p>&emsp;&emsp;用一个数组<code>vec[5]</code>来记录<code>croak</code>中各个字符出现的次数，当数组<code>vec</code>不是单调递减时说明当前的字符串不是有效组合，直接返回<code>false</code>; 每一次<code>呱呱</code>都是以<code>c</code>开头，因此可以将青蛙的最少数目转化为同时在<code>呱呱</code>的青蛙数，而同时<code>呱呱</code>的青蛙数可以用一个计数器来实现，当遇到<code>c</code>时计数器加1，表示当前有多少只在叫，而遇到<code>k</code>时说明第一只开口的青蛙已经完成<code>呱呱</code>，此时其为空闲状态，下一个<code>c</code>则不用再有新的青蛙来加入。这一步操作可以通过检测当前的字符是否为<code>k</code>，若是则将计数器减<code>1</code>，从而实现在下一次检测到<code>c</code>的“不加入”新的青蛙的操作。而结果即为同时<code>呱呱</code>的青蛙数的最大值。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">    <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">minNumberOfFrogs</span><span class="token punctuation">(</span>string croakOfFrogs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -433,7 +433,7 @@
         <span class="token keyword">return</span> vec<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">==</span>vec<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">?</span> ans <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;&emsp;���ϴ�����Խ����Ż������ٱ�����.��Ҫע����ǣ���ѭ��ĩβ�ж��ַ����Ƿ���Чʱ����Ҫ�ж�<code>k</code>��ֵ�Ƿ�С��0��ͬ���ģ����ؽ��ʱҲ����Ҫ�ж�<code>k</code>��ֵ�Ƿ�Ϊ<code>0</code>�������ַ��жϴ����Ƿ�Ϊ<code>0</code>��ȷ��ǰ�ĸ��������꣬���й�<code>croa</code>���ٽ�<code>k</code>�������һֻ����<code>����</code>��ǰ�ĸ��ַ��Ĵ���Ϊ0����<code>k</code>�Ĵ���Ӧ��Ϊ<code>1</code>.</p>
+<p>&emsp;&emsp;以上代码可以进行优化，减少变量数.需要注意的是，在循环末尾判断字符串是否有效时不需要判断<code>k</code>的值是否小于0；同样的，返回结果时也不需要判断<code>k</code>的值是否为<code>0</code>，其他字符判断次数是否为<code>0</code>是确保前四个被消耗完，即叫过<code>croa</code>后再叫<code>k</code>，而最后一只青蛙<code>呱呱</code>完前四个字符的次数为0，而<code>k</code>的次数应该为<code>1</code>.</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">minNumberOfFrogs</span><span class="token punctuation">(</span>string croakOfFrogs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
