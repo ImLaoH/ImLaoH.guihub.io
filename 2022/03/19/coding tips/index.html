@@ -2066,8 +2066,28 @@ complex<span class="token double-colon punctuation">::</span><span class="token 
 </blockquote>
 </li>
 </ul>
-<h1 id="2-继承"><a href="#2-继承" class="headerlink" title=" 2 继承"></a><h3> 2 继承</h3></h1><h1 id="3-vector容器"><a href="#3-vector容器" class="headerlink" title=" 3 vector容器"></a><h3> 3 vector容器</h3></h1><p><em>Vector</em>是一个封装了动态大小数组的<strong>顺序</strong>容器(sequence container)，<strong>能够存放任意类型的对象的动态数组</strong>。<em>Vector</em>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。提供了在序列末尾相对快速地添加/删除元素的操作。</p>
-<h3 id="3-1-特性"><a href="#3-1-特性" class="headerlink" title=" 3.1 特性"></a><h3> 3.1 特性</h3><ol>
+<h1 id="2-继承"><a href="#2-继承" class="headerlink" title=" 2 继承"></a><h3> 2 继承</h3></h1><h1 id="3-iterator迭代器"><a href="#3-iterator迭代器" class="headerlink" title=" 3 iterator迭代器"></a><h3> 3 iterator迭代器</h3></h1><ul>
+<li><p>前向迭代器</p>
+<p>  假设 p 是一个前向迭代器，则 p 支持 ++p，p++，*p 操作，还可以被复制或赋值，可以用 == 和 != 运算符进行比较。此外，两个正向迭代器可以互相赋值。</p>
+</li>
+<li><p>双向迭代器</p>
+<p>  双向迭代器具有正向迭代器的全部功能，除此之外，假设 p 是一个双向迭代器，则还可以进行 —p 或者 p— 操作（即一次向后移动一个位置）。</p>
+</li>
+<li><p>随机访问迭代器</p>
+<p>  随机访问迭代器具有双向迭代器的全部功能。除此之外，假设 p 是一个随机访问迭代器，i 是一个整型变量或常量，则 p 还支持以下操作：</p>
+<ul>
+<li>p+=i：使得 p 往后移动 i 个元素。</li>
+<li>p-=i：使得 p 往前移动 i 个元素。</li>
+<li>p+i：返回 p 后面第 i 个元素的迭代器。</li>
+<li>p-i：返回 p 前面第 i 个元素的迭代器。</li>
+<li>p[i]：返回 p 后面第 i 个元素的引用。</li>
+<li>此外，两个随机访问迭代器 p1、p2 还可以用 &lt;、&gt;、&lt;=、&gt;= 运算符进行比较。另外，表达式 p2-p1 也是有定义的，其返回值表示 p2 所指向元素和 p1 所指向元素的序号之差（也可以说是 p2 和 p1 之间的元素个数减一）。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/03/19/coding%20tips/iterator.png" alt></p>
+<h1 id="4-vector容器"><a href="#4-vector容器" class="headerlink" title=" 4 vector容器"></a><h3> 4 vector容器</h3></h1><p><em>Vector</em>是一个封装了动态大小数组的<strong>顺序</strong>容器(sequence container)，<strong>能够存放任意类型的对象的动态数组</strong>。<em>Vector</em>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。提供了在序列末尾相对快速地添加/删除元素的操作。</p>
+<h3 id="4-1-特性"><a href="#4-1-特性" class="headerlink" title=" 4.1 特性"></a><h3> 4.1 特性</h3><ol>
 <li><p>内存自增长：与其他容器不同，其内存空间只会增长，不会减小。对<em>vector</em>，必有<code>vec.capacity() &gt;= vec.size()</code>，前者是容器所能存储的元素个数，后者则是容器内当前存储的元素个数。每当<em>vector</em>容器不得不分配新的存储空间时，会以<strong>加倍当前容量</strong>的分配策略实现重新分配。</p>
 <blockquote>
 <p>reserve()成员可以用来控制容器的预留空间,如<code>reserve(10)</code>则是预留10个元素空间</p>
@@ -2084,7 +2104,7 @@ vtTemp<span class="token punctuation">.</span><span class="token function">swap<
 </li>
 <li></li>
 </ol>
-<h3 id="3-2-基本操作"><a href="#3-2-基本操作" class="headerlink" title=" 3.2 基本操作"></a><h3> 3.2 基本操作</h3><ol>
+<h3 id="4-2-基本操作"><a href="#4-2-基本操作" class="headerlink" title=" 4.2 基本操作"></a><h3> 4.2 基本操作</h3><ol>
 <li><p>创建vector对象：<code>vector&lt;int&gt; vec;//一维数组</code><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>vector&lt;vector&lt;int&gt; &gt; vec(n， vector&lt;int&gt;(m));//二维数组,行数为n，列数为m</code></p>
 </li>
 <li><p>尾部插入数字a：<code>vec.push_back(a);</code></p>
@@ -2115,10 +2135,10 @@ vtTemp<span class="token punctuation">.</span><span class="token function">swap<
 <li><p>反转：<code>reverse(vec.begin(), vec.end());</code></p>
 </li>
 </ol>
-<h1 id="4-Map-Set容器"><a href="#4-Map-Set容器" class="headerlink" title=" 4 Map/Set容器"></a><h3> 4 Map/Set容器</h3></h1><ul>
+<h1 id="5-Map-Set容器"><a href="#5-Map-Set容器" class="headerlink" title=" 5 Map/Set容器"></a><h3> 5 Map/Set容器</h3></h1><ul>
 <li>Map：提供一对一（其中第一个可以称为关键字，<strong>每个关键字只能在map中出现一次</strong>，第二个可能称为该关键字的值）的数据处理能力。map内部自建一颗红黑树(一 种非严格意义上的平衡二叉树)，这颗树具有对数据自动排序的功能。</li>
 </ul>
-<p>4.1 Map操作</p>
+<p>5.1 Map操作</p>
 <ol>
 <li>定义：</li>
 </ol>
@@ -2178,7 +2198,71 @@ map<span class="token punctuation">.</span><span class="token function">erase</s
 <li>删除一个范围</li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">map<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="5-栈"><a href="#5-栈" class="headerlink" title=" 5 栈"></a><h3> 5 栈</h3></h1><h1 id="6-队列"><a href="#6-队列" class="headerlink" title=" 6 队列"></a><h3> 6 队列</h3></h1><ol>
+<h1 id="6-栈"><a href="#6-栈" class="headerlink" title=" 6 栈"></a><h3> 6 栈</h3></h1><h1 id="7-链表-双向"><a href="#7-链表-双向" class="headerlink" title=" 7 链表(双向)"></a><h3> 7 链表(双向)</h3></h1><ol>
+<li>插入：<ul>
+<li><code>insert()</code>: 插入后迭代器位于插入元素的位置上，而原来的迭代器上的元素以及后继节点则均后移一位.<ul>
+<li><code>insert(it, elem)</code>: 在迭代器<code>it</code>的位置上插入新节点，节点元素为<code>elem</code>.</li>
+<li><code>insert(it, n, elem)</code>: 在迭代器<code>it</code>的位置上连续插入<code>n</code>个<code>elem</code>元素.</li>
+</ul>
+</li>
+<li><code>emplace</code>: 直接构造<ul>
+<li><code>emplace_back(elem)</code>: 在链表的末尾插入元素<code>elem</code>.</li>
+<li><code>emplace_front(elem)</code>: 在链表的第一个元素前头插入元素<code>elem</code>.</li>
+<li><code>emplace(it, elem)</code>: 同<code>insert(it, elem)</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li><code>clear()</code>: 清除链表中的所有元素</li>
+<li><code>remove(val)</code>: 清除链表中所有<code>val</code>的节点</li>
+<li><code>remove_if()</code>: 清楚满足条件的节点</li>
+<li><code>unique()</code>: 清楚链表中相邻位置相同的节点，仅保留第一个节点</li>
+<li><code>erase()</code>: 删除 <code>list</code> 容器中指定位置处的元素(<code>erase(it)</code>)，也可以删除容器中某一段的多个元素(<code>erase(it1, it2)</code>)</li>
+<li><code>pop_back()</code>: 删除链表末尾节点</li>
+<li><p><code>pop_front()</code>: 删除链表起始节点</p>
+<blockquote>
+<p><code>remove_if</code>使用示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token operator">></span>#include <span class="token operator">&lt;</span>iostream<span class="token operator">></span> 
+<span class="token operator">></span>#include <span class="token operator">&lt;</span>list<span class="token operator">></span> 
+<span class="token operator">></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token operator">></span><span class="token keyword">bool</span> <span class="token function">odd</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> n<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+l<span class="token punctuation">.</span><span class="token function">remove_if</span><span class="token punctuation">(</span>odd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">></span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></blockquote>
+</li>
+</ul>
+</li>
+<li>反转/排序：<ul>
+<li><code>sort()</code></li>
+<li><code>reverse()</code></li>
+</ul>
+</li>
+<li>移动：<ul>
+<li><code>advance(it, n)</code>: 将迭代器<code>it</code>后移<code>n</code>位，为负则向前移，无返回值.</li>
+<li><code>prev(it, n)</code>: 与上边的功能类似，<code>n</code>为正则前移，为负则后移，缺省则为<code>1</code>即前移一位， 函数返回的结果为新的迭代器.</li>
+<li><code>next(it, n)</code>: 与<code>advance</code>一致，但与<code>prev</code>一样有返回值.<blockquote>
+<p>这里的移动函数实际上都是<code>STL</code>标准库中的迭代器辅助函数，定义于<code>&lt;iterator&gt;</code>头文件中并位于<code>std</code>命名空间中. <code>advance</code>和<code>next</code>可以采用任意的迭代器，而<code>prev</code>只能用双向迭代器和随机访问迭代器.</p>
+<ul>
+<li>前向迭代器：只可以作<code>it++</code>和<code>++it</code>的操作.</li>
+<li>双向迭代器：除了可以作<code>++it</code>、<code>it++</code>的操作，还可以作<code>--it</code>、<code>it--</code>的操作.</li>
+<li>随机访问迭代器：拥有双向迭代器的功能外，还可以进行<code>it+=n</code>等操作.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>其他：<ul>
+<li><code>distance(p, q)</code>: 返回迭代器<code>p</code>后移多少次后与迭代器<code>q</code>一致。</li>
+<li><code>iter_swap(p, q)</code>: 交换两个迭代器的值.</li>
+</ul>
+</li>
+</ol>
+<h1 id="8-队列"><a href="#8-队列" class="headerlink" title=" 8 队列"></a><h3> 8 队列</h3></h1><ol>
 <li>队列(<code>queue</code>)</li>
 </ol>
 <ol>
@@ -2218,9 +2302,6 @@ map<span class="token punctuation">.</span><span class="token function">erase</s
 </ul>
 </li>
 </ul>
-<ol>
-<li></li>
-</ol>
 <div style="page-break-after: always;"></div>
 
 <h1 id="Python的目录"><a href="#Python的目录" class="headerlink" title="Python的目录"></a><h2><span id="py">Python的目录</span></h2></h1><h3 id="0-各种基础知识-4"><a href="#0-各种基础知识-4" class="headerlink" title="　0.各种基础知识"></a><h3>　0.<a href="#SomethingforPy">各种基础知识</a></h3><h3 id="1-random"><a href="#1-random" class="headerlink" title="　1.random"></a><h3>　1.<a href="#random">random</a></h3><h1 id="0-各种基础知识-5"><a href="#0-各种基础知识-5" class="headerlink" title="0 各种基础知识"></a><h3><span id="SomethingforPy">0 各种基础知识</span></h3></h1><ol>
