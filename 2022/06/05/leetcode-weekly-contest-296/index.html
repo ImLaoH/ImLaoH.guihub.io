@@ -566,14 +566,16 @@
 <blockquote>
 <p><strong>示例：</strong><br><strong>输入：</strong> [“TextEditor”, “addText”, “deleteText”, “addText”, “cursorRight”, “cursorLeft”, “deleteText”, “cursorLeft”, “cursorRight”]<br>[[], [“leetcode”], [4], [“practice”], [3], [8], [10], [2], [6]]<br><strong>输出：</strong> [null, null, 4, null, “etpractice”, “leet”, 4, “”, “practi”]<br><strong>解释：</strong><br>TextEditor textEditor = new TextEditor(); // 当前 text 为 “|” 。（’|’ 字符表示光标）<br>textEditor.addText(“leetcode”); // 当前文本为 “leetcode|” 。<br>textEditor.deleteText(4);&emsp; // 返回 4<br>&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;// 当前文本为 “leet|” 。<br>&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;// 删除了 4 个字符。<br>textEditor.addText(“practice”); // 当前文本为 “leetpractice|” 。<br>textEditor.cursorRight(3);&emsp;// 返回 “etpractice”<br>&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 当前文本为 “leetpractice|”.<br>&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 光标无法移动到文本以外，所以无法移动。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp; // “etpractice” 是光标左边的 10 个字符。<br>textEditor.cursorLeft(8);  &emsp; // 返回 “leet”<br>&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; // 当前文本为 “leet|practice” 。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // “leet” 是光标左边的 min(10, 4) = 4 个字符。<br>textEditor.deleteText(10);&emsp;// 返回 4<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // 当前文本为 “|practice” 。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // 只有 4 个字符被删除了。<br>textEditor.cursorLeft(2); &emsp; // 返回 “”<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // 当前文本为 “|practice” 。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // 光标无法移动到文本以外，所以无法移动。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // “” 是光标左边的 min(10, 0) = 0 个字符。<br>textEditor.cursorRight(6);&emsp;// 返回 “practi”<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // 当前文本为 “practi|ce” 。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp; &emsp; // “practi” 是光标左边的 min(10, 6) = 6 个字符。</p>
 <h4 id="4-2-思路"><a href="#4-2-思路" class="headerlink" title=" 4.2 思路"></a><h4> 4.2 思路</h4></h4></blockquote>
-<p>维护一个全局字符串<code>str</code>用于存放当前的文本，一个整型变量<code>pos</code>用于记录当前光标所在的位置。</p>
+<ol>
+<li>字符串直接模拟</li>
+</ol>
+<p>&emsp;&emsp;维护一个全局字符串<code>str</code>用于存放当前的文本，一个整型变量<code>pos</code>用于记录当前光标所在的位置。</p>
 <ul>
 <li>插入：如果光标位置<code>pos</code>等于文本<code>str</code>的长度，即<code>pos==str.length()</code>时说明待插入字符串时加到当前文本的最后即可，否则则是插在光标位置<code>str.insert(pos, text)</code>. 插入后更新光标位置<code>pos += text.length()</code>.</li>
 <li>删除：如果光标位置小于<code>k</code>，说明光标左侧没有足够的字符可供删除，因而文本更新为<code>pos</code>右侧的子字符串，并且将<code>pos</code>置于文本开头；否则说明删除<code>k</code>个字符后文本剩下左右两个子字符串(删掉了中间的字符串),那么更新文本为<code>str = str.substr(0, pos-k) + str.substr(pos)</code>,并将光标位置更新为左侧字符串的末尾即<code>pos-k</code>.</li>
 <li>左移：直接<code>pos-=k</code>,如果<code>pos &lt;= 0</code>说明此时pos越界，则置为<code>0</code>并返回<code>&quot;&quot;</code>；否则返回pos左侧字符串(最长为10)</li>
-<li>右移：直接<code>pos-=k</code>,如果<code>pos &gt;= str.length()</code>说明此时pos越界，则置为<code>str.length()</code>, 并返回pos左侧字符串(最长为10).</li>
-</ul>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">&#123;</span>
+<li><p>右移：直接<code>pos-=k</code>,如果<code>pos &gt;= str.length()</code>说明此时pos越界，则置为<code>str.length()</code>, 并返回pos左侧字符串(最长为10).</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">&#123;</span>
     string str<span class="token punctuation">;</span>
     <span class="token keyword">int</span> pos<span class="token punctuation">;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -617,11 +619,145 @@
         <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>pos<span class="token operator">-</span><span class="token function">min</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="复盘"><a href="#复盘" class="headerlink" title=" 复盘"></a><h3> 复盘</h3></h1><p>主要涉及了字符串中<code>substr</code>和<code>insert</code>的操作：</p>
+</li>
+</ul>
+<ol>
+<li>链表模拟</li>
+</ol>
+<p>&emsp;&emsp;由于题目中<code>text</code>的长度以及左/右移的次数均小于<code>40</code>，因此可以直接用双向链表来模拟。</p>
+<ul>
+<li>插入：链表插入比较简单，只要将插入位置前后两个节点的指针域更改为指向新节点即可，<code>c++</code>中直接用<code>insert(cur, ch)</code>即可实现在<code>cur</code>位置上插入<code>ch</code>字符，插入后光标位于<strong>插入节点的位置</strong>，因而无需对光标进行移动。</li>
+<li><p>删除：链表删除也简单，修改待删除节点的前后两个节点的指针域指向并将该节点删除即可，<code>c++</code>中用<code>erase</code></p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">&#123;</span>
+    list<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span> str<span class="token punctuation">;</span>
+    list<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span><span class="token double-colon punctuation">::</span>iterator cur<span class="token punctuation">;</span>
+    string <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        string res <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">auto</span> it <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span> it <span class="token operator">!=</span> str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            it <span class="token operator">=</span> <span class="token function">prev</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            res <span class="token operator">+=</span> <span class="token operator">*</span>it<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">char</span> ch <span class="token operator">=</span> res<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            res<span class="token punctuation">[</span>l<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            res<span class="token punctuation">[</span>r<span class="token operator">--</span><span class="token punctuation">]</span> <span class="token operator">=</span> ch<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">TextEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cur <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">void</span> <span class="token function">addText</span><span class="token punctuation">(</span>string text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">char</span> ch<span class="token operator">:</span> text<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            str<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">int</span> <span class="token function">deleteText</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">auto</span> it <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> k<span class="token punctuation">;</span> i <span class="token operator">></span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> it <span class="token operator">!=</span> str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            it <span class="token operator">=</span> <span class="token function">prev</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            it <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 返回的是被删除后当前位置的迭代器</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> k <span class="token operator">-</span> i<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    string <span class="token function">cursorLeft</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> k<span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> cur <span class="token operator">!=</span> str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            cur <span class="token operator">=</span> <span class="token function">prev</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    string <span class="token function">cursorRight</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> k<span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> cur <span class="token operator">!=</span> str<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            cur <span class="token operator">=</span> <span class="token function">next</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="复盘"><a href="#复盘" class="headerlink" title=" 复盘"></a><h3> 复盘</h3></h1><p>主要涉及了字符串以及<code>std::list</code>的操作：</p>
+<ol>
+<li>字符串操作</li>
+</ol>
 <ul>
 <li><code>substr(index, len)</code>: 获取从<code>index</code>开始的长度为<code>len</code>的子字符串，如果<code>len</code>大于剩余字符串长度，则否则剩余的字符串.</li>
 <li><code>substr(index)</code>: 返回自<code>index</code>开始到字符串末尾的子字符串.</li>
 <li><code>insert(index, str)</code>: 在<code>index</code>位置上插入字符串<code>str</code>.</li>
+</ul>
+<ol>
+<li><code>std::list</code>操作</li>
+</ol>
+<ul>
+<li>插入：<ul>
+<li><code>insert()</code>: 插入后迭代器位于插入元素的位置上，而原来的迭代器上的元素以及后继节点则均后移一位.<ul>
+<li><code>insert(it, elem)</code>: 在迭代器<code>it</code>的位置上插入新节点，节点元素为<code>elem</code>.</li>
+<li><code>insert(it, n, elem)</code>: 在迭代器<code>it</code>的位置上连续插入<code>n</code>个<code>elem</code>元素.</li>
+</ul>
+</li>
+<li><code>emplace</code>: 直接构造<ul>
+<li><code>emplace_back(elem)</code>: 在链表的末尾插入元素<code>elem</code>.</li>
+<li><code>emplace_front(elem)</code>: 在链表的第一个元素前头插入元素<code>elem</code>.</li>
+<li><code>emplace(it, elem)</code>: 同<code>insert(it, elem)</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>删除：</p>
+<ul>
+<li><code>clear()</code>: 清除链表中的所有元素</li>
+<li><code>remove(val)</code>: 清除链表中所有<code>val</code>的节点</li>
+<li><code>remove_if()</code>: 清楚满足条件的节点</li>
+<li><code>unique()</code>: 清楚链表中相邻位置相同的节点，仅保留第一个节点</li>
+<li><code>erase()</code>: 删除 <code>list</code> 容器中指定位置处的元素(<code>erase(it)</code>)，也可以删除容器中某一段的多个元素(<code>erase(it1, it2)</code>)</li>
+<li><code>pop_back()</code>: 删除链表末尾节点</li>
+<li><p><code>pop_front()</code>: 删除链表起始节点</p>
+<blockquote>
+<p><code>remove_if</code>使用示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token operator">></span>#include <span class="token operator">&lt;</span>iostream<span class="token operator">></span> 
+<span class="token operator">></span>#include <span class="token operator">&lt;</span>list<span class="token operator">></span> 
+<span class="token operator">></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token operator">></span><span class="token keyword">bool</span> <span class="token function">odd</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> n<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+l<span class="token punctuation">.</span><span class="token function">remove_if</span><span class="token punctuation">(</span>odd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">></span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></blockquote>
+</li>
+</ul>
+</li>
+<li>反转/排序：<ul>
+<li><code>sort()</code></li>
+<li><code>reverse()</code></li>
+</ul>
+</li>
+<li>移动：<ul>
+<li><code>advance(it, n)</code>: 将迭代器<code>it</code>后移<code>n</code>位，为负则向前移，无返回值.</li>
+<li><code>prev(it, n)</code>: 与上边的功能类似，<code>n</code>为正则前移，为负则后移，缺省则为<code>1</code>即前移一位， 函数返回的结果为新的迭代器.</li>
+<li><code>next(it, n)</code>: 与<code>advance</code>一致，但与<code>prev</code>一样有返回值.<blockquote>
+<p>这里的移动函数实际上都是<code>STL</code>标准库中的迭代器辅助函数，定义于<code>&lt;iterator&gt;</code>头文件中并位于<code>std</code>命名空间中. <code>advance</code>和<code>next</code>可以采用任意的迭代器，而<code>prev</code>只能用双向迭代器和随机访问迭代器.</p>
+<ul>
+<li>前向迭代器：只可以作<code>it++</code>和<code>++it</code>的操作.</li>
+<li>双向迭代器：除了可以作<code>++it</code>、<code>it++</code>的操作，还可以作<code>--it</code>、<code>it--</code>的操作.</li>
+<li>随机访问迭代器：拥有双向迭代器的功能外，还可以进行<code>it+=n</code>等操作.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>其他：<ul>
+<li><code>distance(p, q)</code>: 返回迭代器<code>p</code>后移多少次后与迭代器<code>q</code>一致。</li>
+<li><code>iter_swap(p, q)</code>: 交换两个迭代器的值.</li>
+</ul>
+</li>
 </ul>
 </h4></h4></h4></h4></h4></h4></h4>
                 

@@ -391,17 +391,27 @@
 <li>指向const的指针不能用于改变值。</li>
 <li>可以把const数据或非const数据的地址传给const指针；但不能把const数据的地址传给普通指针，否则就可以通过指针修改这些数据了。</li>
 <li>被const修饰的指针不能修改其指向的数据，但如果该数据自身不被const修饰，则可以通过其变量名进行修改。</li>
-<li>const在指针类型前表示不能通过该指针进行其所指向的数据的修改操作；而const在指针类型后表示该指针不能指向别处(<strong>看与的相对位置，在左则不可修改指向的数值，在右则不可修改指向的地址</strong>)，注意以下区别：</li>
-</ul>
-</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> months <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<li><p>const在指针类型前表示不能通过该指针进行其所指向的数据的修改操作；而const在指针类型后表示该指针不能指向别处(<strong>看与的相对位置，在左则不可修改指向的数值，在右则不可修改指向的地址</strong>)，注意以下区别：</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> months <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span> <span class="token keyword">const</span> ptr1 <span class="token operator">=</span> months<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span> ptr2 <span class="token operator">=</span> months<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span> <span class="token keyword">const</span> ptr3 <span class="token operator">=</span> months<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
 <p>以上代码中，<code>ptr1</code>不能被修改，即指向别的地址；<code>ptr2</code>则是不能直接修改months中的数值；<code>ptr3</code>则既不能更改其指向的地址，也不能修改其指向的地址上的值。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
 <ol>
-<li>被static修饰的变量，在程序结束前都不会被销毁，但如果是在函数内声明该变量，则只能在该函数中使用。离开该函数后，变量的值会被保存下来，重新调用该函数时，不会进行初始化，而是沿用上一次调用后的数值。<strong>函数的声明中，形参不允许被static修饰</strong>。</li>
+<li><p>被static修饰的变量，在<strong>程序结束前都不会被销毁</strong>，但如果是在函数内声明该变量，则只能在该函数中使用。离开该函数后，变量的值会被保存下来，重新调用该函数时，不会进行初始化，而是沿用上一次调用后的数值。<strong>函数的声明中，形参不允许被static修饰</strong>。</p>
+<ul>
+<li><p>限制作用域<br>用<code>static</code>修饰的函数，只能被在定义了该函数的模块中的函数调用，模块外的函数无法调用该函数，换句话说，如果在<code>a.c</code>文件中定义了函数<code>static void func()</code>,那么只有同在<code>a.c</code>文件中定义的函数才可以调用<code>func()</code>，而<code>b.c</code>文件中的函数只能通过<code>a.c</code>中的函数来调用<code>func</code>. 类似的，如果在一个文件中定义了一个全局变量，而该变量被<code>static</code>修饰，那么该变量就只能被该文件的函数使用，外部函数无法使用该变量。</p>
+</li>
+<li><p>管理声明周期<br>函数中某个变量用<code>static</code>修饰，则函数返回后该变量的值被保留下来，下次调用该函数时沿用上一次调用时的变量值。</p>
+</li>
+</ul>
+</li>
 <li><p>被<code>external</code>修饰的变量可以被其他文件的函数所使用，使用前需要在所要使用该变量的其他源代码文件中使用extern关键字声明该变量。在同一文件中，如果某个函数内声明了与外部变量（或者叫全局变量）同名的变量且无额外的extern修饰（或被auto显式修饰，如果无其他关键字默认未auto），则全局变量在该函数中不可见；如果未进行声明或者声明时用extern进行修饰则可见。</p>
 <p><strong>外部变量只能初始化一次。</strong></p>
 </li>
@@ -415,12 +425,11 @@
 <li>假设有如下声明：<br><code>int zippo[4][2];</code><br>则有如下关系：<br><code>zippo == &amp;zippo[0] == zippo[0] == &amp;zippo[0][0]</code></li>
 <li>指向多维数组的指针：</li>
 </ul>
-</li>
-</ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span> pz<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//pz指向一个内含两个int类型的数组</span>
 <span class="token keyword">int</span> <span class="token operator">*</span> px<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">//px是一个内含两个指针元素的数组，每个元素都是指向int的指针</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol>
-<li><code>#define</code>只是简单的进行替换，而<code>typedef</code>则是取别名.</li>
+</li>
+<li><p><code>#define</code>只是简单的进行替换，而<code>typedef</code>则是取别名.</p>
+</li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">STRING</span> <span class="token expression"><span class="token keyword">char</span> <span class="token operator">*</span></span></span>
 
@@ -440,7 +449,10 @@ STRING name<span class="token punctuation">,</span> age<span class="token punctu
 pf <span class="token operator">=</span> ToUpper<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>声明时需要参数类型对应。</strong></p>
 <ol>
-<li>八进制以数字0开头，十六进制以0X或0x开头</li>
+<li><p>八进制以数字0开头，十六进制以0X或0x开头.</p>
+</li>
+<li><p>枚举<code>enum</code>: 可以看作批量的<code>define</code>操作</p>
+</li>
 </ol>
 <h1 id="1-排序算法-1"><a href="#1-排序算法-1" class="headerlink" title=" 1 排序算法"></a><h3> 1 <span id="sort">排序算法</span></h3></h1><h2 id="1-1-快排（quickSort）"><a href="#1-1-快排（quickSort）" class="headerlink" title=" 1.1 快排（quickSort）"></a><h4> 1.1 快排（quickSort）</h4></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ElemType <span class="token function">FunctionName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token comment">//user code here</span>
