@@ -1805,7 +1805,19 @@ BinaryTree<span class="token operator">*</span> <span class="token function">Con
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h2 id="3-5-堆-1"><a href="#3-5-堆-1" class="headerlink" title=" 3.5 堆"></a><h4> 3.5 <span id="Heap">堆</span></h4></h2><h2 id="4-常规算法"><a href="#4-常规算法" class="headerlink" title=" 4 常规算法"></a><h2> 4 常规算法</h2><h3 id="4-1-二分法"><a href="#4-1-二分法" class="headerlink" title=" 4.1 二分法"></a><h3> 4.1 二分法</h3><h3 id="4-2-动态规划"><a href="#4-2-动态规划" class="headerlink" title=" 4.2 动态规划"></a><h3> 4.2 动态规划</h3><h3 id="4-3-贪心算法"><a href="#4-3-贪心算法" class="headerlink" title=" 4.3 贪心算法"></a><h3> 4.3 贪心算法</h3><h3 id="4-4-回溯"><a href="#4-4-回溯" class="headerlink" title=" 4.4 回溯"></a><h3> 4.4 回溯</h3><h3 id="4-5-KMP"><a href="#4-5-KMP" class="headerlink" title=" 4.5 KMP"></a><h3> 4.5 KMP</h3><h3 id="4-6-排序"><a href="#4-6-排序" class="headerlink" title=" 4.6 排序"></a><h3> 4.6 排序</h3><h3 id="4-7-bfs-dfs"><a href="#4-7-bfs-dfs" class="headerlink" title=" 4.7 bfs/dfs"></a><h3> 4.7 bfs/dfs</h3><div style="page-break-after: always;"></div>
+<h2 id="3-5-堆-1"><a href="#3-5-堆-1" class="headerlink" title=" 3.5 堆"></a><h4> 3.5 <span id="Heap">堆</span></h4></h2><h2 id="4-常规算法"><a href="#4-常规算法" class="headerlink" title=" 4 常规算法"></a><h2> 4 常规算法</h2><h3 id="4-1-二分法"><a href="#4-1-二分法" class="headerlink" title=" 4.1 二分法"></a><h3> 4.1 二分法</h3><h3 id="4-2-动态规划"><a href="#4-2-动态规划" class="headerlink" title=" 4.2 动态规划"></a><h3> 4.2 动态规划</h3><h3 id="4-3-贪心算法"><a href="#4-3-贪心算法" class="headerlink" title=" 4.3 贪心算法"></a><h3> 4.3 贪心算法</h3><h3 id="4-4-回溯"><a href="#4-4-回溯" class="headerlink" title=" 4.4 回溯"></a><h3> 4.4 回溯</h3><h3 id="4-5-KMP"><a href="#4-5-KMP" class="headerlink" title=" 4.5 KMP"></a><h3> 4.5 KMP</h3><h3 id="4-6-排序"><a href="#4-6-排序" class="headerlink" title=" 4.6 排序"></a><h3> 4.6 排序</h3><h3 id="4-7-bfs-dfs"><a href="#4-7-bfs-dfs" class="headerlink" title=" 4.7 bfs/dfs"></a><h3> 4.7 bfs/dfs</h3><h2 id="5-va-list"><a href="#5-va-list" class="headerlink" title=" 5 va_list"></a><h2> 5 va_list</h2><p>&emsp;&emsp;<code>va_list</code>是针对变参问题的一组系统宏，实现函数参数不定的功能。<code>C</code>语言中利用省略号来表示不定长参数：<code>void func(int a,...)</code>, <strong>注意</strong>， c标准规定了函数必须至少有一个明确定义的参数，因而省略号前至少要有一个类型已知的参数。</p>
+<ol>
+<li><code>va_list</code>: 宏定义了一个指向参数列表中的参数的指针类型</li>
+<li><code>void va_start(va_list ap, param1)</code>: 获取可变参数列表的第一个参数的地址（ap是类型为va_list的指针，param1是可变参数最左边的参数）</li>
+<li><code>Elemtype va_arg(va_list, Elemtype)</code>: 获取参数列表的下一个参数，并以<code>type</code>的类型返回。</li>
+<li><code>void va_end(va_list ap)</code>: 参数列表访问完以后，参数列表指针与其他指针一样，必须收回，否则出现野指针,可理解为清空<code>va_list</code>可变参数列表。一般 <code>va_start</code> 和 <code>va_end</code> 配套使用。</li>
+<li><p><code>_vsnprintf</code>: 用于向字符串中打印数据、数据格式用户自定义.</p>
+<blockquote>
+<p><code>int _vsnprintf(char* str, size_t size, const char* format, va_list ap);</code><br><code>char *str [out]</code>,把生成的格式化的字符串存放在这里.<br><code>size_t size [in]</code>, str可接受的最大字符数 (非字节数，<strong>UNICODE</strong>一个字符两个字节),防止产生数组越界.<br><code>const char *format [in]</code>, 指定输出格式的字符串，它决定了你需要提供的可变参数的类型、个数和顺序。<br><code>va_list ap [in]</code>, <code>va_list</code>变量. <code>va:variable-argument</code>:可变参数</p>
+</blockquote>
+</li>
+</ol>
+<div style="page-break-after: always;"></div>
 
 <h1 id="c-的目录"><a href="#c-的目录" class="headerlink" title="c++的目录"></a><h2><span id="cpp">c++的目录</span></h2></h1><h3 id="0-各种基础知识-2"><a href="#0-各种基础知识-2" class="headerlink" title="　0.各种基础知识"></a><h3>　0.<a href="#SomethingforCpp">各种基础知识</a></h3><h3 id="1-类"><a href="#1-类" class="headerlink" title="　1.类"></a><h3>　1.<a href="#ClassofCpp">类</a></h3><h1 id="0-各种基础知识-3"><a href="#0-各种基础知识-3" class="headerlink" title=" 0 各种基础知识"></a><h3> 0 <span id="SomethingforCpp">各种基础知识</span></h3></h1><ol>
 <li><p>C是结构化和模块化的语言，是面对过程的；C++则是在C的基础上增加了面向对象的机制。</p>
@@ -2331,7 +2343,7 @@ origin <span class="token operator">=</span> <span class="token builtin">zip</sp
 <h1 id="1-random-1"><a href="#1-random-1" class="headerlink" title="1 random"></a><h3><span id="random">1 random</span></h3></h1><ol>
 <li><code>slice = random.sample(list, num)</code>：从列表list中随机抽取num个元素并通过slice返回</li>
 </ol>
-</h3></h3></h3></h3></h3></h3></h3></h3></h3></h3></h3></h3></h3></h2></h4></h4></h4></h4></h4></h3></h3></h3></h3></h1></h1></h1>
+</h3></h3></h3></h3></h3></h3></h2></h3></h3></h3></h3></h3></h3></h3></h2></h4></h4></h4></h4></h4></h3></h3></h3></h3></h1></h1></h1>
                 
             </div>
             <hr/>
