@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="sm32-2-INTERRUPT-1, Hexo">
+    <meta name="keywords" content="sTm32-2-INTERRUPT-1, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>sm32-2-INTERRUPT-1 | Hexo</title>
+    <title>sTm32-2-INTERRUPT-1 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sm32-2-INTERRUPT-1</h1>
+                    <h1 class="description center-align post-title">sTm32-2-INTERRUPT-1</h1>
                 </div>
             </div>
         </div>
@@ -338,12 +338,12 @@
                                 <span class="chip bg-color">中断</span>
                             </a>
                         
-                            <a href="/tags/EXTI/">
-                                <span class="chip bg-color">EXTI</span>
-                            </a>
-                        
                             <a href="/tags/TIM/">
                                 <span class="chip bg-color">TIM</span>
+                            </a>
+                        
+                            <a href="/tags/EXTI/">
+                                <span class="chip bg-color">EXTI</span>
                             </a>
                         
                     </div>
@@ -420,7 +420,7 @@
 <blockquote>
 <p>所有的GPIO口均可以支持外部中断，但是相同的PIN脚不能同时触发中断。每个GPIO口相同PIN接入了AFIO中的对应位置用于触发对应的外部中断，当不同GPIO口的相同PIN脚均产生中断信号，实际上经过AFIO选择后只会响应其中一个中断。</p>
 </blockquote>
-<p> <img src="/2022/06/13/stm32-2-INTERRUPT/exti.png" alt></p>
+<p> <img src="/2022/06/13/stm32-2-INTERRUPT-1/exti.png" alt></p>
 </li>
 <li><p>响应方式：中断响应/事件响应.</p>
 <ul>
@@ -582,15 +582,15 @@
 <h1 id="5-定时器中断"><a href="#5-定时器中断" class="headerlink" title=" 5 定时器中断"></a><h3> 5 定时器中断</h3></h1><ol>
 <li>TIM(Timer)定时器可以对输入的时钟进行计数，当计数值达到设定值时触发中断。定时器的计数器为16位，定时最大为59.65s。除了基本的定时中断功能外，还有内外时钟源选择、输入捕获、输出比较、编码器接口、主从触发模式等多种功能，TIM可以分为高级定时器、通用定时器和基本定时器三种类型。</li>
 </ol>
-<p><img src="/2022/06/13/stm32-2-INTERRUPT/tim.png" alt></p>
+<p><img src="/2022/06/13/stm32-2-INTERRUPT-1/tim.png" alt></p>
 <ol>
 <li>对于基本定时器，其时钟只能选择内部时钟，频率为内部时钟频率72MHz，通过预分频器分频来到计数器，当计数器得到一个方波信号则自增1(<strong>仅支持向上计数</strong>)，当计数器的值达到预先设定好的值时就会产生中断，而预先设定的值则是存放在自动重装载寄存器中。预分频器为16位，为0则进行1分频，此时输出频率等于输入频率；为1时进行2分频，输出频率等于输入频率的一半，以此类推；分频器的作用其实就是改变到达计数器的方波间的时间间隔。因此，当预分频器设置为65535、自动重装载寄存器(也是16位)也设置为65535，则达到最大计时时间，为:</li>
 </ol>
-<script type="math/tex; mode=display">1/(72*10^6)*65536*65536 == 59.6514s</script><p><img src="/2022/06/13/stm32-2-INTERRUPT/tim_struct.png" alt></p>
+<script type="math/tex; mode=display">1/(72*10^6)*65536*65536 == 59.6514s</script><p><img src="/2022/06/13/stm32-2-INTERRUPT-1/tim_struct.png" alt></p>
 <ol>
 <li>CNT_EN未使能时计数器CK_CNT不工作，当CNT_EN使能后CK_CNT才开始计数。而预分频控制分为两个寄存器，一个未预分频控制寄存器，是提供给用户进行写操作来修改分频，另一个则是预分频缓冲器，是定时器中实际操控分频的寄存器；当用户通过预分频控制寄存器修改分频时，分频会写入预分频控制寄存器而不会直接写入预分频缓冲器，即定时器并不会马上对分频进行修改，而是在中断产生后才修改分频，这可以避免同个定时周期内前后频率不一致的问题(可以通过修改ARPE寄存器来控制是否预装时序)。根据下面的时序图可以知道，当定时器的计数器CK_CNT达到设定值时并不会马上触发中断，而是需要等到下一个上升沿到来之后才进行中断并重装。而分频的实现实际上也是通过计数器实现，即预分频计数器，当预分频计数器重装时才会输出一个方波信号。</li>
 </ol>
-<p><img src="/2022/06/13/stm32-2-INTERRUPT/tim_seq.png" alt></p>
+<p><img src="/2022/06/13/stm32-2-INTERRUPT-1/tim_seq.png" alt></p>
 <h1 id="6-定时器中断初始化"><a href="#6-定时器中断初始化" class="headerlink" title=" 6 定时器中断初始化"></a><h3> 6 定时器中断初始化</h3></h1><ol>
 <li>使能时钟：RCC使能时钟</li>
 <li>配置时钟源: 选择使用内部时钟源还是外部时钟源</li>
@@ -795,7 +795,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/06/13/stm32-2-INTERRUPT/">http://example.com/2022/06/13/stm32-2-INTERRUPT/</a>
+                    <a href="http://example.com/2022/06/13/stm32-2-INTERRUPT-1/">http://example.com/2022/06/13/stm32-2-INTERRUPT-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -841,12 +841,12 @@
                                     <span class="chip bg-color">中断</span>
                                 </a>
                             
-                                <a href="/tags/EXTI/">
-                                    <span class="chip bg-color">EXTI</span>
-                                </a>
-                            
                                 <a href="/tags/TIM/">
                                     <span class="chip bg-color">TIM</span>
+                                </a>
+                            
+                                <a href="/tags/EXTI/">
+                                    <span class="chip bg-color">EXTI</span>
                                 </a>
                             
                         </div>
@@ -890,60 +890,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/06/13/stm32-2-INTERRUPT/">
+                <a href="/2022/06/14/leetcode-5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="sm32-2-INTERRUPT-1">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="leetcode-5">
                         
-                        <span class="card-title">sm32-2-INTERRUPT-1</span>
+                        <span class="card-title">leetcode-5</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            STM学习笔记2
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/STM32/">
-                        <span class="chip bg-color">STM32</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%B8%AD%E6%96%AD/">
-                        <span class="chip bg-color">中断</span>
-                    </a>
-                    
-                    <a href="/tags/EXTI/">
-                        <span class="chip bg-color">EXTI</span>
-                    </a>
-                    
-                    <a href="/tags/TIM/">
-                        <span class="chip bg-color">TIM</span>
+                    <a href="/tags/Cpp/">
+                        <span class="chip bg-color">Cpp</span>
                     </a>
                     
                 </div>
