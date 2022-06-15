@@ -412,10 +412,10 @@
 <li>配置时基单元</li>
 <li>配置输出比较单元</li>
 <li>配置对应的GPIO口为复用推挽输出</li>
-<li><p>运行控制</p>
-<h1 id="3-PWM库函数实现"><a href="#3-PWM库函数实现" class="headerlink" title=" 3 PWM库函数实现"></a><h3> 3 PWM库函数实现</h3></h1></li>
-<li><p>使能时钟</p>
-</li>
+<li>运行控制</li>
+</ol>
+<h1 id="3-PWM库函数实现"><a href="#3-PWM库函数实现" class="headerlink" title=" 3 PWM库函数实现"></a><h3> 3 PWM库函数实现</h3></h1><ol>
+<li>使能时钟</li>
 <li>选择时钟源</li>
 <li>配置时基单元</li>
 <li>配置输出比较单元</li>
@@ -519,6 +519,25 @@
     <span class="token comment">// 开启定时器</span>
     <span class="token function">TIM_Cmd</span><span class="token punctuation">(</span>TIM2<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="4-引脚重映射"><a href="#4-引脚重映射" class="headerlink" title=" 4 引脚重映射"></a><h3> 4 引脚重映射</h3></h1><ol>
+<li><p>STM32中GPIO口引脚的复用功能都是实现规定好的，如果需要使用到同一个引脚上的不同复用功能时会产生冲突，因而需要定义引脚重映射，将引脚的复用功能重映射到其他的引脚上。引脚重映射同样也是实现设计好的，用户无法自行更改。</p>
+</li>
+<li><p>相关函数：<code>void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState);</code></p>
+<ul>
+<li>输入：<code>GPIO_Remap</code>选择要进行重映射的引脚，<code>NewState</code>为使能或失能</li>
+<li>备注：<code>GPIO_Remap</code>选择引脚的同时也进行了模式选择，即部分重映射和完全重映射两种。如定时器TIM2对应的有:<code>GPIO_PartialRemap1_TIM2</code>部分重映射1、<code>GPIO_PartialRemap2_TIM2</code>部分重映射2、<code>GPIO_FullRemap_TIM2</code>完全重映射三种。此外，部分端口被定义为调试端口，如SW和JTAG两种，如果需要用到这些端口，首先需要通过上述函数失能调试功能使该端口变为普通GPIO口。</li>
+</ul>
+</li>
+<li><p>代码实现</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2PeriphAFIO<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 使能AFIO时钟，重映射是通过AFIO寄存器来实现</span>
+<span class="token function">GPIO_PinRemapConfig</span><span class="token punctuation">(</span>GPIO_ParitialRemap1_TIM2<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 对TIM2进行部分重映射1</span>
+<span class="token function">GPIO_PinRemapConfig</span><span class="token punctuation">(</span>GPIO_Remap_SWJ_JTAGDisable<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 取消端口调试功能</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意：慎用取消调试功能，因为取消后无法再通过调试端口烧写程序，只能通过串口下载。</p>
+</blockquote>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -635,30 +654,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/06/14/stm32-3-INTERRUPT-2/">
+                <a href="/2022/06/15/stm32-4-ADC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="stm32-3-INTERRUPT-2">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="stm32-4-ADC">
                         
-                        <span class="card-title">stm32-3-INTERRUPT-2</span>
+                        <span class="card-title">stm32-4-ADC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            STM学习笔记3
+                            STM学习笔记4
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -671,7 +689,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -679,12 +696,8 @@
                         <span class="chip bg-color">STM32</span>
                     </a>
                     
-                    <a href="/tags/%E4%B8%AD%E6%96%AD/">
-                        <span class="chip bg-color">中断</span>
-                    </a>
-                    
-                    <a href="/tags/TIM/">
-                        <span class="chip bg-color">TIM</span>
+                    <a href="/tags/ADC/">
+                        <span class="chip bg-color">ADC</span>
                     </a>
                     
                 </div>

@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="stm32-1 GPIO, Hexo">
+    <meta name="keywords" content="stm32-4-ADC, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>stm32-1 GPIO | Hexo</title>
+    <title>stm32-4-ADC | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">stm32-1 GPIO</h1>
+                    <h1 class="description center-align post-title">stm32-4-ADC</h1>
                 </div>
             </div>
         </div>
@@ -334,8 +334,8 @@
                                 <span class="chip bg-color">STM32</span>
                             </a>
                         
-                            <a href="/tags/GPIO/">
-                                <span class="chip bg-color">GPIO</span>
+                            <a href="/tags/ADC/">
+                                <span class="chip bg-color">ADC</span>
                             </a>
                         
                     </div>
@@ -359,7 +359,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-10
+                    2022-06-15
                 </div>
                 
 
@@ -383,225 +383,189 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-简介"><a href="#1-简介" class="headerlink" title=" 1 简介"></a><h3> 1 简介</h3></h1><p>&emsp;&emsp;GPIO指的是通用输入输出接口（General Purpose Input/Output Port, GPIO）. 根据数据手册中列出的每个I/O端口的特定硬件特征， GPIO端口的每个位可以由软件分别配置成多种模式:</p>
-<ol>
-<li>浮空输入：肖特基触发器前的<strong>两个开关均悬空</strong>，这种情况下默认输入电平不确定，端口状态极易受外部干扰而改变。</li>
-<li>上拉输入：肖特基触发器前的<strong>上开关</strong>闭合，这种情况下默认输入电平为高电平。</li>
-<li>下拉输入：肖特基触发器前的<strong>下开关</strong>闭合，这种情况下默认输入电平为高电平。</li>
-<li>模拟输入：肖特基触发器“禁用”</li>
-<li>开漏输出：输出端P-MOS管“禁用”，只有N-MOS管起作用. 当输出寄存器为<code>1</code>时N-MOS关闭，输出端处于高阻模式，无驱动能力；当输出寄存器为<code>0</code>时N-MOS开启，I/O口接到 $V_{SS}$ ,输出低电平。一般作为通信协议的驱动方式，可避免多机通信的情况下设备之间的相互影响。此外，开漏模式可以在I/O外接5V电源，当输出寄存器为<code>0</code>时由外部电源将电压拉高至5V以提供5V的电平信号。</li>
-<li><p>推挽输出：P-MOS和N-MOS均起作用，当输出寄存器为<code>1</code>时N-MOS关闭、P-MOS开启，输出高电平；当输出寄存器为<code>0</code>时N-MOS开启、P-MOS关闭，I/O口接到 $V_{SS}$ ,输出低电平。</p>
-<blockquote>
-<p>PMOS管：P沟道MOS管，开关保持断开，当提供栅极电压后才会闭合。<br>NMOS管：N沟道MOS管，开关保持闭合，当提供山脊电压后才会断开。</p>
-</blockquote>
+                <h1 id="1-ADC简介"><a href="#1-ADC简介" class="headerlink" title=" 1 ADC简介"></a><h3> 1 ADC简介</h3></h1><ol>
+<li>ADC(Analog-Digital Converter, 模拟-数字转换器)可以将连续变化的模拟电压转换为内存中存储的数字变量，建立模拟电路到数字电路的桥梁。</li>
+<li>分辨率：与ADC的位数相关，位数越高分辨率越高。如果12位的ADC的转换范围为0 ~ 4095，如果输入电压为0 ~ 3.3V，就是将0 ~ 3.3映射到0 ~ 4095.</li>
+<li>具有18个输入通道，其中包括16个外部(对应16个GPIO口PIN脚)和2个内部信号源.</li>
+<li>转换组分为注入通道组和规则通道组两种，其中规则通道组最多能够组织16个通道，但存放转换结果的寄存器只有一个，因而需要配合DMA来运输数据防止数据被覆盖；而注入通道组则最多组织4个通道，存放转换结果的寄存器有4个，与注入通道一一对应。</li>
+<li><p>转换触发：分为软件触发和硬件触发两种，前者就是代码中直接调用进行转换，而后者则是通过TIM或者EXTI来实现。ADC转换通常是周期性的进行转换，因而很直觉地知道可以用TIM中断来实现，当TIM产生中断时在中断处理函数中调用ADC转换；然后，频繁地中断会影响主程序的运行，也可能导致部分数据来不及转换，因而TIM可以选择TRGO，当产生中断时，通过TRGO传到ADC模块从而实现硬件触发转换。转换完成的标志存放在EOC中，可以传送到NVIC中申请中断。</p>
 </li>
-<li><p>复用开漏输出：类似开漏输出，但由片上外设所控制。</p>
+<li><p>规则组转换模式：通过初始化结构体进行配置</p>
+<ul>
+<li>单次转换、非扫描模式：只有序列1有效，单次转换完成后就结束并将EOC转换，如果需要继续转换需要继续调用</li>
+<li>单次转换、扫描模式：按序列进行转换，且单次转换会转换整个序列然后产生EOC信号并结束转换</li>
+<li>连续转换、非扫描模式：只有序列1有效并且可以进行连续转换，只需要触动一次</li>
+<li>连续转换、扫描模式：连续扫描整个序列进行转换</li>
+</ul>
 </li>
-<li>复用推挽输出：类似推挽输出，但由片上外设所控制。</li>
 </ol>
-<p><img src="/2022/06/10/stm32-1-GPIO/GPIO_structure.png" alt></p>
-<h1 id="2-相关寄存器"><a href="#2-相关寄存器" class="headerlink" title=" 2  相关寄存器"></a><h3> 2  相关寄存器</h3></h1><ol>
-<li>端口配置寄存器（GPIOx_CRL、GPIOx_CRH): 每四位为1组，四位中前两位用于配置I/O口的输人/输出模式、后两位用于配置输出速度(状态翻转频率)。</li>
-<li>端口输入数据寄存器(GPIOx_IDR): 高16位保留，低16位为对应I/O口的状态.</li>
-<li>端口输出数据寄存器(GPIOx_ODR): 高16位保留，低16位为用户设定的I/O状态.</li>
-<li>端口设置/清除寄存器(GPIOx_BSRR): 高16位为端口清除位，为1则清除对应的I/O状态为0，为1则不影响；低16位为设置位，为0不影响，为1则将对应I/O置1.</li>
-<li>端口清除寄存器(GPIOx_BRR)：功能同GPIOx_BSRR的高16位.</li>
+<h1 id="2-ADC初始化"><a href="#2-ADC初始化" class="headerlink" title=" 2 ADC初始化"></a><h3> 2 ADC初始化</h3></h1><ol>
+<li>使能时钟(ADC+GPIO)、配置ADCCLK分频器(最高为14MHz)</li>
+<li>配置GPIO输入模式</li>
+<li>配置多路开关</li>
+<li>配置ADC转换器</li>
+<li>配置模拟看门狗、中断</li>
+<li>开关控制</li>
 </ol>
-<h1 id="3-初始化"><a href="#3-初始化" class="headerlink" title=" 3  初始化"></a><h3> 3  初始化</h3></h1><ol>
-<li>首先需要使能时钟，而GPIO属于搭在APB2总线上的外设，因而使能APB2外设时钟即可(RCC_APB2ENR寄存器).</li>
-<li>设置GPIO口模式，包括设置IO口的输出/输入模式、输出速度以及选择使用的端口PIN， 即配置GPIO_CRL/CRH寄存器。</li>
-<li>配置I/O口状态，即配置GIIO_BSRR/GPIO_BRR(置1只能通过配置BSRR实现，清0则均可)</li>
-</ol>
-<h1 id="4-库函数实现GPIO输出"><a href="#4-库函数实现GPIO输出" class="headerlink" title=" 4 库函数实现GPIO输出"></a><h4> 4 库函数实现GPIO输出</h4></h1><ol>
-<li>使能时钟</li>
+<p><img src="/2022/06/15/stm32-4-ADC/Snipaste_2022-06-15_15-26-44.png" alt></p>
+<h1 id="3-ADC库函数实现"><a href="#3-ADC库函数实现" class="headerlink" title=" 3 ADC库函数实现"></a><h3> 3 ADC库函数实现</h3></h1><ol>
+<li>使能时钟(ADC+GPIO)、配置ADCCLK分频器(最高为14MHz)</li>
 </ol>
 <ul>
-<li>函数原型：<code>void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)</code></li>
-<li>输入：<code>RCC_APB2Periph</code>门控APB2外设时钟，也就是指定对应的外设来选定其对应的时钟，<code>GPIOx</code>口对应为<code>RCC_APB2Periph_GPIOA</code>; <code>NewState</code>: 指定使能(ENABLE)还是禁用(DISABLE)该外设的时钟。</li>
+<li>函数原型：<code>void RCC_ADCCLKConfig(uint32_t RCC_PCLK2);</code></li>
+<li>输入: <code>RCC_PCLK2</code></li>
+<li>功能：配置ADCCLK分分频器</li>
 </ul>
 <ol>
-<li>设置IO口模式</li>
+<li>配置GPIO输入模式为模拟输入模式</li>
+<li>配置多路开关</li>
 </ol>
 <ul>
-<li>函数原型：<code>void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)</code></li>
-<li><p>输入：<code>GPIOx</code>用于指定使用的GPIO口(注意不是PIN); <code>GPIO_InitStruct</code>为指向<code>GPIO_InitTypeDef</code>类型结构体的指针，其成员为GPIO口的状态（输入/输出模式、输出速度、PIN脚）. 结构体定义为：</p>
-  <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span>
-<span class="token punctuation">&#123;</span>
-<span class="token class-name">uint16_t</span> GPIO_Pin<span class="token punctuation">;</span>              <span class="token comment">// IO口PIN脚       </span>
-
-GPIOSpeed_TypeDef GPIO_Speed<span class="token punctuation">;</span>   <span class="token comment">// 输出速度</span>
-
-GPIOMode_TypeDef GPIO_Mode<span class="token punctuation">;</span>     <span class="token comment">// 输入/输出模式</span>
-<span class="token punctuation">&#125;</span>GPIO_InitTypeDef<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<li>函数<ul>
+<li>函数原型：<code>void ADC_DMACmd(ADC_TypeDef* ADCx, FunctionalState NewState);</code></li>
+<li>功能：使能DMA</li>
+</ul>
 </li>
 </ul>
 <ol>
-<li>配置IO口状态</li>
+<li>配置ADC转换器</li>
 </ol>
 <ul>
 <li>函数1<ul>
-<li>函数原型：<code>void GPIO_SetBits(GPIO_TypeDef* GPIOx, u16 GPIO_Pin)</code></li>
-<li>输入： <code>GPIOx</code>选择IO口，<code>GPIO_Pin</code>选择PIN脚. 可以用或操作同时选中多个PIN</li>
-<li>功能：将IO口的PIN脚状态置为高电平</li>
+<li>函数原型：<code>void ADC_StructInit(ADC_InitTypeDef* ADC_InitStruct);</code></li>
+<li>功能：初始化ADC转换器初始化结构体成员。</li>
 </ul>
 </li>
 <li>函数2<ul>
-<li>函数原型：<code>void GPIO_ResetBits(GPIO_TypeDef* GPIOx, u16 GPIO_Pin)</code></li>
-<li>输入： <code>GPIOx</code>选择IO口，<code>GPIO_Pin</code>选择PIN脚.</li>
-<li>功能：清空IO口的PIN脚状态为0，即低电平</li>
-</ul>
-</li>
-<li><p>函数3</p>
-<ul>
-<li>函数原型：<code>void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)</code></li>
-<li><p>输入： <code>GPIOx</code>选择IO口，<code>GPIO_Pin</code>选择PIN脚，<code>BitVal</code>指定待写入的值(为枚举<code>BitAction</code>类型，定义如下.)</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">enum</span>
-<span class="token punctuation">&#123;</span> Bit_RESET <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-Bit_SET
-<span class="token punctuation">&#125;</span>BitAction<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>功能：将<code>BitVal</code>写入IO口的PIN脚</li>
-</ul>
-</li>
-<li><p>函数4</p>
-<ul>
-<li>函数原型：<code>void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)</code></li>
-<li>输入： <code>GPIOx</code>选择IO口，<code>PortVal</code>为写入的数值，前边的均为一位一位操作，而这个函数是16位同时进行.</li>
-<li>功能：将PortVal写入IO口</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>代码实现</li>
-</ol>
-<p>&emsp;&emsp;选择GPIOA口的2、4PIN，输出模式设为推挽输出模式、输出速度为50MHz，将其状态置1后翻转。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 使能时钟</span>
-    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// 定义初始化结构体</span>
-    GPIO_InitTypeDef GPIO_InitStructrue<span class="token punctuation">;</span>
-    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_2 <span class="token operator">|</span> GPIO_Pin_4<span class="token punctuation">;</span>
-    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
-    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_Out_PP<span class="token punctuation">;</span>    <span class="token comment">// 配置为推挽输出</span>
-    <span class="token comment">// 传入初始化结构体并进行IO口初始化</span>
-    <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// 置位</span>
-    <span class="token function">GPIO_SetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin<span class="token punctuation">,</span> Bit_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">GPIO_Write</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token number">0X10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">//清空</span>
-    <span class="token function">GPIO_ResetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin<span class="token punctuation">,</span> <span class="token punctuation">(</span>Bit_Action<span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">GPIO_Write</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token number">0X00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="5-库函数实现GPIO输入"><a href="#5-库函数实现GPIO输入" class="headerlink" title=" 5 库函数实现GPIO输入"></a><h4> 5 库函数实现GPIO输入</h4></h1><ol>
-<li><p>使能时钟</p>
-</li>
-<li><p>设置IO口模式</p>
-</li>
-<li><p>读取IO口状态</p>
-</li>
-</ol>
-<ul>
-<li>函数1<ul>
-<li>函数原型：<code>uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code></li>
-<li>输入：<code>GPIOx</code>选择IO口，<code>GPIO_Pin</code>选择IO口PIN脚</li>
-<li>功能：读取输入数据寄存器的某一位的值，即IO口对应PIN脚的状态</li>
-</ul>
-</li>
-<li>函数2<ul>
-<li>函数原型：<code>uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)</code></li>
-<li>输入：<code>GPIOx</code>选择IO口</li>
-<li>功能：读取输入数据寄存器的值，即读取IO口的状态</li>
+<li>函数原型：<code>void ADC_Init(ADC_TypeDef* ADCx, ADC_InitTypeDef* ADC_InitStruct);</code></li>
+<li>功能：初始化ADC转换器</li>
 </ul>
 </li>
 <li>函数3<ul>
-<li>函数原型：<code>uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code></li>
-<li>输入：<code>GPIOx</code>选择IO口，<code>GPIO_Pin</code>选择IO口PIN脚</li>
-<li>功能：读取输出数据寄存器的某一位的值，即IO口对应PIN脚的状态，查看用户输出的量</li>
+<li>函数原型：<code>void ADC_SoftwareStartConvCmd(ADC_TypeDef* ADCx, FunctionalState NewState);</code></li>
+<li>功能：配置ADC触发模型为软件触发</li>
 </ul>
 </li>
 <li>函数4<ul>
-<li>函数原型：<code>uint8_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)</code></li>
-<li>输入：<code>GPIOx</code>选择IO口</li>
-<li>功能：读取输出数据寄存器的值，即读取IO口的状态，查看用户输出的量</li>
+<li>函数原型：<code>void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime);</code></li>
+<li>功能：配置规则通道，channel为通道，rank为序列</li>
 </ul>
 </li>
 </ul>
 <ol>
+<li>配置模拟看门狗、中断</li>
+</ol>
+<ul>
+<li>函数1<ul>
+<li>函数原型：<code>void ADC_ITConfig(ADC_TypeDef* ADCx, uint16_t ADC_IT, FunctionalState NewState);</code></li>
+<li>功能：使能中断</li>
+</ul>
+</li>
+<li>函数2<ul>
+<li>函数原型：<code>void ADC_AnalogWatchdogCmd(ADC_TypeDef* ADCx, uint32_t ADC_AnalogWatchdog);</code></li>
+<li>功能:开启看门狗</li>
+</ul>
+</li>
+<li>函数3<ul>
+<li>函数原型：<code>void ADC_AnalogWatchdogThresholdsConfig(ADC_TypeDef* ADCx, uint16_t HighThreshold, uint16_t LowThreshold);</code></li>
+<li>功能：设置高低阈值</li>
+</ul>
+</li>
+<li>函数4<ul>
+<li>函数原型：<code>void ADC_AnalogWatchdogSingleChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel);</code></li>
+<li>功能：看门狗通道配置</li>
+</ul>
+</li>
+<li>函数5<ul>
+<li>函数原型：<code>void ADC_TempSensorVrefintCmd(FunctionalState NewState);</code></li>
+<li>使能内部温度传感器</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>开关控制</li>
+</ol>
+<ul>
+<li>函数1<ul>
+<li>函数原型：<code>void ADC_Cmd(ADC_TypeDef* ADCx, FunctionalState NewState);</code></li>
+<li>功能：使能或失能ADC</li>
+</ul>
+</li>
+<li>函数2<ul>
+<li>函数原型：<code>uint16_t ADC_GetConversionValue(ADC_TypeDef* ADCx);</code></li>
+<li>功能：获取ADC转换结果</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>校准</li>
+</ol>
+<ul>
+<li>函数1：<code>void ADC_ResetCalibration(ADC_TypeDef* ADCx);</code></li>
+<li>函数2：<code>FlagStatus ADC_GetResetCalibrationStatus(ADC_TypeDef* ADCx);</code></li>
+<li>函数3：<code>void ADC_StartCalibration(ADC_TypeDef* ADCx);</code></li>
+<li>函数4：<code>FlagStatus ADC_GetCalibrationStatus(ADC_TypeDef* ADCx);</code></li>
+</ul>
+<ol>
 <li>代码实现</li>
 </ol>
-<p>&emsp;&emsp;选择GPIOA口的0、11PIN接上按键，输入/输出模式设为上拉模式、输出速度为50MHz，通过按键按下实现控制GPIOB口的0PIN的LED点亮和熄灭。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 使能时钟</span>
-    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>GPIOA <span class="token operator">|</span> GPIOB<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>&emsp;&emsp;使用ADC1并配置为单通道、单次非扫描、软件触发模式</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">ADC_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">RCC_ADCCLKConfig</span><span class="token punctuation">(</span>RCC_PCLK2_Div6<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token comment">// 定义初始化结构体</span>
-    GPIO_InitTypeDef LED_InitStructrue<span class="token punctuation">,</span> KEY_InitStructrue<span class="token punctuation">;</span>
-
-    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0<span class="token punctuation">;</span>
+    GPIO_InitType GPIO_InitStructrue<span class="token punctuation">;</span>
+    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AIN<span class="token punctuation">;</span>
     GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
-    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_PP<span class="token punctuation">;</span>    <span class="token comment">// 配置为推挽输出</span>
-    <span class="token comment">// 传入初始化结构体并进行IO口初始化</span>
-    <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOB<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0<span class="token punctuation">;</span>
+    <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    KEY_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0 <span class="token operator">|</span> GPIO_Pin_11<span class="token punctuation">;</span>
-    KEY_InitStructrue<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
-    KEY_InitStructrue<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span>    <span class="token comment">// 配置为上拉输入</span>
-    <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>KEY_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel_0<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> ADC_SampleTime_1Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 如果要多通道则多次调用ADC_RegularChannelConfig函数</span>
+    <span class="token function">ADC_DMACmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    ADC_InitTypeDef ADC_InitStructrue<span class="token punctuation">;</span>
+    <span class="token function">ADC_StructInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>ADC_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_Mode <span class="token operator">=</span> ADC_Mode_Independent<span class="token punctuation">;</span>       <span class="token comment">// 工作模式:独立？双adc？</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ScanConvMode <span class="token operator">=</span> DISABLE<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ContinuousConvMode <span class="token operator">=</span> DISABLE<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ExternalTrigConv <span class="token operator">=</span> ADC_ExternalTrigConv_None<span class="token punctuation">;</span>   <span class="token comment">// 定义用于启动规则组转换的外部触发源</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_DataAlign <span class="token operator">=</span> ADC_DataAlign_Right<span class="token punctuation">;</span>  <span class="token comment">// 数据对齐模式</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_NbrOfChannel <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 通道数目</span>
+    <span class="token comment">// 多通道需要修改通道数目</span>
+    <span class="token function">ADC_Init</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ADC_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">ADC_Cmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">ADC_ResetCalibration</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetResetCalibrationStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span> <span class="token operator">==</span> SET<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 等待复位校准完成</span>
+    <span class="token function">ADC_StartCalibration</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetCalibrationStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span> <span class="token operator">==</span> SET<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 获取校准状态</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token class-name">uint8_t</span> <span class="token function">get_KeyNum</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token class-name">uint8_t</span> KeyNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        KeyNum <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_11<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_11<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        KeyNum <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> KeyNum<span class="token punctuation">;</span>
+<span class="token class-name">uint16_t</span> <span class="token function">ADC_GetValue</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">ADC_SoftwareStartConvCmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetFlagStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_FLAG_EOC<span class="token punctuation">)</span> <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">ADC_GetConversionValue</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 自动清除了EOC</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>多通道模式下一般需要用扫描模式，但是需要DMA来传输数据结果。也可以采用单次非扫描，只要每次读取数据的时候对通道进行修改即可，代码如下：<br><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">ADC_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token comment">//...</span>
+  GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0<span class="token operator">|</span>GPIO_Pin_1<span class="token operator">|</span>GPIO_Pin_2<span class="token operator">|</span>GPIO_Pin_3<span class="token punctuation">;</span>
+  <span class="token comment">//...</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">void</span> <span class="token function">LED1_ON</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token function">GPIO_ResetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="token comment">// 采用单次非扫描模式对指定通道进行转换</span>
+<span class="token class-name">uint16_t</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> ADC_Channel<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> ADC_SampleTime_1Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ADC_SoftwareStartConvCmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetFlagStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_FLAG_EOC<span class="token punctuation">)</span> <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">ADC_GetConversionValue</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 自动清除了EOC</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+</blockquote>
 
-<span class="token keyword">void</span> <span class="token function">LED1_OFF</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token function">GPIO_SetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">void</span> <span class="token function">LED1_Turn</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadOutputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">GPIO_SetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">GPIO_ResetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token class-name">uint8_t</span> KeyNum<span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        KeyNum <span class="token operator">=</span> <span class="token function">get_KeyNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>KeyNum <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token function">LED1_ON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>KeyNum <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token function">LED1_OFF</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -627,7 +591,7 @@ Bit_SET
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/06/10/stm32-1-GPIO/">http://example.com/2022/06/10/stm32-1-GPIO/</a>
+                    <a href="http://example.com/2022/06/15/stm32-4-ADC/">http://example.com/2022/06/15/stm32-4-ADC/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -669,8 +633,8 @@ Bit_SET
                                     <span class="chip bg-color">STM32</span>
                                 </a>
                             
-                                <a href="/tags/GPIO/">
-                                    <span class="chip bg-color">GPIO</span>
+                                <a href="/tags/ADC/">
+                                    <span class="chip bg-color">ADC</span>
                                 </a>
                             
                         </div>
@@ -714,62 +678,52 @@ Bit_SET
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/06/12/leetcode-weekly-contest-297/">
+                <a href="/2022/06/15/stm32-4-ADC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="leetcode-weekly-contest-297">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="stm32-4-ADC">
                         
-                        <span class="card-title">leetcode-weekly-contest-297</span>
+                        <span class="card-title">stm32-4-ADC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            力扣第 297 场周赛
+                            STM学习笔记4
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Cpp/">
-                        <span class="chip bg-color">Cpp</span>
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
                     </a>
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A8%A1%E6%8B%9F/">
-                        <span class="chip bg-color">模拟</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                        <span class="chip bg-color">回溯</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
-                        <span class="chip bg-color">力扣周赛</span>
+                    <a href="/tags/ADC/">
+                        <span class="chip bg-color">ADC</span>
                     </a>
                     
                 </div>
@@ -783,36 +737,52 @@ Bit_SET
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/06/07/test-demo/">
+                <a href="/2022/06/14/stm32-3-INTERRUPT-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="test_demo">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="stm32-3-INTERRUPT-2">
                         
-                        <span class="card-title">test_demo</span>
+                        <span class="card-title">stm32-3-INTERRUPT-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Google测试框架简易版
+                            STM学习笔记3
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-category">
-                                    嵌入式
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/STM32/">
+                        <span class="chip bg-color">STM32</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%AD%E6%96%AD/">
+                        <span class="chip bg-color">中断</span>
+                    </a>
+                    
+                    <a href="/tags/TIM/">
+                        <span class="chip bg-color">TIM</span>
+                    </a>
+                    
                 </div>
                 
             </div>
