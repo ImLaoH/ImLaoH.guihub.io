@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>stm32-5-DMA</title>
+      <link href="/2022/06/16/stm32-5-DMA/"/>
+      <url>/2022/06/16/stm32-5-DMA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-DMA简介"><a href="#1-DMA简介" class="headerlink" title=" 1 DMA简介"></a><h3> 1 DMA简介</h3></h1><ol><li><p>DMA(Direct Memory Access, 直接寄存器存取)可以提供外设和存储器或者存储器和存储器之间的高速数据传输，无需CPU干预，节省了CPU的资源。DMA1具有7个独立可配置的通道，而DMA2具有5个，每个通道都支持软件触发和 <strong>特定</strong> 的硬件触发。</p><blockquote><p>实现存储器和存储器之间的数据传输采用软件触发；而外设和存储器的数据传输，由于外设的数据是具有一定规律的，需要采用特定的硬件触发来实现，比如转运ADC数据时我们希望的是ADC转换完成后再进行数据的转运。</p></blockquote></li><li><p>存储器映像</p></li></ol><p><img src="/2022/06/16/stm32-5-DMA/memory.png" alt></p><h1 id="2-DMA初始化"><a href="#2-DMA初始化" class="headerlink" title=" 2 DMA初始化"></a><h3> 2 DMA初始化</h3></h1><p>&emsp;&emsp;DMA可以实现存储器之间和存储器与外设之间的数据运输，即实现外设与存储器、存储器与外设、ROM到RAM之间的数据传输，注意，由于ROM为只读，因而不能DMA实现从RAM到ROM之间的数据传输。初始化时，需要给定起点的地址、终点的地址，而数据宽度则是定义单次运输数据的大小；而地址是否自增是指运输过程中是否需要将指针移到下一个位置。</p><blockquote><p>如果源数据宽度大于目标数据宽度，而舍弃高位写入低位；如果源数据宽度小于目标数据宽度，则目标数据高位为0，源数据写入目标数据低位；当二者相等时则目标数据等于源数据。</p></blockquote><p>&emsp;&emsp;传输计数器则是设定传输的次数,每次传输后计数器自减1，当计数器为0时计数器重装且终点地址回到初始地址以开始新一轮的数据转运。对于多规则通道ADC数据运输而言，这里的次数就是指通道数。</p><blockquote><p>当不使用自动重装器时，则DMA在单轮转运结束后便停止，对应ADC中的单次扫描；而使用自动重装器，则DMA会循环传输数据，对应ADC中的连续扫描模式。<br>DMA进行转运的条件：①DMA使能；②传输计数器大于0；③具有一定的触发信号。当传输计数器等于0时，即使有触发信号也不再进行数据运输，需要<strong>先关闭DMA</strong>，即失能DMA后给计数器写入大于0的数再重启DMA才能恢复读取。</p></blockquote><p><img src="/2022/06/16/stm32-5-DMA/DMA_struct.png" alt></p><ol><li>开启时钟</li><li>初始化，包括源、目的地、方向、是否自动重装、触发方式等.</li><li>使能DMA</li></ol><h1 id="3-DMA库函数实现"><a href="#3-DMA库函数实现" class="headerlink" title=" 3 DMA库函数实现"></a><h3> 3 DMA库函数实现</h3></h1><ol><li>开启时钟</li><li>初始化</li></ol><ul><li>函数1<ul><li>函数原型: <code>void DMA_Init(DMA_Channel_TypeDef* DMAy_Channelx, DMA_InitTypeDef* DMA_InitStruct);</code></li><li>功能：初始化DMA.<code>DMA_InitStruct</code>指向初始化结构体，定义如下：<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">&#123;</span><span class="token class-name">uint32_t</span> DMA_PeripheralBaseAddr<span class="token punctuation">;</span>    <span class="token comment">// 外设地址</span><span class="token class-name">uint32_t</span> DMA_PeripheralInc<span class="token punctuation">;</span>         <span class="token comment">// 是否自增</span><span class="token class-name">uint32_t</span> DMA_PeripheralDataSize<span class="token punctuation">;</span>    <span class="token comment">// 数据宽度</span><span class="token class-name">uint32_t</span> DMA_MemoryBaseAddr<span class="token punctuation">;</span>        <span class="token comment">// 存储器地址</span><span class="token class-name">uint32_t</span> DMA_MemoryInc<span class="token punctuation">;</span>             <span class="token comment">// 是否自增</span><span class="token class-name">uint32_t</span> DMA_MemoryDataSize<span class="token punctuation">;</span>        <span class="token comment">// 数据宽度</span><span class="token class-name">uint32_t</span> DMA_DIR<span class="token punctuation">;</span>                   <span class="token comment">// 传输方向</span><span class="token class-name">uint32_t</span> DMA_BufferSize<span class="token punctuation">;</span>            <span class="token comment">// 传输计数器</span><span class="token class-name">uint32_t</span> DMA_Mode<span class="token punctuation">;</span>                  <span class="token comment">// 是否重装   </span><span class="token class-name">uint32_t</span> DMA_Priority<span class="token punctuation">;</span>              <span class="token comment">// 优先级</span><span class="token class-name">uint32_t</span> DMA_M2M<span class="token punctuation">;</span>                   <span class="token comment">// 触发方式        </span><span class="token punctuation">&#125;</span>DMA_InitTypeDef<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li><li>函数2<ul><li>函数原型：<code>void DMA_StructInit(DMA_InitTypeDef* DMA_InitStruct);</code></li><li>功能：对DMA初始化结构体成员进行初始化，赋值为默认值。</li></ul></li><li>函数3<ul><li>函数原型：<code>void DMA_SetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx, uint16_t DataNumber);</code></li><li>功能：单独给计数器写入值</li></ul></li></ul><ol><li>中断配置</li></ol><ul><li>函数1<ul><li>函数原型：<code>void DMA_ITConfig(DMA_Channel_TypeDef* DMAy_Channelx, uint32_t DMA_IT, FunctionalState NewState);</code></li><li>功能：配置传输完成后是否触发中断</li></ul></li><li>函数2-5<ul><li>函数1：<code>FlagStatus DMA_GetFlagStatus(uint32_t DMAy_FLAG);</code></li><li>函数2：<code>void DMA_ClearFlag(uint32_t DMAy_FLAG);</code></li><li>函数3：<code>ITStatus DMA_GetITStatus(uint32_t DMAy_IT);</code></li><li>函数4：<code>void DMA_ClearITPendingBit(uint32_t DMAy_IT);</code></li></ul></li></ul><ol><li>使能DMA</li></ol><ul><li>函数1<ul><li>函数原型：<code>void DMA_Cmd(DMA_Channel_TypeDef* DMAy_Channelx, FunctionalState NewState);</code></li><li>功能：开启DMA</li></ul></li><li>函数2<ul><li>函数原型：<code>uint16_t DMA_GetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx);</code></li><li>功能：获取转运结果</li></ul></li></ul><ol><li>代码实现</li></ol><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">uint16_t</span> MyDMA_Size<span class="token punctuation">;</span><span class="token keyword">void</span> <span class="token function">MyDMA_Init</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> AddrA<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> AddrB， <span class="token class-name">uint8_t</span> Size<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token function">RCC_AHBPeriphClockCmd</span><span class="token punctuation">(</span>RCC_AHBPeriph_DMA1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>    DMA_InitTypeDef DMA_InitStructrue<span class="token punctuation">;</span>    <span class="token function">DMA_StructInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>DMA_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralBaseAddr <span class="token operator">=</span> <span class="token operator">&amp;</span>AddrA<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralInc <span class="token operator">=</span> DMA_PeripheralInc_Enable<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralDataSize <span class="token operator">=</span> DMA_PeripheralDataSize_Byte<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryBaseAddr <span class="token operator">=</span> <span class="token operator">&amp;</span>AddrB<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryInc <span class="token operator">=</span> DMA_MemoryInc_Enable<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryDataSize <span class="token operator">=</span> DMA_MemoryDataSize_Byte<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_DIR <span class="token operator">=</span> DMA_DIR_PeripheralSRC<span class="token punctuation">;</span>  <span class="token comment">// 外设为源</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_BufferSize <span class="token operator">=</span> Size<span class="token punctuation">;</span>    MyDMA_Size <span class="token operator">=</span> Size<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_Mode <span class="token operator">=</span> DMA_Mode_Normal<span class="token punctuation">;</span>    DMA_InitStructrue<span class="token punctuation">.</span>DMA_Priority <span class="token operator">=</span> DMA_Priority_Medium<span class="token punctuation">;</span>       DMA_InitStructrue<span class="token punctuation">.</span>DMA_M2M <span class="token operator">=</span> DMA_M2M_Enable<span class="token punctuation">;</span>    <span class="token comment">// 软件触发</span>    <span class="token function">DMA_Init</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>DMA_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">DMA_Cmd</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> DISABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token comment">// 重新开启DMA</span>viod <span class="token function">MyDMA_Transfer</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token function">DMA_Cmd</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> DISABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token function">DMA_SetCurrDataCounter</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> MyDMA_Size<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token function">DMA_Cmd</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">DMA_GetFlagStatus</span><span class="token punctuation">(</span>DMA1_FLAG_TC1<span class="token punctuation">)</span> <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token function">DMA_ClearFlag</span><span class="token punctuation">(</span>DMA1_FLAG_TC1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token class-name">uint8_t</span> a <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0x02</span><span class="token punctuation">,</span> <span class="token number">0x03</span><span class="token punctuation">,</span> <span class="token number">0x04</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token class-name">uint8_t</span> b <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token function">MyDMA_Init</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span>b， <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token function">MyDMA_Transfer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> STM32 </tag>
+            
+            <tag> DMA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux-2</title>
+      <link href="/2022/06/16/Linux-2/"/>
+      <url>/2022/06/16/Linux-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-GCC"><a href="#1-GCC" class="headerlink" title=" 1 GCC"></a><h3> 1 GCC</h3></h1><ol><li>GCC原名为GNU C Complier(C语言编译器)，只针对C语言的编译。而今，GCC还支持其他语言的编译，如C++、Objective-C、JAVA、Ada和Go语言，因而更名为GNU Complier Collection(GNU编译器套件)。</li><li>安装指令：<code>sudo apt install gcc g++</code>(版本&gt;4.8.5).<blockquote><p>gcc可以理解为用于编译c的套件，g++则是用于编译C++.</p></blockquote></li><li>版本查询：<code>gcc/g++ -v/--version</code></li></ol><h1 id="2-GCC工作流程"><a href="#2-GCC工作流程" class="headerlink" title=" 2 GCC工作流程"></a><h3> 2 GCC工作流程</h3></h1><ol><li><p>工作流程</p><p> <img src="/2022/06/16/Linux-2/gcc_process.png" alt></p></li><li><p>参数选项</p><p> <img src="/2022/06/16/Linux-2/gcc_param.png" alt></p><p> <img src="/2022/06/16/Linux-2/gcc_param1.png" alt></p></li></ol><h1 id="3-GCC和G-差别"><a href="#3-GCC和G-差别" class="headerlink" title=" 3 GCC和G++差别"></a><h3> 3 GCC和G++差别</h3></h1><ol><li><p>对于<code>.c</code>文件，GCC会将其认为是<code>c</code>文件进行编译，而G++则是当作<code>cpp</code>文件进行编译；而对于<code>.cpp</code>文件，二者均是认为是<code>cpp</code>文件。</p></li><li><p><code>gcc</code>可以编译<code>.c</code>文件，也可以编译<code>.cpp</code>文件，但是编译后者时无法自动和C++程序所使用的库进行链接，而是需要调用<code>g++</code>来实现；而<code>g++</code>则是在编译阶段会自动调用<code>gcc</code>。</p></li></ol><h1 id="4-基本知识及命令"><a href="#4-基本知识及命令" class="headerlink" title=" 4 基本知识及命令"></a><h3> 4 基本知识及命令</h3></h1><p>4.1 静态库&amp;动态库</p><p>&emsp;&emsp;静态库在程序的链接阶段被复制到程序中，而动态库则并未进行复制，而是在运行过程时由程序动态加载到内存中以供调用。</p><ul><li>静态库<ul><li>命名规则<ul><li>Linux: <code>libxxx.a</code>, 其中<code>lib</code>为固定前缀，<code>xxx</code>则是用户自定义静态库名，<code>.a</code>则为固定后缀。</li><li>Windows:<code>libxxx.lib</code></li></ul></li><li>制作<ul><li>gcc获得<code>.o</code>文件，即链接前的格式: <code>gcc -c a.c b.c</code></li><li>将<code>.o</code>文件通过ar命令进行打包：<code>ar rcs libcalc.a a.o b.o</code>, 其中r意为将文件插入备存文件中，c为建立备存文件，s则是索引</li></ul></li><li>使用<ul><li><code>gcc main.c -o app -I ./path1 -L ./path2 -l calc</code>, 即编译时指定包含path1中的库以及使用path2路径中的calc库（注意不是<code>libcalc</code>）.</li></ul></li></ul></li><li>动态库<ul><li>命名规则<ul><li>Linux：<code>libxxx.so</code>，其中<code>lib</code>为固定前缀，<code>xxx</code>则是用户自定义动态库名，<code>.so</code>则为固定后缀。为可执行文件。</li><li>Windows：<code>libxxx.dll</code></li></ul></li><li>制作<ul><li>gcc得到<code>.o</code>文件，得到<strong>和位置无关</strong>的代码：<code>gcc -c -fpic/-fPIC a.c b.c</code></li><li>gcc得到动态库：<code>gcc -shared a.o b.o -o libcalc.so</code>.</li></ul></li><li>使用<ul><li><code>gcc main.c -o app -I ./path1 -L ./path2 -l calc</code>, 即编译时指定包含path1中的库以及使用path2路径中的calc库（注意不是<code>libcalc</code>）.</li></ul></li></ul></li></ul><p>4.2 基本命令</p><ol><li><code>mkdir</code>: 在当前目录下新建一个文件夹</li><li><code>cd</code>：打开某一个文件夹，<code>cd ..</code>为回到父文件夹</li><li><code>touch</code>:打开某一文件</li><li><code>vi</code>/<code>vim</code>: 编辑某一文件</li><li><code>gcc xxx.c -o app</code>: 编译某个c文件，输出名为app的目标，如果没有指定目标，则生成的是<code>.out</code>文件(同样是可执行文件)</li><li><code>tree</code>: 打开当前文件夹的目录树</li><li><code>ls</code>：查看当前文件夹具有哪些文件，<code>ll</code>查看当前文件夹中的文件的详细信息</li><li><code>cp 源文件相对路径 目标文件相对路径</code>：复制源文件到目标文件位置</li><li><code>rm</code>：删除文件，<code>rmdir</code>:删除文件夹</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux-1</title>
       <link href="/2022/06/15/Linux-1/"/>
       <url>/2022/06/15/Linux-1/</url>
@@ -227,9 +279,9 @@
             
             <tag> Cpp </tag>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 动态规划 </tag>
             
             <tag> 回溯 </tag>
             
@@ -841,11 +893,11 @@
             
             <tag> C </tag>
             
+            <tag> 代码随想录 </tag>
+            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
-            
-            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -874,11 +926,11 @@
             
             <tag> C </tag>
             
+            <tag> 代码随想录 </tag>
+            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
-            
-            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -907,11 +959,11 @@
             
             <tag> C </tag>
             
+            <tag> 代码随想录 </tag>
+            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
-            
-            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -1113,11 +1165,11 @@
             
             <tag> C </tag>
             
+            <tag> 代码随想录 </tag>
+            
             <tag> 背包问题 </tag>
             
             <tag> 动态规划 </tag>
-            
-            <tag> 代码随想录 </tag>
             
         </tags>
       
@@ -1418,9 +1470,9 @@
             
             <tag> C </tag>
             
-            <tag> 代码随想录 </tag>
-            
             <tag> 数组 </tag>
+            
+            <tag> 代码随想录 </tag>
             
             <tag> 二分 </tag>
             
