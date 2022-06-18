@@ -524,6 +524,57 @@ viod <span class="token function">MyDMA_Transfer</span><span class="token punctu
     <span class="token function">MyDMA_Init</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span>b， <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">MyDMA_Transfer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="4-ADC-DMA库函数实现"><a href="#4-ADC-DMA库函数实现" class="headerlink" title=" 4 ADC+DMA库函数实现"></a><h3> 4 ADC+DMA库函数实现</h3></h1><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">uint6_t</span> AD_Value<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">ADC_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">RCC_AHBPeriphClockCmd</span><span class="token punctuation">(</span>RCC_AHBPeriph_DMA1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">RCC_ADCCLKConfig</span><span class="token punctuation">(</span>RCC_PCLK2_Div6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    GPIO_InitTypeDef GPIO_InitStructrue<span class="token punctuation">;</span>
+    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0 <span class="token operator">|</span> GPIO_Pin_1 <span class="token operator">|</span>GPIO_Pin_2 <span class="token operator">|</span>GPIO_Pin_3<span class="token punctuation">;</span>
+    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>
+    GPIO_InitStructrue<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AIN<span class="token punctuation">;</span>
+    <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel_0<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> ADC_SampleTime_55Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel_1<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> ADC_SampleTime_55Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel_2<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> ADC_SampleTime_55Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_RegularChannelConfig</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ADC_Channel_3<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> ADC_SampleTime_55Cycles5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    ADC_InitTypeDef ADC_InitStructrue<span class="token punctuation">;</span>
+    <span class="token function">ADC_StructInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>ADC_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_Mode <span class="token operator">=</span> ADC_Mode_Independent<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ScanConvMode <span class="token operator">=</span> ENABLE<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ContinuousConvMode <span class="token operator">=</span> ENABLE<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_ExternalTrigConv <span class="token operator">=</span> ADC_ExternalTrigConv_None<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_DataAlign <span class="token operator">=</span> ADC_DataAlign_Right<span class="token punctuation">;</span>
+    ADC_InitStructrue<span class="token punctuation">.</span>ADC_NbrOfChannel <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_Init</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ADC_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    DMA_InitTypeDef DMA_InitStructrue<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralBaseAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>ADC<span class="token operator">-></span>DR<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralInc <span class="token operator">=</span> DMA_PeripheralInc_Disable<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_PeripheralDataSize <span class="token operator">=</span> DMA_PeripheralDataSize_Word<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryBaseAddr <span class="token operator">=</span> AD_Value<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryInc <span class="token operator">=</span> DMA_MemoryInc_Enable<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_MemoryDataSize <span class="token operator">=</span> DMA_MemoryDataSize_HalfWord<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_DIR <span class="token operator">=</span> DMA_DIR_PeripheralSRC<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_BufferSize <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_Mode <span class="token operator">=</span> DMA_Mode_Circular<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_Priority <span class="token operator">=</span> DMA_Priority_High<span class="token punctuation">;</span>
+    DMA_InitStructrue<span class="token punctuation">.</span>DMA_M2M <span class="token operator">=</span> DMA_M2M_Disable<span class="token punctuation">;</span>
+    <span class="token function">DMA_Init</span><span class="token punctuation">(</span>DMA1_Channel1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>DMA_InitStructrue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">ADC_DMACmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_Cmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ADC_ResetCalibration</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetResetCalibrationStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span> <span class="token operator">==</span> SET<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 等待复位校准完成</span>
+    <span class="token function">ADC_StartCalibration</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">ADC_GetCalibrationStatus</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">)</span> <span class="token operator">==</span> SET<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 获取校准状态</span>
+    <span class="token function">ADC_SoftwareStartConvCmd</span><span class="token punctuation">(</span>ADC1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -636,52 +687,50 @@ viod <span class="token function">MyDMA_Transfer</span><span class="token punctu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/06/16/stm32-5-DMA/">
+                <a href="/2022/06/18/nowcoder-HJ-16/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="stm32-5-DMA">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="nowcoder-HJ-16">
                         
-                        <span class="card-title">stm32-5-DMA</span>
+                        <span class="card-title">nowcoder-HJ-16</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            STM学习笔记5
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-16
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/HJ-16/" class="post-category">
+                                    HJ-16.
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/STM32/">
-                        <span class="chip bg-color">STM32</span>
+                    <a href="/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">背包问题</span>
                     </a>
                     
-                    <a href="/tags/DMA/">
-                        <span class="chip bg-color">DMA</span>
+                    <a href="/tags/nowcoder/">
+                        <span class="chip bg-color">nowcoder</span>
                     </a>
                     
                 </div>
