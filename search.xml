@@ -292,9 +292,9 @@
             
             <tag> 中断 </tag>
             
-            <tag> EXTI </tag>
-            
             <tag> TIM </tag>
+            
+            <tag> EXTI </tag>
             
         </tags>
       
@@ -325,9 +325,9 @@
             
             <tag> 排序 </tag>
             
-            <tag> 前缀和 </tag>
-            
             <tag> 力扣周赛 </tag>
+            
+            <tag> 前缀和 </tag>
             
         </tags>
       
