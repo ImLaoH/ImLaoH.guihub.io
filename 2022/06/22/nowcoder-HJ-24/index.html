@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="DDPG, Hexo">
+    <meta name="keywords" content="nowcoder-HJ-24, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DDPG | Hexo</title>
+    <title>nowcoder-HJ-24 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,7 +308,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DDPG</h1>
+                    <h1 class="description center-align post-title">nowcoder-HJ-24</h1>
                 </div>
             </div>
         </div>
@@ -330,8 +330,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DDPG/">
-                                <span class="chip bg-color">DDPG</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
+                            </a>
+                        
+                            <a href="/tags/nowcoder/">
+                                <span class="chip bg-color">nowcoder</span>
                             </a>
                         
                     </div>
@@ -342,8 +346,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                学习
+                            <a href="/categories/HJ-24/" class="post-category">
+                                HJ-24.
                             </a>
                         
                     </div>
@@ -355,7 +359,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-11
+                    2022-06-22
                 </div>
                 
 
@@ -379,46 +383,75 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-DDPG概述"><a href="#1-DDPG概述" class="headerlink" title=" 1 DDPG概述"></a><h2> 1 DDPG概述</h2></h1><p>对于连续的动作空间，基于价值的算法(如Q-learning、Sarsa、DQN等)是无能为力的，而基于策略的算法(如Policy Gradient)则可以按照状态给出动作的概率，然后通过某种分布进行采样进而得到对应的动作，可以很好地处理连续动作的问题。</p>
-<p>连续控制中较为经典的算法是 <strong>深度确定性策略梯度(Deep Deterministic Policy Gradient, DDPG)</strong> ,它结合了 <code>DQN</code> 的 <strong>目标网络</strong> 和 <strong>经验回放</strong> 这两个tips以及 <code>Policy Gradient</code> 处理连续动作空间的优点， 属于 <code>Actor-Critic</code> 的范畴，其中 <code>Policy net</code> 为 <code>Actor</code> ,而 <code>Q-net</code> 则为 <code>Critic</code>。</p>
-<p>主要的特点是:</p>
-<ul>
-<li>与 <code>Policy Gradient</code> 相比， <code>DDPG</code> 采用单个 <code>step</code> 对网络进行更新，即 <code>DDPG</code> 是一个单步更新的 <code>policy</code> 网络。</li>
-<li>具有与 <code>DQN</code> 类似的 <strong>目标网络</strong> 和 <strong>经验回放</strong>， 但 <strong>目标网络</strong> 的更新是是根据 <code>Policy net</code> 的输出来进行更新。</li>
+                <h1 id="HJ24-合唱队"><a href="#HJ24-合唱队" class="headerlink" title=" HJ24 合唱队"></a><h2> HJ24 合唱队</h2></h1><h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title=" 1 题目描述"></a><h3> 1 题目描述</h3></h1><ul>
+<li>题目链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/6d9d69e3898f45169a441632b325c7b4?tpId=37&amp;tqId=21247&amp;rp=1&amp;ru=/exam/oj/ta&amp;qru=/exam/oj/ta&amp;sourceUrl=%2Fexam%2Foj%2Fta%3FjudgeStatus%3D3%26page%3D1%26pageSize%3D50%26search%3D%26tpId%3D37%26type%3D37&amp;difficulty=undefined&amp;judgeStatus=3&amp;tags=&amp;title=" title="HJ19 简单错误记录">HJ24 合唱队</a></li>
 </ul>
-<h1 id="2-DDPG算法"><a href="#2-DDPG算法" class="headerlink" title=" 2 DDPG算法"></a><h2> 2 DDPG算法</h2></h1><ul>
-<li><code>Policy Net</code> 的优化</li>
-</ul>
-<p>&emsp;&emsp;在 <code>DDPG</code> 中， <code>policy</code> 只根据 <code>q-net</code> 的输出来进行参数 $\theta$ 的优化，而不管实际所获得的 <code>reward</code> 大小；而 <code>q-net</code> 则是根据环境反馈的 <code>reward</code> 来调整参数 $w$ 从而最大化未来的收益。</p>
-<p><img src="/2022/04/11/DDPG/DDPG-1.png" alt></p>
+<p>N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下的 K 位同学排成合唱队形。</p>
+<p>设KK位同学从左到右依次编号为 1，2…，K ，他们的身高分别为 $T_1,T_2,…,T_K$ ，若存在i($1\leq i\leq K$)使得 $T_1<T_2<......<T_{i-1}<T_i$ 且 $t_i>T_{i+1}&gt;……&gt;T_K$，则称这K名同学排成了合唱队形。<br>通俗来说，能找到一个同学，他的两边的同学身高都依次严格降低的队形就是合唱队形。</T_2<......<T_{i-1}<T_i$></p>
+<p>例子：<br>123 124 125 123 121 是一个合唱队形<br>123 123 124 122不是合唱队形，因为前两名同学身高相等，不符合要求<br>123 122 121 122不是合唱队形，因为找不到一个同学，他的两侧同学身高递减。</p>
+<p>你的任务是，已知所有N位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。</p>
+<p>注意：不允许改变队列元素的先后顺序 且 不要求最高同学左右人数必须相等</p>
+<p>数据范围： $1 \le n \le 3000$ </p>
+<p><strong>输入描述</strong>：</p>
+<p>用例两行数据，第一行是同学的总数 N ，第二行是 N 位同学的身高，以空格隔开</p>
+<p><strong>输入描述</strong>：</p>
+<p>最少需要几位同学出列</p>
+<p><strong>示例1：</strong></p>
 <blockquote>
-<p>策略梯度中实际上是没有 <code>Loss</code> 的，因为策略梯度输出的是动作的概率。但是我们有目标函数，就是 $Maximisze Q$, 而优化器中一般都是采用梯度下降 <code>Gradient Desent</code> 的方式来对 <code>Loss</code> 进行最小化，因而我们将目标函数转换一下，使之目标转换为找最小值，那么就可以通过已有的优化器来寻求 $Maximisze Q$ 的解了，即定义 <code>Loss = - Q</code>。</p>
+<p><strong>输入:</strong>  8<br>&emsp; &emsp; 186 186 150 200 160 130 197 200<br><strong>输出:</strong>  4<br><strong>说明:</strong><br>由于不允许改变队列元素的先后顺序，所以最终剩下的队列应该为186 200 160 130或150 200 160 130  </p>
 </blockquote>
-<ul>
-<li><code>Q Net</code> 的优化</li>
-</ul>
-<p>&emsp;&emsp; <code>Q Net</code> 的优化实际上与 <code>DQN</code> 一样，即通过环境反馈的 <code>Reward</code> 以及下个状态中的最大 <code>Q-value</code> 作为未来收益的评估值，目标就是让 <code>Q net</code> 的参数去逼近这个评估值。</p>
-<p><img src="/2022/04/11/DDPG/DDPG-2.png" alt></p>
-<ul>
-<li><code>Target Net</code> 建立</li>
-</ul>
-<p>&emsp;&emsp;为了解决同 <code>DQN</code> 中<code>Q-target</code> 一直改变导致网络难以收敛的问题，<code>DDPG</code> 中存在策略网络和 <code>Q Net</code> 二者的更新，因此建立两个<code>target net</code> 来稳定<code>Q-target</code>.</p>
-<ul>
-<li>探索机制</li>
-</ul>
-<p>&emsp;&emsp;<code>DDPG</code> 通过 <code>off-policy</code> 的方式来训练一个确定性策略。因为策略是确定的，如果 <code>agent</code> 使用同策略来探索，在一开始的时候，它会很可能不会尝试足够多的 <code>action</code> 来找到有用的学习信号。为了让 <code>DDPG</code> 的策略更好地探索，我们在训练的时候给它们的 <code>action</code> 加了噪音。<code>DDPG</code> 的原作者推荐使用时间相关的 <code>OU noise</code>，但最近的结果表明不相关的、均值为 <code>0</code> 的 <code>Gaussian noise</code> 的效果非常好。为了便于获得更高质量的训练数据，可以在训练过程中把噪声变小。<br>&emsp;&emsp;在测试的时候，为了查看策略利用它学到的东西的表现，不会在 <code>action</code> 中加噪音。</p>
+<h2 id="2-思路"><a href="#2-思路" class="headerlink" title=" 2 思路"></a><h3> 2 思路</h3></h2><p>&emsp;&emsp;采用了递增子序列的思路，分别从两端求取自末端到自身的连续子数组中小于自身的数，即求从两端到自身的子数组中最长递增子序列长度。然后对应位相加再减去1即为以某一位为中心的合法“队列”长度。</p>
+<p>&emsp;&emsp;首先，定义数组<code>dp1[i]</code>，其意义为<code>0-i</code>的范围内的最长递增子序列长度，很明显，应该初始化为<code>1</code>，因为如果只有一个元素那它也是递增子序列，只是长度为<code>1</code>而已。更新的话，需要在<code>0-i</code>的范围内找小于<code>vec[i]</code>的元素，当找到<code>vec[j] &lt; vec[i]</code>时，则<code>dp1[i]</code>应该更新为<code>dp1[j]+1</code>，因为<code>dp1[j]</code>就是<code>0-j</code>范围内的递增子序列最长长度，而<code>dp1[i]</code>的值最少也比<code>dp1[j]</code>大1，也就是多了<code>vec[i]</code>这一项，而当<code>j-i</code>之间还有值是介于<code>vec[j]</code>和<code>vec[i]</code>之间则需要继续更新。那么<code>dp1[i]</code>的更新公式就是：</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{cases}
+dp1[i] = 1 \quad if \; vec[i] < vec[j] \; \forall j < i\\
+dp1[i] = dp[j]+1 \quad if \; vec[i] > vec[j] \; \exists j < i
+\end{cases}
+\end{equation*}</script><p>&emsp;&emsp;从右端的“递增子序列”也是一样的求法。这样求得的递增子序列其实就是以当前位为中心，左侧(右侧)形成递增序列的最多人数；那么两个数组的对应位相加就是以当前位为中心，左右两侧均为递增序列的最长长度（实际上算了自身两次，因而相加时需要<code>-1</code>）,最后返回数组最大值即可。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> elem<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vec<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cin <span class="token operator">>></span> elem<span class="token punctuation">;</span>
+        vec<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">dp1</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dp2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 左边递增子序列</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>vec<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> vec<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 右边递增子序列</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>vec<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> vec<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 答案即为二者加和中的最大值</span>
+    <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    cout <span class="token operator">&lt;&lt;</span> n <span class="token operator">-</span> ans <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>此段直接摘自<a target="_blank" rel="noopener" href="https://datawhalechina.github.io/easy-rl/#/chapter12/chapter12">EasyRL</a></p>
+<p>注意此题答案是要返回从队列中出列的人数，因而实际返回的应该是总人数减去最长队列长度。</p>
 </blockquote>
-<h1 id="3-改进"><a href="#3-改进" class="headerlink" title=" 3 改进"></a><h3> 3 改进</h3></h1><p>&emsp;&emsp; <code>DDPG</code> 在<strong>超参数和其他类型的调整方面经常很敏感</strong>。<code>DDPG</code> 常见的问题是已经学习好的 <code>Q</code> 函数开始显著地高估 <code>Q</code> 值，然后导致策略被破坏了，因为它利用了 <code>Q</code> 函数中的误差。</p>
-<ul>
-<li><code>Twin Delayed DDPG(TD3)</code><ul>
-<li><strong>截断双Q学习(Clipped Double Q-learning)</strong>: 两个 <code>Q Net</code> ，选择输出小的 <code>Q-value</code>.</li>
-<li><strong>延迟的策略更新(“Delayed” Policy Updates)</strong>：同步训练动作网络和评价网络，却不使用目标网络，会导致训练过程不稳定；但是仅固定动作网络时，评价网络往往能够收敛到正确的结果。因此 TD3 算法<strong>以较低的频率更新动作网络，较高频率更新评价网络</strong>，通常每更新两次评价网络就更新一次策略。</li>
-<li><strong>目标策略平滑(Target Policy smoothing)</strong>：在目标动作中加入噪音.<script type="math/tex; mode=display">a_{TD3}(S^\prime) = clip(\mu_{\theta,targ}(s^\prime)+clip(\epsilon,-c,c), a_{min}, a_{max})</script>其中$\epsilon \sim N(0,\sigma)$</li>
-</ul>
-</li>
-</ul>
 
                 
             </div>
@@ -445,7 +478,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/04/11/DDPG/">http://example.com/2022/04/11/DDPG/</a>
+                    <a href="http://example.com/2022/06/22/nowcoder-HJ-24/">http://example.com/2022/06/22/nowcoder-HJ-24/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -483,8 +516,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DDPG/">
-                                    <span class="chip bg-color">DDPG</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
+                                </a>
+                            
+                                <a href="/tags/nowcoder/">
+                                    <span class="chip bg-color">nowcoder</span>
                                 </a>
                             
                         </div>
@@ -528,70 +565,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/04/17/ch1-of-programmercarl/">
+                <a href="/2022/06/22/nowcoder-HJ-24/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ch1 of programmercarl">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="nowcoder-HJ-24">
                         
-                        <span class="card-title">ch1 of programmercarl</span>
+                        <span class="card-title">nowcoder-HJ-24</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            代码随想录二刷笔记之数组篇
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
+                            <a href="/categories/HJ-24/" class="post-category">
+                                    HJ-24.
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">
-                        <span class="chip bg-color">代码随想录</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
-                        <span class="chip bg-color">双指针</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E7%BB%84/">
-                        <span class="chip bg-color">数组</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%8C%E5%88%86/">
-                        <span class="chip bg-color">二分</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A8%A1%E6%8B%9F/">
-                        <span class="chip bg-color">模拟</span>
+                    <a href="/tags/nowcoder/">
+                        <span class="chip bg-color">nowcoder</span>
                     </a>
                     
                 </div>
@@ -605,13 +624,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/10/leetcode-13/">
+                <a href="/2022/06/19/nowcoder-HJ-18/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="leetcode template">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="nowcoder-HJ-18">
                         
-                        <span class="card-title">leetcode template</span>
+                        <span class="card-title">nowcoder-HJ-18</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -622,14 +641,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
+                            <a href="/categories/HJ-19/" class="post-category">
+                                    HJ-19.
                                 </a>
                             
                             
@@ -639,8 +658,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Cpp/">
-                        <span class="chip bg-color">Cpp</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/nowcoder/">
+                        <span class="chip bg-color">nowcoder</span>
                     </a>
                     
                 </div>
@@ -723,13 +746,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 
@@ -866,45 +882,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-            
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": { 
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        linebreaks: { automatic:true }, 
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
-    },
-    tex2jax: { 
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-        processEscapes: true, 
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {  
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
-        Macros: { href: "{}" } 
-    },
-    messageStyle: "none"
-    }); 
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">

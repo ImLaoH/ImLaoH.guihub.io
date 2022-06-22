@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>nowcoder-HJ-24</title>
+      <link href="/2022/06/22/nowcoder-HJ-24/"/>
+      <url>/2022/06/22/nowcoder-HJ-24/</url>
+      
+        <content type="html"><![CDATA[<h1 id="HJ24-合唱队"><a href="#HJ24-合唱队" class="headerlink" title=" HJ24 合唱队"></a><h2> HJ24 合唱队</h2></h1><h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title=" 1 题目描述"></a><h3> 1 题目描述</h3></h1><ul><li>题目链接：<a href="https://www.nowcoder.com/practice/6d9d69e3898f45169a441632b325c7b4?tpId=37&amp;tqId=21247&amp;rp=1&amp;ru=/exam/oj/ta&amp;qru=/exam/oj/ta&amp;sourceUrl=%2Fexam%2Foj%2Fta%3FjudgeStatus%3D3%26page%3D1%26pageSize%3D50%26search%3D%26tpId%3D37%26type%3D37&amp;difficulty=undefined&amp;judgeStatus=3&amp;tags=&amp;title=" title="HJ19 简单错误记录">HJ24 合唱队</a></li></ul><p>N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下的 K 位同学排成合唱队形。</p><p>设KK位同学从左到右依次编号为 1，2…，K ，他们的身高分别为 $T_1,T_2,…,T_K$ ，若存在i($1\leq i\leq K$)使得 $T_1<T_2<......<T_{i-1}<T_i$ 且 $t_i>T_{i+1}&gt;……&gt;T_K$，则称这K名同学排成了合唱队形。<br>通俗来说，能找到一个同学，他的两边的同学身高都依次严格降低的队形就是合唱队形。</T_2<......<T_{i-1}<T_i$></p><p>例子：<br>123 124 125 123 121 是一个合唱队形<br>123 123 124 122不是合唱队形，因为前两名同学身高相等，不符合要求<br>123 122 121 122不是合唱队形，因为找不到一个同学，他的两侧同学身高递减。</p><p>你的任务是，已知所有N位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。</p><p>注意：不允许改变队列元素的先后顺序 且 不要求最高同学左右人数必须相等</p><p>数据范围： $1 \le n \le 3000$ </p><p><strong>输入描述</strong>：</p><p>用例两行数据，第一行是同学的总数 N ，第二行是 N 位同学的身高，以空格隔开</p><p><strong>输入描述</strong>：</p><p>最少需要几位同学出列</p><p><strong>示例1：</strong></p><blockquote><p><strong>输入:</strong>  8<br>&emsp; &emsp; 186 186 150 200 160 130 197 200<br><strong>输出:</strong>  4<br><strong>说明:</strong><br>由于不允许改变队列元素的先后顺序，所以最终剩下的队列应该为186 200 160 130或150 200 160 130  </p></blockquote><h2 id="2-思路"><a href="#2-思路" class="headerlink" title=" 2 思路"></a><h3> 2 思路</h3></h2><p>&emsp;&emsp;采用了递增子序列的思路，分别从两端求取自末端到自身的连续子数组中小于自身的数，即求从两端到自身的子数组中最长递增子序列长度。然后对应位相加再减去1即为以某一位为中心的合法“队列”长度。</p><p>&emsp;&emsp;首先，定义数组<code>dp1[i]</code>，其意义为<code>0-i</code>的范围内的最长递增子序列长度，很明显，应该初始化为<code>1</code>，因为如果只有一个元素那它也是递增子序列，只是长度为<code>1</code>而已。更新的话，需要在<code>0-i</code>的范围内找小于<code>vec[i]</code>的元素，当找到<code>vec[j] &lt; vec[i]</code>时，则<code>dp1[i]</code>应该更新为<code>dp1[j]+1</code>，因为<code>dp1[j]</code>就是<code>0-j</code>范围内的递增子序列最长长度，而<code>dp1[i]</code>的值最少也比<code>dp1[j]</code>大1，也就是多了<code>vec[i]</code>这一项，而当<code>j-i</code>之间还有值是介于<code>vec[j]</code>和<code>vec[i]</code>之间则需要继续更新。那么<code>dp1[i]</code>的更新公式就是：</p><script type="math/tex; mode=display">\begin{equation*}\begin{cases}dp1[i] = 1 \quad if \; vec[i] < vec[j] \; \forall j < i\\dp1[i] = dp[j]+1 \quad if \; vec[i] > vec[j] \; \exists j < i\end{cases}\end{equation*}</script><p>&emsp;&emsp;从右端的“递增子序列”也是一样的求法。这样求得的递增子序列其实就是以当前位为中心，左侧(右侧)形成递增序列的最多人数；那么两个数组的对应位相加就是以当前位为中心，左右两侧均为递增序列的最长长度（实际上算了自身两次，因而相加时需要<code>-1</code>）,最后返回数组最大值即可。</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token keyword">int</span> n<span class="token punctuation">,</span> elem<span class="token punctuation">;</span>    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vec<span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        cin <span class="token operator">>></span> elem<span class="token punctuation">;</span>        vec<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">dp1</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dp2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 左边递增子序列</span>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>vec<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> vec<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token comment">// 右边递增子序列</span>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">></span> i<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>vec<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> vec<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token comment">// 答案即为二者加和中的最大值</span>    <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> dp1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    cout <span class="token operator">&lt;&lt;</span> n <span class="token operator">-</span> ans <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>注意此题答案是要返回从队列中出列的人数，因而实际返回的应该是总人数减去最长队列长度。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> HJ-24. </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> nowcoder </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>nowcoder-HJ-18</title>
       <link href="/2022/06/19/nowcoder-HJ-18/"/>
       <url>/2022/06/19/nowcoder-HJ-18/</url>
@@ -292,9 +319,9 @@
             
             <tag> 中断 </tag>
             
-            <tag> TIM </tag>
-            
             <tag> EXTI </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -356,9 +383,9 @@
             
             <tag> 滑动窗口 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 力扣周赛 </tag>
             
@@ -1549,9 +1576,9 @@
             
             <tag> 代码随想录 </tag>
             
-            <tag> 双指针 </tag>
-            
             <tag> 链表 </tag>
+            
+            <tag> 双指针 </tag>
             
         </tags>
       
@@ -1582,13 +1609,13 @@
             
             <tag> 代码随想录 </tag>
             
+            <tag> 双指针 </tag>
+            
             <tag> 数组 </tag>
             
             <tag> 二分 </tag>
             
             <tag> 模拟 </tag>
-            
-            <tag> 双指针 </tag>
             
         </tags>
       
