@@ -1,0 +1,1246 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="leetcode-weekly-contest-299, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>leetcode-weekly-contest-299 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">leetcode-weekly-contest-299</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Cpp/">
+                                <span class="chip bg-color">Cpp</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                                <span class="chip bg-color">力扣周赛</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                刷题
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-06-26
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Problem-List"><a href="#Problem-List" class="headerlink" title="Problem List"></a><h2>Problem List</h2></h1><ul>
+<li>[1] <a href="#Tag1">判断矩阵是否是一个 X 矩阵</a></li>
+<li>[2] <a href="#Tag2">统计放置房子的方式数</a></li>
+<li>[3] <a href="#Tag3">拼接数组的最大分数</a></li>
+<li>[4] <a href="#Tag4">从树中删除边的最小分数</a></li>
+</ul>
+<h2 id="1-判断矩阵是否是一个-X-矩阵"><a href="#1-判断矩阵是否是一个-X-矩阵" class="headerlink" title="  1. 判断矩阵是否是一个 X 矩阵 "></a><h3> <span id="Tag1"> 1. 判断矩阵是否是一个 X 矩阵 </span></h3></h2><h4 id="1-1-题目描述"><a href="#1-1-题目描述" class="headerlink" title=" 1.1 题目描述"></a><h4> 1.1 题目描述</h4><p>如果一个正方形矩阵满足下述 <strong>全部</strong> 条件，则称之为一个 <code>X</code> 矩阵 ：</p>
+<p>矩阵对角线上的所有元素都 <strong>不是</strong> <code>0</code><br>矩阵中所有其他元素都是 <code>0</code><br>给你一个大小为 <code>n x n</code> 的二维整数数组 <code>grid</code> ，表示一个正方形矩阵。如果 <code>grid</code> 是一个 <code>X</code> 矩阵 ，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<blockquote>
+<p><strong>示例1：</strong><br><img src="/2022/06/26/leetcode-weekly-contest-299/ex1_1.jpg" alt><br><strong>输入：</strong>  grid = [[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]<br><strong>输出：</strong>  true<br><strong>解释：</strong>  矩阵如上图所示。<br>X 矩阵应该满足：绿色元素（对角线上）都不是 0 ，红色元素都是 0 。<br>因此，grid 是一个 X 矩阵。</p>
+<p><strong>示例2：</strong><br><img src="/2022/06/26/leetcode-weekly-contest-299/ex1_2.jpg" alt><br><strong>输入：</strong>  grid = [[5,7,0],[0,3,1],[0,5,0]]<br><strong>输出：</strong>  false<br><strong>解释：</strong><br>矩阵如上图所示。<br>X 矩阵应该满足：绿色元素（对角线上）都不是 0 ，红色元素都是 0 。<br>因此，grid 不是一个 X 矩阵。</p>
+</blockquote>
+<h4 id="1-2-思路"><a href="#1-2-思路" class="headerlink" title=" 1.2 思路"></a><h4> 1.2 思路</h4><p>&emsp;&emsp;直接模拟即可。</p>
+<ul>
+<li>当当前遍历的元素不为<code>0</code>则判断当前位置是否为主对角线上的元素，是则继续遍历，否则返回<code>false</code>. 主对角元素具有两个性质：①横索引等于纵索引；②横索引加纵索引等于<code>n-1</code>；</li>
+<li>当当前遍历的元素为<code>0</code>则判断当前位置是否为主对角线上的元素，是则返回<code>false</code>，否则继续遍历。</li>
+<li>如果完成遍历则说明该矩阵为X矩阵，返回<code>true</code>.</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">checkXMatrix</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> grid<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> grid<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  c <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>c<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>grid<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>r <span class="token operator">==</span> c <span class="token operator">||</span> r<span class="token operator">+</span>c <span class="token operator">==</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>r <span class="token operator">==</span> c <span class="token operator">||</span> r<span class="token operator">+</span>c <span class="token operator">==</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-统计放置房子的方式数"><a href="#2-统计放置房子的方式数" class="headerlink" title="  2. 统计放置房子的方式数 "></a><h3> <span id="Tag2"> 2. 统计放置房子的方式数 </span></h3></h2><h4 id="2-1-题目描述"><a href="#2-1-题目描述" class="headerlink" title=" 2.1 题目描述"></a><h4> 2.1 题目描述</h4><p>一条街道上共有 <code>n * 2</code> 个 地块 ，街道的两侧各有 <code>n</code> 个地块。每一边的地块都按从 <code>1</code> 到 <code>n</code> 编号。每个地块上都可以放置一所房子。</p>
+<p>现要求街道同一侧不能存在两所房子相邻的情况，请你计算并返回放置房屋的方式数目。由于答案可能很大，需要对 <code>109 + 7</code> 取余后再返回。</p>
+<p>注意，如果一所房子放置在这条街某一侧上的第 <code>i</code> 个地块，不影响在另一侧的第 <code>i</code> 个地块放置房子。</p>
+<p><strong>示例1：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> n = 1<br><strong>输出：</strong> 4<br><strong>解释：</strong> 可能的放置方式：</p>
+<ol>
+<li>所有地块都不放置房子。</li>
+<li>一所房子放在街道的某一侧。</li>
+<li>一所房子放在街道的另一侧。</li>
+<li>放置两所房子，街道两侧各放置一所。</li>
+</ol>
+</blockquote>
+<p><strong>示例2：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> num = 37, k = 2<br><strong>输出：</strong> -1<br><strong>解释：</strong> 个位数字为 2 的整数无法相加得到 37 。</p>
+</blockquote>
+<p><strong>示例3：</strong><br><img src="/2022/06/26/leetcode-weekly-contest-299/ex2.png" alt></p>
+<blockquote>
+<p><strong>输入：</strong> n = 2<br><strong>输出：</strong> 9<br><strong>解释：</strong> 如上图所示，共有 9 种可能的放置方式。</p>
+</blockquote>
+<h4 id="2-2-思路"><a href="#2-2-思路" class="headerlink" title=" 2.2 思路"></a><h4> 2.2 思路</h4><p>&emsp;&emsp;动态规划。求”街道”两侧放置房屋的方式数目，实际上就可以看作求单侧的房屋方式数组，然后平方就是答案。</p>
+<p>&emsp;&emsp;动态规划数组意义：每一块空地都有两种状态：放置房屋与空闲两种。则可以设动态数组为<code>dp[n+1][2]</code>，其中第一个索引代表有多少个空地，第二个索引代表状态，为<code>1</code>则该空地上有房子，为<code>0</code>则没有。进一步的，<code>dp[i][1]</code>代表前<code>i</code>块地块在第<code>i</code>块地块上有房子的情况下的房屋放置方式数目，<code>dp[i][0]</code>代表前<code>i</code>块地块在第<code>i</code>块地块上没有房子的情况下的房屋放置方式数目。</p>
+<p>&emsp;&emsp;<code>dp[i][0]</code>无所谓第<code>i-1</code>有房子还是没房子，所以是由<code>dp[i-1][0]</code>和<code>dp[i-1][1]</code>转移而来；而<code>dp[i][1]</code>必定由<code>dp[i-1][0]</code>转换而来，因为相邻的位置上不能同时有房子。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> mod <span class="token operator">=</span> <span class="token number">1e9</span> <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">countHousePlacements</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">>></span> <span class="token function">dp</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">></span></span></span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token number">1ll</span><span class="token operator">*</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意这里不能用max(dp[n][0], dp[n][1]),因为前边求动态规划数组的时候进行了求余操作，如果不进行求余，那么max之后结果是<code>dp[n][0]</code>，而求余之后max就可能变成<code>dp[n][1]</code>了，导致错误。</p>
+</blockquote>
+<p>&emsp;&emsp;上述代码中可以进行简化，<code>dp[i][0]</code>由上个位置的两种状态转移而来，而<code>dp[i][1]</code>只是由上个位置没房子这种状态转移来的。由<code>dp[i][0]=dp[i-1][0]+dp[i-1][1]</code>和<code>dp[i][1] = dp[i-1][0]</code>可以得到<code>dp[i+1][0]=dp[i][0]+dp[i][1]=dp[i][0]+dp[i-1][0]</code>,也就变成了<code>dp[i][0]=dp[i-2][0] + dp[i-1][0]</code>,所以就变成了斐波那契数列了。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> mod <span class="token operator">=</span> <span class="token number">1e9</span> <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">countHousePlacements</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">></span> <span class="token function">dp</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token number">1ll</span><span class="token operator">*</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">*</span>dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-拼接数组的最大分数"><a href="#3-拼接数组的最大分数" class="headerlink" title="  3. 拼接数组的最大分数 "></a><h3> <span id="Tag3"> 3. 拼接数组的最大分数 </span></h3></h2><h4 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title=" 3.1 题目描述"></a><h4> 3.1 题目描述</h4><p>给你两个下标从 <code>0</code> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> ，长度都是 <code>n</code> 。</p>
+<p>你可以选择两个整数 <code>left</code> 和 <code>right</code> ，其中 <code>0 &lt;= left &lt;= right &lt; n</code> ，接着 <strong>交换</strong> 两个子数组 <code>nums1[left...right] 和 nums2[left...right]</code>。</p>
+<p>例如，设 <code>nums1 = [1,2,3,4,5]</code> 和 <code>nums2 = [11,12,13,14,15]</code> ，整数选择 <code>left = 1</code>和 <code>right = 2</code>，那么 <code>nums1</code> 会变为 <code>[1,12,13,4,5]</code> 而 <code>nums2</code> 会变为 <code>[11,2,3,14,15]</code> 。<br>你可以选择执行上述操作 一次 或不执行任何操作。</p>
+<p>数组的 <strong>分数</strong> 取 <code>sum(nums1)</code> 和 <code>sum(nums2)</code> 中的最大值，其中 <code>sum(arr)</code> 是数组 <code>arr</code> 中所有元素之和。</p>
+<p>返回 <strong>可能的最大分数</strong> 。</p>
+<p><strong>子数组</strong> 是数组中连续的一个元素序列。<code>arr[left...right]</code> 表示子数组包含 <code>nums</code> 中下标 <code>left</code> 和 <code>right</code> 之间的元素（<strong>含</strong> 下标 <code>left</code> 和 <code>right</code> 对应元素）。</p>
+<p><strong>示例1：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> nums1 = [60,60,60], nums2 = [10,90,10]<br><strong>输出：</strong> 210<br><strong>解释：</strong> 选择 left = 1 和 right = 1 ，得到 nums1 = [60,90,60] 和 nums2 = [10,60,10] 。<br>分数为 max(sum(nums1), sum(nums2)) = max(210, 80) = 210 。</p>
+</blockquote>
+<p><strong>示例2：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> nums1 = [20,40,20,70,30], nums2 = [50,20,50,40,20]<br><strong>输出：</strong> 210<br><strong>解释：</strong> 选择 left = 3 和 right = 4 ，得到 nums1 = [20,40,20,40,20] 和 nums2 = [50,20,50,70,30] 。<br>分数为 max(sum(nums1), sum(nums2)) = max(140, 220) = 220 。</p>
+</blockquote>
+<p><strong>示例3：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> nums1 = [7,11,13], nums2 = [1,1,1]<br><strong>输出：</strong> 31<br><strong>解释：</strong> 选择不交换任何子数组。<br>分数为 max(sum(nums1), sum(nums2)) = max(31, 3) = 31 。</p>
+</blockquote>
+<h4 id="3-2-思路"><a href="#3-2-思路" class="headerlink" title=" 3.2 思路"></a><h4> 3.2 思路</h4><p>&emsp;&emsp;有点类似于滑动窗口。先求两个数组的前缀和，分别为<code>sum1</code>和<code>sum2</code>,然后遍历<code>sum1</code>，并在<code>sum2</code>中找一段连续子序列的和大于<code>sum1</code>的对应的子序列，并将二者的差值和<code>sum1[n]</code>的加和更新到答案中；然后再遍历<code>sum2</code>，一样的道理，找<code>sum1</code>中的加和大于<code>sum2</code>中对应位置的加和的连续子序列并更新答案。这里对两个数组分别进行遍历，其实就是将大的交换到<code>sum1</code>求最大值，然后将大的交换到<code>sum2</code>中求最大值。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maximumsSplicedArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">sum1</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sum2</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            sum1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> sum1<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums1<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            sum2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> sum2<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums2<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> sum2<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> r <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>sum1<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum1<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">></span> sum2<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum2<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> sum2<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">+</span> sum1<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum1<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token punctuation">(</span>sum2<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum2<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            l <span class="token operator">=</span> r<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> sum1<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> r <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>sum2<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum2<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">></span> sum1<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum1<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> sum1<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">+</span> sum2<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum2<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token punctuation">(</span>sum1<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token operator">-</span>sum1<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            l <span class="token operator">=</span> r<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意这里窗口左端点的更新，应该是<code>l = r</code>而不是<code>l++</code>,因为更新左端点时意味着sum1（或sum2）中的<code>l~r-1</code>这一段加和是大于另一个数组的，而<code>l~r</code>则已经小于另一个数组，那么就直接将左端点更新到右端点位置.切记不能更新到下个位置<code>r+1</code>,因为前缀和数组是滞后于原数组一个位置的。</p>
+</blockquote>
+<ul>
+<li>别人的写法:</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> d<span class="token punctuation">[</span><span class="token number">100048</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maximumsSplicedArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        n<span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span>nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sum1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sum2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 求两个数组每一项的差</span>
+            sum1 <span class="token operator">+=</span> nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>           <span class="token comment">// 前缀和</span>
+            sum2 <span class="token operator">+=</span> nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>           <span class="token comment">// 前缀和</span>
+        <span class="token punctuation">&#125;</span>
+        
+        <span class="token comment">// 找出nums2中比nums1大最多的那一段连续子数组，这里用贪心求</span>
+        <span class="token keyword">int</span> maxn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            cur <span class="token operator">+=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token comment">// 累加数组差</span>
+            maxn <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxn<span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>     
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> sum1 <span class="token operator">+</span> maxn<span class="token punctuation">;</span>          <span class="token comment">// 将差最大的那一段换到nums1中      </span>
+        
+        <span class="token comment">// 找出nums1中比nums2大最多的那一段连续子数组</span>
+        <span class="token comment">// 由于d是num2-num1，那么这里的d就是求最小值，且为负</span>
+        <span class="token keyword">int</span> minn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>    
+        <span class="token punctuation">&#123;</span>
+            cur <span class="token operator">+=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            minn <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>minn<span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> sum2 <span class="token operator">-</span> minn<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 更新答案</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>另一位大佬的写法：</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> s1<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">,</span>s2<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">,</span>s<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maximumsSplicedArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> n<span class="token operator">=</span>nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span>m1<span class="token punctuation">,</span>m2<span class="token punctuation">,</span>ans<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            s1<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 前缀和</span>
+            s2<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            s<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment">// 差的前缀和</span>
+        <span class="token punctuation">&#125;</span>
+        ans<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">,</span>s2<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 可能不交换的时候已经是最大的</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>m1<span class="token operator">=</span>m2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            m1<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>m1<span class="token punctuation">,</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            m2<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>m2<span class="token punctuation">,</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ans<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">-</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>m1<span class="token punctuation">,</span>s2<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>m1<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">-</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>m2<span class="token punctuation">,</span>s2<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>m2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>思路大同小异，都是分成两步来算，有可能是将nums1中一部分换到nums2得到最大，也可能是nums2中一部分换到nums1来得到最大。</p>
+</blockquote>
+<h2 id="4-从树中删除边的最小分数"><a href="#4-从树中删除边的最小分数" class="headerlink" title="  4. 从树中删除边的最小分数 "></a><h3> <span id="Tag4"> 4. 从树中删除边的最小分数 </span></h3></h2><p>&emsp;&emsp;我不会。</p>
+</h4></h4></h4></h4></h4></h4>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Vyron Su</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/06/26/leetcode-weekly-contest-299/">http://example.com/2022/06/26/leetcode-weekly-contest-299/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Vyron Su</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Cpp/">
+                                    <span class="chip bg-color">Cpp</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                                    <span class="chip bg-color">力扣周赛</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/06/26/leetcode-biweekly-contest-81/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="leetcode-biweekly-contest-81">
+                        
+                        <span class="card-title">leetcode-biweekly-contest-81</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            力扣第 81 场双周赛
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
+                                    刷题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Cpp/">
+                        <span class="chip bg-color">Cpp</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                        <span class="chip bg-color">滑动窗口</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E6%8B%9F/">
+                        <span class="chip bg-color">模拟</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
+                        <span class="chip bg-color">力扣周赛</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/">
+                        <span class="chip bg-color">二分法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/06/23/nowcoder-HJ-67/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="nowcoder-67">
+                        
+                        <span class="card-title">nowcoder-67</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/HJ-67/" class="post-category">
+                                    HJ-67.
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                        <span class="chip bg-color">回溯</span>
+                    </a>
+                    
+                    <a href="/tags/nowcoder/">
+                        <span class="chip bg-color">nowcoder</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: Vyron Su<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Vyron Su</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "3";
+                    var startDate = "23";
+                    var startHour = "19";
+                    var startMinute = "17";
+                    var startSecond = "37";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/vvvvvyron" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1640385879@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1640385879" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1640385879" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>

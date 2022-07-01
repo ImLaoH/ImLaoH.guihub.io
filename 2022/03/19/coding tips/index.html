@@ -740,6 +740,8 @@ pf <span class="token operator">=</span> ToUpper<span class="token punctuation">
 <li>下滤：</li>
 </ol>
 <p><img src="/2022/03/19/coding%20tips/heapSort.gif" alt></p>
+<ol>
+<li><p>迭代实现</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 下滤操作</span>
 <span class="token keyword">void</span> <span class="token function">siftDown</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> curIdx<span class="token punctuation">,</span> <span class="token keyword">int</span> endIdx<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> tmp <span class="token operator">=</span> nums<span class="token punctuation">[</span>curIdx<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -773,6 +775,42 @@ pf <span class="token operator">=</span> ToUpper<span class="token punctuation">
         <span class="token function">siftDown</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>递归实现</p>
+</li>
+</ol>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 交换</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>num1<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>num2<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> tmp <span class="token operator">=</span> <span class="token operator">*</span>num1<span class="token punctuation">;</span>
+    <span class="token operator">*</span>num1 <span class="token operator">=</span> <span class="token operator">*</span>num2<span class="token punctuation">;</span>
+    <span class="token operator">*</span>num2 <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 维持堆性质</span>
+<span class="token keyword">void</span> <span class="token function">heapify</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span> <span class="token keyword">int</span> arrSize<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> largest <span class="token operator">=</span> index<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> lson <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> rson <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> index <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>lson <span class="token operator">&lt;</span> arrSize <span class="token operator">&amp;&amp;</span> arr<span class="token punctuation">[</span>lson<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        largest <span class="token operator">=</span> lson<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>rson <span class="token operator">&lt;</span> arrSize <span class="token operator">&amp;&amp;</span> arr<span class="token punctuation">[</span>rson<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        largest <span class="token operator">=</span> rson<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">!=</span> largest<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>       
+        <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+        <span class="token function">heapify</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arrSize<span class="token punctuation">,</span> largest<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 递归建堆大顶</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 堆排序</span>
+<span class="token keyword">void</span> <span class="token function">heapSort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span> <span class="token keyword">int</span> arrSize<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token punctuation">(</span>arrSize<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">heapify</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arrSize<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> arrSize <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">heapify</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="2-字符串操作-1"><a href="#2-字符串操作-1" class="headerlink" title=" 2 字符串操作"></a><h3> 2 <span id="string">字符串操作</span></h3></h2><ul>
 <li><p>用双引号括起来的是字符串字面量，也叫字符串常量；用单引号括起来的是字符常量。对于双引号中的字符，编译器会自动加入’\0’字符。</p>
 </li>
