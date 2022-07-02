@@ -1776,32 +1776,36 @@ BinaryTree<span class="token operator">*</span> <span class="token function">Con
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>cur<span class="token punctuation">)</span> <span class="token keyword">return</span> false<span class="token punctuation">;</span>
 
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>cur<span class="token operator">-></span>left<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>cur<span class="token operator">-></span>left<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                     <span class="token comment">// 第一种情况</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>val <span class="token operator">&lt;</span> val<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             parent<span class="token operator">-></span>right <span class="token operator">=</span> cur<span class="token operator">-></span>right<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
             parent<span class="token operator">-></span>left <span class="token operator">=</span> cur<span class="token operator">-></span>right<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         <span class="token function">free</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>cur<span class="token operator">-></span>right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>cur<span class="token operator">-></span>right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>              <span class="token comment">// 第二种情况</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>val <span class="token operator">&lt;</span> val<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             parent<span class="token operator">-></span>right <span class="token operator">=</span> cur<span class="token operator">-></span>left<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
             parent<span class="token operator">-></span>left <span class="token operator">=</span> cur<span class="token operator">-></span>left<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         <span class="token function">free</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>                              <span class="token comment">// 第三种情况</span>
         <span class="token keyword">struct</span> <span class="token class-name">TreeNode</span><span class="token operator">*</span> cur1 <span class="token operator">=</span> cur<span class="token operator">-></span>right<span class="token punctuation">;</span>
         <span class="token keyword">while</span><span class="token punctuation">(</span>cur1<span class="token operator">-></span>left<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             parent <span class="token operator">=</span> cur1<span class="token punctuation">;</span>
             cur1 <span class="token operator">=</span> cur1<span class="token operator">-></span>left<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         cur<span class="token operator">-></span>val <span class="token operator">=</span> cur1<span class="token operator">-></span>val<span class="token punctuation">;</span>
-        parent<span class="token operator">-></span>left <span class="token operator">=</span> cur1<span class="token operator">-></span>right<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>right <span class="token operator">==</span> cur1<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            parent<span class="token operator">-></span>right <span class="token operator">=</span> cur1<span class="token operator">-></span>right<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            parent<span class="token operator">-></span>left <span class="token operator">=</span> cur1<span class="token operator">-></span>right<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
         <span class="token function">free</span><span class="token punctuation">(</span>cur1<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> true<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-4-哈希表"><a href="#3-4-哈希表" class="headerlink" title=" 3.4 哈希表"></a><h4> 3.4 <span id="HashTable">哈希表</span></h4></h3><p>&nbsp;</p>
 <h4 id="3-4-1-简介"><a href="#3-4-1-简介" class="headerlink" title=" 3.4.1 简介"></a><h5> 3.4.1 简介</h5></h4><p>&emsp;&emsp;<strong>c语言本身没有哈希</strong>，需要使用第三方头文件<strong>uthash.h</strong>.</p>
 <p>&emsp;&emsp;Entry：键值对，key-value，其中key为元素的值</p>
@@ -2362,6 +2366,56 @@ l<span class="token punctuation">.</span><span class="token function">remove_if<
 <li><code>deque.resize(num)</code>: 重新指定容器的长度为<code>num</code>,若容器变长，则以默认值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除。</li>
 <li><code>deque.resize(num, elem)</code>: 重新指定容器的长度为<code>num</code>,若容器变长，则以<code>elem</code>值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除。</li>
 </ul>
+</li>
+</ul>
+<ol>
+<li>优先队列(堆)</li>
+</ol>
+<p>&emsp;&emsp;优先队列是一种抽象的数据类型，类似于常规的队列或栈, 但每个元素都有与之关联的“优先级”。在优先队列中, <strong>低优先级的元素之前前面应该是高优先级的元素</strong>。如果两个元素具有<strong>相同的优先级, 则根据它们在队列中的顺序是它们的出现顺序</strong>即可。</p>
+<p>&emsp;&emsp;C++的STL库queue中的优先队列<code>priority_queue</code>底层就是通过最小堆/最大堆来实现的</p>
+<ul>
+<li><p>定义：<code>priority_queue&lt;Type, Container, Functional&gt;;</code>, 其中<code>Type</code>为存放的数据类型，<code>Container</code>则是堆的底层容器（必须是数组类型，如<code>vector</code>、<code>deque</code>），而<code>Functional</code>则是比较函数/优先级。</p>
+</li>
+<li><p>小顶堆：<code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; q</code>.</p>
+</li>
+<li>大顶堆：<code>priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt;&gt;</code>.</li>
+</ul>
+<blockquote>
+<p><code>Container</code>缺省时为<code>vector</code>，<code>Functional</code>缺省是为大顶堆，即<code>less&lt;int&gt;</code>. 大顶堆排完序是从小到大，因而是<code>less</code>;而小顶堆排序后是从大到小，因而是<code>greater</code>.</p>
+</blockquote>
+<ul>
+<li><p>重载</p>
+<p>  &emsp;&emsp;如果数据类型是自定义类型，因而不能直接采用<code>less&lt;int&gt;</code>和<code>greater&lt;int&gt;</code>，即<code>Functional</code>不能缺省，需要重载<code>operator &lt;</code>：</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">strcut node<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+    <span class="token function">node</span><span class="token punctuation">(</span><span class="token keyword">int</span> x_<span class="token punctuation">,</span> <span class="token keyword">int</span> y_<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">x</span><span class="token punctuation">(</span>x_<span class="token punctuation">)</span><span class="token punctuation">,</span> y（<span class="token punctuation">(</span>y_<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> <span class="token keyword">operator</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span>node a<span class="token punctuation">,</span> node b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x <span class="token operator">==</span> b<span class="token punctuation">.</span>x<span class="token punctuation">)</span>  <span class="token keyword">return</span> a<span class="token punctuation">.</span>y <span class="token operator">></span> b<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>x <span class="token operator">></span> b<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>自定义cmp</p>
+<p>  &emsp;&emsp;</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">cmp</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span> Node a<span class="token punctuation">,</span> Node b <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> a<span class="token punctuation">.</span>x<span class="token operator">==</span> b<span class="token punctuation">.</span>x <span class="token punctuation">)</span> <span class="token keyword">return</span> a<span class="token punctuation">.</span>y<span class="token operator">></span> b<span class="token punctuation">.</span>y<span class="token punctuation">;</span>         
+        <span class="token keyword">return</span> a<span class="token punctuation">.</span>x<span class="token operator">></span> b<span class="token punctuation">.</span>x<span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    priority_queue<span class="token operator">&lt;</span>Node<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>Node<span class="token operator">></span><span class="token punctuation">,</span> cmp<span class="token operator">></span> q<span class="token punctuation">;</span>     
+    <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">int</span> i<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i <span class="token punctuation">)</span>
+    q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> <span class="token function">Node</span><span class="token punctuation">(</span> <span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>x <span class="token operator">&lt;&lt;</span> <span class="token char">' '</span> <span class="token operator">&lt;&lt;</span> q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>y <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>     
+    <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <div style="page-break-after: always;"></div>
