@@ -520,9 +520,9 @@
             
             <tag> 中断 </tag>
             
-            <tag> EXTI </tag>
-            
             <tag> TIM </tag>
+            
+            <tag> EXTI </tag>
             
         </tags>
       
