@@ -382,7 +382,7 @@
                 <h1 id="1-虚拟机安装"><a href="#1-虚拟机安装" class="headerlink" title=" 1 虚拟机安装"></a><h3> 1 虚拟机安装</h3></h1><ol>
 <li>新建虚拟机</li>
 </ol>
-<p>&emsp;&emsp;在VMware官网(<a target="_blank" rel="noopener" href="https://www.vmware.com/cn.html)下载安装包并进行安装，安装最后使用密钥进行破解">https://www.vmware.com/cn.html)下载安装包并进行安装，安装最后使用密钥进行破解</a>. 安装完成后直接打开VMware，点击<strong>文件-新建虚拟机</strong>。</p>
+<p>&emsp;&emsp;在VMware官网 <a target="_blank" rel="noopener" href="https://www.vmware.com/cn.html">https://www.vmware.com/cn.html</a> 下载安装包并进行安装，安装最后使用密钥进行破解. 安装完成后直接打开VMware，点击<strong>文件-新建虚拟机</strong>。</p>
 <p><img src="/2022/06/15/Linux-1/vm_1.png" alt></p>
 <p>&emsp;&emsp;我们需要对虚拟机的参数进行自定义，因此这里选择<strong>自定义(高级)</strong>。</p>
 <p><img src="/2022/06/15/Linux-1/vm_2.png" alt></p>
@@ -436,7 +436,7 @@
 <p><img src="/2022/06/15/Linux-1/xshell_5.png" alt></p>
 <p>&emsp;&emsp;安装完成后打开XShell软件，点击左上方的新建(或者Alt+N)，填写相应的内容，这里的<strong>主机</strong>需要填写<strong>虚拟机的IP地址</strong>，因而需要进入Ubuntu系统查询IP地址。</p>
 <p><img src="/2022/06/15/Linux-1/xshell_7.png" alt></p>
-<p>&emsp;&emsp;在桌面右键选择<strong>打开终端</strong>,然后输入<code>&quot;ipconfig&quot;</code>查询ip地址。这里如果显示没有相应的模块，则需要输入<code>&quot;sudo apt-install net-tools&quot;</code>安装相应的服务，然后再进行IP地址查询。<strong>ens33后的inet即为ip地址</strong>。</p>
+<p>&emsp;&emsp;在桌面右键选择<strong>打开终端</strong>,然后输入<code>&quot;ifconfig&quot;</code>查询ip地址。这里如果显示没有相应的模块，则需要输入<code>&quot;sudo apt-install net-tools&quot;</code>安装相应的服务，然后再进行IP地址查询。<strong>ens33后的inet即为ip地址</strong>。</p>
 <p><img src="/2022/06/15/Linux-1/xshell_8.png" alt></p>
 <p>&emsp;&emsp;将查询到的IP地址填入主机栏中，然后点击<strong>连接即可</strong>。这里确保第一步已完成，即虚拟机安装<code>openssh-server</code>。</p>
 <h1 id="3-配置远程开发环境"><a href="#3-配置远程开发环境" class="headerlink" title=" 3 配置远程开发环境"></a><h3> 3 配置远程开发环境</h3></h1><p>&emsp;&emsp;在VSCode中的扩展(extension)搜索“Remote Development”并进行安装。安装后左侧选项中第6个为<strong>远程资源管理器</strong>，打开该选项，然后选择<code>SSH Targets</code>，然后点击Config按钮。</p>
