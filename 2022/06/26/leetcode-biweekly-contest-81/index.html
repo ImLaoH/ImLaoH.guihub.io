@@ -577,12 +577,12 @@
 </blockquote>
 <h4 id="4-2-思路"><a href="#4-2-思路" class="headerlink" title=" 4.2 思路"></a><h4> 4.2 思路</h4><p>&emsp;&emsp;动态规划，动态数组为<code>dp[i][j][k]</code>,意为第<code>i</code>颗骰子的点数为<code>j</code>、上一颗骰子点数为<code>k</code>的方案数，那么<code>dp[i][j][k]</code>可以由上一次投掷结果转移而来，即当当前的<code>j</code>和<code>k</code>以及<code>l</code>满足两两互不相等均不相同且相邻之间的最大公约数为<code>1</code>，那么则有<code>dp[i][j][k] += dp[i-1][k][l]</code>.</p>
 <p>&emsp;&emsp;首先通过<code>gcd()</code>求出点数之间的最大公约数：</p>
-<pre><code><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/*辗转相除法*/</span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/*辗转相除法*/</span>
 <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a<span class="token operator">%</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre><p>&emsp;&emsp;最外层遍历骰子编号，第二层遍历当前骰子点数，第三层遍历前一个骰子点数，第四层遍历上上个骰子的点数；由于需要用到前两次的结果，因而初始化<code>dp[3]</code>，而后最外层的遍历从4开始，因此，需要将<code>n&lt;=2</code>作为特殊情况处理。</p>
+<p>&emsp;&emsp;最外层遍历骰子编号，第二层遍历当前骰子点数，第三层遍历前一个骰子点数，第四层遍历上上个骰子的点数；由于需要用到前两次的结果，因而初始化<code>dp[3]</code>，而后最外层的遍历从4开始，因此，需要将<code>n&lt;=2</code>作为特殊情况处理。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>b<span class="token punctuation">)</span>  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
