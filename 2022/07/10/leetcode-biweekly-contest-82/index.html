@@ -423,23 +423,26 @@
 <h4 id="2-2-思路"><a href="#2-2-思路" class="headerlink" title=" 2.2 思路"></a><h4> 2.2 思路</h4><p>&emsp;&emsp;很直接的思路，遍历到最后一辆车的最后一名上车的乘客，然后往前遍历找插入的位置。</p>
 <p>&emsp;&emsp;实现步骤：</p>
 <ol>
-<li>用一个<code>set</code>按顺序存放乘客到达的时间；</li>
+<li><del>用一个<code>set</code>按顺序存放乘客到达的时间</del>（无需此操作）；</li>
 <li>对<code>buses</code>和<code>passengers</code>数组分别进行按升序顺序排序；</li>
 <li>遍历公车：对每一辆车，当当前遍历到的乘客到达的时间小于等于公车到站时间，即<code>passengers[index] &lt;= buses[i]</code>时，且公车上还有座位，该乘客可以上当前遍历的公车，用一个变量<code>res</code>来记录当前公车的最后一个上车的人；</li>
 <li>遍历完成后<code>res</code>其实就是最后一辆车的最后一个上车的乘客，那么我们只需要比这个乘客到达的时间早即可(满座的情况下)，即循环自减<code>1</code>直至<code>set</code>中没有出现<code>res</code>，此时<code>res</code>即为答案。</li>
 </ol>
 <ul>
 <li>如果最后一辆车没满座，说明可以最后一辆车的时间点上车即可，即返回最后一辆车的到站时间<code>buses[n-1]</code>（<code>n</code>为公车的数量）；</li>
-<li><p>如果最后一辆车满座，则向前遍历，直至当前的时间点没有乘客到达，返回这个时间点即可。</p>
-</li>
-<li><p>bfs</p>
-</li>
+<li>如果最后一辆车满座，则向前遍历，直至当前的时间点没有乘客到达，返回这个时间点即可。</li>
+</ul>
+<blockquote>
+<p>更新：并不需要<code>set</code>来判断当前时间点是否有乘客同时到达，我们通过<code>index</code>可以知道最后一个上车的人的时间点，我们必须要比这个最后一个上车的人的时间早，那么res就是必须小于<code>passengers[index-1]</code>,<code>index</code>指向的是最后一个上车的人的后继元素，那么当<code>passengers[index-1]==res</code>说明当前时刻有乘客一起到达，要早一点，因而<code>--res</code>并判断上个人是否在这个时间点到达。更新后的代码如下(更新前没必要的操作已经注释掉了)。</p>
+</blockquote>
+<ul>
+<li>bfs</li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">latestTimeCatchTheBus</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> buses<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> passengers<span class="token punctuation">,</span> <span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        set<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> s<span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">:</span> passengers<span class="token punctuation">)</span>  s<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//set&lt;int> s;</span>
+        <span class="token comment">//for(int i: passengers)  s.insert(i);</span>
         <span class="token function">sort</span><span class="token punctuation">(</span>buses<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> buses<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">sort</span><span class="token punctuation">(</span>passengers<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> passengers<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> res<span class="token punctuation">,</span> n <span class="token operator">=</span> passengers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -451,10 +454,11 @@
             <span class="token punctuation">&#125;</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>y <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>   res <span class="token operator">=</span> x<span class="token punctuation">;</span>            <span class="token comment">// 当前公车没满座，则最后一个应该等于公车到达的时间</span>
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">--</span>res<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>index<span class="token operator">></span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> passengers<span class="token punctuation">[</span><span class="token operator">--</span>index<span class="token punctuation">]</span><span class="token operator">==</span>res<span class="token punctuation">)</span>  <span class="token operator">--</span>res<span class="token punctuation">;</span>  <span class="token comment">// 贪心求解</span>
+        <span class="token comment">//while(s.count(res)) --res;</span>
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="3-最小差值平方和"><a href="#3-最小差值平方和" class="headerlink" title="  3. 最小差值平方和 "></a><h3> <span id="Tag3"> 3. 最小差值平方和 </span></h3></h2><h4 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title=" 3.1 题目描述"></a><h4> 3.1 题目描述</h4><p>给你两个下标从 <code>0</code> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> ，长度为 <code>n</code> 。</p>
 <p>数组 <code>nums1</code> 和 <code>nums2</code> 的 <strong>差值平方和</strong> 定义为所有满足 <code>0 &lt;= i &lt; n</code> 的 <code>(nums1[i] - nums2[i])2</code> 之和。</p>
 <p>同时给你两个正整数 <code>k1</code> 和 <code>k2</code> 。你可以将 <code>nums1</code> 中的任意元素 <code>+1</code> 或者 <code>-1</code> 至多 <code>k1</code> 次。类似的，你可以将 <code>nums2</code> 中的任意元素 <code>+1</code> 或者 <code>-1</code> 至多 <code>k2</code> 次。</p>
