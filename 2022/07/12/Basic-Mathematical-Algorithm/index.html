@@ -574,6 +574,16 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 <blockquote>
 <p>两种筛选法的不同：埃氏筛选法是筛选当前素数的所有倍数，因而可能会出现重复筛出，如24会被2，3所标记；而欧拉筛选法中，合数只会被其最小质因数标记。</p>
 </blockquote>
+<h1 id="6-概率问题"><a href="#6-概率问题" class="headerlink" title=" 6 概率问题"></a><h2> 6 概率问题</h2></h1><h1 id="6-1-拒绝采样"><a href="#6-1-拒绝采样" class="headerlink" title=" 6.1 拒绝采样"></a><h3> 6.1 拒绝采样</h3></h1><p>&emsp;&emsp;当我们可以通过一种采样方式获取某个区间的值，而我们实际上希望获取的值可能范围是比前边的采样方式所能获得的范围更小，那么如果我们同样希望在小范围中的采样同样也是等概率的，可以直接通过上述的采样方式进行采样，而当采样得到的数据不在我们期望的范围内，那么就拒绝这一次采样；如果落在我们的期望范围内则接收此次采样，这样就可以实现目标范围的等概率采样。</p>
+<p>&emsp;&emsp;举一个例子，当我们可以等概率采样的范围为[1, 10]，而期望的数值范围是[3, 7]。 那么当采样得到的数据<code>&lt;3</code>或<code>&gt;7</code>时拒绝这次采样，采到<code>[3,7]</code>的时候就接收，此时<code>[3,7]</code>中的数字是等概率的。</p>
+<h1 id="6-2-从randx-到randy"><a href="#6-2-从randx-到randy" class="headerlink" title=" 6.2 从randx()到randy()"></a><h3> 6.2 从randx()到randy()</h3></h1><p>&emsp;&emsp;以rand2()为例，我们希望得到rand4()（每个数字采样概率均相等），那么可以通过<code>(rand2()-1)*2+rand2()</code>, 其中：</p>
+<ul>
+<li>rand2()-1的结果为:0,1</li>
+<li>(rand2()-1)*2的结果为:0,2</li>
+<li>rand2()的结果为1,2</li>
+<li>(rand2()-1)*2+rand2()的结果为1，2，3，4</li>
+</ul>
+<p>&emsp;&emsp;推广到从<code>randx()</code>, 可以有：<code>(randx()-1)*x+randx()</code>则可以获得<code>[1,x^2]</code>的值，而如果要获得<code>randy()</code>，那么就加上拒绝采样即可实现。</p>
 
                 
             </div>
