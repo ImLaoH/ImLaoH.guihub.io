@@ -1,0 +1,1306 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="Cpp Primer Plus Part2, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>Cpp Primer Plus Part2 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Cpp Primer Plus Part2</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-Primer-Plus/">
+                                <span class="chip bg-color">C++ Primer Plus</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-08-09
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ol>
+<li><p><code>strcmp()</code>接受两个字符串地址为参数，当第一个字符串的字母序小于第二个字符串时返回<strong>负数</strong>，若第一个大于第二个则返回<strong>正数</strong>，相等则返回<code>0</code>。不能简单地对C-风格字符串(用数组进行存储)用<code>==</code>来判断，因为编译器会将字符串解析为地址，即此时判断的是两个地址是否一致而非比较内容是否一致；而当<strong>至少一个</strong>操作数是<code>string</code>类对象时，则可以直接进行比较。</p>
+</li>
+<li><p>计时函数：clock(), 位于<code>&lt;ctime&gt;</code>头文件中，且其返回类型为<code>clock_t</code>类型,因而变量可以定义为<code>clock_t</code>，而编译器会将其转换为long、unsigned int或适合系统的其他类型。注意，<code>clock()</code>返回的实际上不是以秒为单位的时间，而是以系统时间单位数为单位的，因而需要将获取到的时间除以<code>CLOCK_PRE_SEC</code>来转换为秒。</p>
+</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ctime></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter the delay time, in seconds:"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> secs<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> secs<span class="token punctuation">;</span>
+    secs <span class="token operator">*=</span> CLOCK_PER_SEC<span class="token punctuation">;</span>
+    clock_t start <span class="token operator">=</span> <span class="token function">clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>start <span class="token operator">&lt;</span> secs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"done!"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>cin会忽略空格和换行符, 如果需要读取换行符或空格，则应该采用无参的<code>cin.get()</code>。设置哨兵字符用于判断是否到达输入流的最后一个字符并不能令人满意，可以采用EOF来检测。当检测到EOF时，<code>cin.eof()</code>和<code>cin.fail()</code>都将将会返回<code>true</code>，通过调用这两个函数即可知道当前是否到达EOF。</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+    cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>cin<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// !cin.eof()</span>
+        cout<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// linux中eof为ctrl+D,Windows则为ctrl+Z</span>
+        ch <span class="token operator">=</span> cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>实际上，<code>cin.get(char)</code>返回的是一个<code>cin</code>对象，因而也可以用<code>while(cin)</code>来判断是否读取成功。</p>
+</blockquote>
+<ol>
+<li>字符函数库cctype(ctype.h)</li>
+</ol>
+<ul>
+<li><code>isalnum(ch)</code>: 如果<code>ch</code>为字母或数字则返回<code>true</code>;</li>
+<li><code>isalpha(ch)</code>: 如果<code>ch</code>为字母，则返回<code>true</code>;</li>
+<li><code>ispunct(ch)</code>: 如果<code>ch</code>为标点符号则返回<code>true</code>;</li>
+<li><code>isdigits(ch)</code>: 如果<code>ch</code>为数字则返回<code>true</code>;</li>
+<li><code>isspace(ch)</code>: 如果<code>ch</code>为空格则返回<code>true</code>;</li>
+<li><code>iscntrl(ch)</code>: 如果<code>ch</code>为控制字符则返回<code>true</code>;</li>
+<li><code>isgraph(ch)</code>: 如果<code>ch</code>为除空格外的打印字符则返回<code>true</code>;</li>
+<li><code>islower(ch)</code>: 如果<code>ch</code>为小写字母则返回<code>true</code>;</li>
+<li><code>isprint(ch)</code>: 如果<code>ch</code>为打印字符(包括空格)则返回<code>true</code>;</li>
+<li><code>isupper(ch)</code>: 如果<code>ch</code>为大写字母则返回<code>true</code>;</li>
+<li><code>toupper(ch)</code>: 如果<code>ch</code>为小写字母则返回其大写，否则返回其本身;</li>
+<li><code>tolower(ch)</code>: 如果<code>ch</code>为大写字母则返回其小写，否则返回其本身;</li>
+<li><code>isxdigit(ch)</code>: 如果<code>ch</code>为十六进制数字，即0-9、a-f或A-F，则返回<code>true</code>.</li>
+</ul>
+<ol>
+<li>文本文件操作:</li>
+</ol>
+<ul>
+<li>写入操作：头文件为<code>&lt;fstream&gt;</code>,包括文件输出类<code>ofstream</code>. 将文件和<code>ofstream</code>对象关联起来的方法为<code>open()</code>，关闭为<code>close()</code>. 与<code>iostream</code>不一样的是文本文件需要自己声明<code>ofstream</code>对象，而<code>iostream</code>则提供了一个<strong>预先定义</strong>的<code>cout</code>的<code>ostream</code>对象。</li>
+</ul>
+<blockquote>
+<p>如果目标路径不存在open参数指向的文件时，将会新建一个同名文件；而当已存在该文件时，则将默认对该文件进行截断，即将其长度截短到零————丢弃其原有内容，并重新输入内容到该文件。</p>
+</blockquote>
+<ul>
+<li>读取操作：头文件为<code>&lt;fstream&gt;</code>，包括文件输入类<code>ifstream</code>. 将<code>ifstream</code>与文件关联的方法同样为<code>open()</code>。类似<code>cin</code>,可采用<code>get()</code>来读取单个字符，而<code>getline()</code>来读取一行字符。判断文件是否成功打开可使用<code>is_open()</code>。</li>
+</ul>
+<blockquote>
+<p>读取文件时，通过EOF判断是否达到文件尾(即文件读取完成)，即<code>eof()</code>返回<code>true</code>；而当文件中的内容与变量类型不匹配时，<code>fail()</code>将会返回<code>true</code>；而当文件打开失败时<code>bad()</code>会返回<code>true</code>. 可以直接通过方法<code>good()</code>来排查这些情况。</p>
+</blockquote>
+<ol>
+<li><p>Cpp对于返回值的类型有一定的限制：<strong>不能是数组</strong>，但数组可以作为结构或对象的成员来返回。</p>
+</li>
+<li><p>函数原型描述了函数到编译器的接口，他将函数返回值类型、参数的类型和数量告诉编译器。函数原型不要求提供变量名，有类型列表即可。当参数列表为空，对C来说等同于void，即无形参列表；而对于Cpp来说，则视为没指出参数，因而后续需要定义参数列表。</p>
+</li>
+<li><p>argument表示实参，是传递给函数的变量数值；而parameter则是形参，指函数中用于接收传递至的变量。</p>
+</li>
+<li><p>用const修饰的变量，意味着程序不应该试图对该变量进行修改。类似的，<code>const int *pa</code>意味着<code>pa</code>指向的是一个<code>const</code>修饰的变量，因而无法通过<code>pa</code>去修改该变量；而<code>int* const pa</code>则意味<code>pa</code>本身是常量，即无法修改其指向。<code>const</code>修饰的变量的地址不可以传递给非指向<code>const</code>的指针，否则就可以通过指针修改<code>const</code>变量了；而非<code>const</code>变量可以传递给指向<code>const</code>的指针，只是无法通过指针修改该变量而已。</p>
+</li>
+<li><p>数组指针和指针数组：</p>
+</li>
+</ol>
+<ul>
+<li>数组指针：指向一个数组的指针，定义为<code>int (*arr)[n];</code>, 其意义为该指针指向了一个具有n个int元素的数组，访问时应该通过<code>(*arr)[i]</code>来访问。</li>
+<li>指针数组：数组内容为指针，定义为<code>int* arr[n];</code>，访问时通过<code>*(arr[i])</code>或<code>*(arr+i)</code>来访问。</li>
+</ul>
+<ol>
+<li><p>函数无法返回一个字符串，但可以返回字符串的首元素的地址，这意味着所返回的字符串数组应该是通过<code>malloc</code>或者<code>new</code>申请的。</p>
+</li>
+<li><p>可以通过数组名获得其第一个元素的地址，它同时也是整个数组的地址；而对于结构体或者类而言，则需要取地址运算符<code>&amp;</code>来获取其地址。</p>
+</li>
+<li><p>函数指针：每个函数都有一个入口地址，当调用某个函数时，实际上是主程序移动到该地址去执行该函数的函数体，而函数指针就是指向这个地址的指针变量(函数地址通过函数名来获取不加参数列表和括号，单纯函数名即可)。</p>
+<p>&emsp;&emsp;对于函数原型：<code>double fcn(int);</code>，其函数指针应该定义为：<code>double (*pf)(int);</code>.注意，必须将<code>*pf</code>用括号括起来，否则该语句的含义就变成一个返回值类型为<code>double *</code>、具有一个<code>int</code>参数的函数了。前者是函数指针，后者是指针函数。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">fcn1</span><span class="token punctuation">(</span><span class="token keyword">int</span> param1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> <span class="token function">fcn2</span><span class="token punctuation">(</span><span class="token keyword">double</span> param2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">fcn3</span><span class="token punctuation">(</span><span class="token keyword">double</span> param3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>pf<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pf <span class="token operator">=</span> fcn1<span class="token punctuation">;</span>  <span class="token comment">// invalid</span>
+pf <span class="token operator">=</span> fcn2<span class="token punctuation">;</span>  <span class="token comment">// invalid</span>
+pf <span class="token operator">=</span> fcn3<span class="token punctuation">;</span>  <span class="token comment">// valid</span>
+<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token function">pf</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// correct</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pf<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// correct</span>
+
+<span class="token keyword">int</span> <span class="token function">fcn1</span><span class="token punctuation">(</span><span class="token keyword">double</span> param1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">fcn2</span><span class="token punctuation">(</span><span class="token keyword">double</span> param2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">fcn3</span><span class="token punctuation">(</span><span class="token keyword">double</span> param3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>pf1<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>fcn1<span class="token punctuation">,</span> fcn2<span class="token punctuation">,</span> fcn3<span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 注意[3]的位置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<blockquote>
+<p>为什么<code>[3]</code>的位置在那里，首先<code>*</code>的优先级低于<code>[]</code>，因而<code>*pf[3]</code>是一个具有3个指针的数组，其实就是指针数组。<strong>auto只能用于单值初始化，而不能用于初始化列表</strong>。<br>通过<code>typedef</code>关键字为指针函数取别名：<code>typedef int (*p_fcn)(double);</code>，此后就可以通过<code>p_fun</code>来定义函数指针：<code>p_fun pa = fcn1;</code>.</p>
+</blockquote>
+<ol>
+<li><p>当函数执行到调用函数指令时，程序将在函数调用后立即存储该指令的内存地址，并将函数参数赋值到堆栈，跳到标记函数起点的内存单元执行调用的函数代码，然后跳回地址被保存的指令处。来回跳跃并记录位置意味着函数调用需要一定的开销。而内联函数则通过扩充代码量来避免这一开销，即将经常调用的函数体直接复制到调用的地方，是一个典型的空间换时间的例子。<br>内联函数的要求是不存在复杂的命令、函数体简单且不应该调用自身(递归)。<br>内联函数和宏函数都是通过将对应的代码复制到“函数”调用的地方来节省函数调用引起的开销，而<strong>宏函数只是简单的字符替换</strong>，<strong>不进行类型的检测</strong>，而内联函数具有函数的性质，因而有类型的检测。</p>
+</li>
+<li><p><strong>引用</strong>是给<strong>已定义</strong>的变量的取别名，其主要用途是用于函数的形参，此时函数内使用的变量就是原始变量而不需要额外创建一个副本，使得效率更高。引用和指针的区别是引用定义时就必须进行初始化且一旦初始化后就不能修改，也就是说引用有点类似常量；而一般的指针都是可以修改指向的地址。<br>由于调用函数可以对引用变量进行修改，因而当仅需要用到该变量的值时，可以在前边加上<code>const</code>以防止程序对其进行修改。<br>对于类型不符合的引用，前提是函数中的引用变量是<strong>用const进行修饰</strong>，则此时会创建临时变量，并将该变量传递给函数，此时类似于值传递。<br>C++11中允许对<strong>右值</strong>进行引用，其形式为<code>double &amp;&amp;ref = sqrt(36.00;</code>，即需要两个引用符号。(右值指的是字面量)</p>
+</li>
+<li><p>当函数返回的是对象的引用是，此时只会发生一次拷贝，即将引用对象的内容拷贝到目标内存中；而当返回的是对象时，则会发生两次拷贝，第一次发生在函数结束调用时，会将结果进行拷贝并将其进行返回，第二次则是将返回的结果的内容拷贝到目标内存中。<strong>注意</strong>，应该避免函数返回一个不再存在的内存单元引用，也应该避免返回指向不再存在的变量的指针。</p>
+</li>
+<li><p>cout中的<code>setf()</code>方法允许设置各种格式化状态：</p>
+</li>
+</ol>
+<ul>
+<li><code>setf(ios_base::fixed)</code>: 将对象置于使用定点表示法的模式，比如对浮点数则是按一般形式进行输出。</li>
+<li><p><code>setf(ios_base::showpoint)</code>: 显示小数点后的<code>0</code>，即当小数点后的位数小于精度值是，自动补<code>0</code>。</p>
+<p>  cout中的<code>precision()</code>则用于设置显示小数位数，<code>width()</code>用于设置所要显示的宽度(默认为0，即恰好容纳目标长度)。</p>
+</li>
+</ul>
+<ol>
+<li>传递方式选择：</li>
+</ol>
+<ul>
+<li>不需要修改值：<ul>
+<li>数据对象很小，使用值传递；</li>
+<li>对象是数组，只能采用指针传递；</li>
+<li>对象是较大的<strong>结构</strong>，采用const指针或const引用；</li>
+<li>对象是类对象，采用const引用(标准)。</li>
+</ul>
+</li>
+<li>需要修改值：<ul>
+<li>对象为内置的数据类型，则用指针；</li>
+<li>对象为数组，只能用指针；</li>
+<li>对象是结构，使用指针或引用；</li>
+<li>对象是类对象，采用引用。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>带参数列表的函数，参数默认值只能从右到左添加，即参数列表中某个参数若有默认参数，则其右边的参数都要提供默认值，而默认参数只在<strong>原型</strong>中指定，定义与无默认参数的一样。</p>
+</li>
+<li><p>函数重载是为了实现同个函数名具有不同函数体，即函数多态。函数重载的关键是函数的参数列表即<strong>函数特征标</strong>不同。如果两个函数函数名相同，而函数的参数列表个数/参数列表类型/返回类型不同(只有返回类型不同时不视为重载)，则两个函数的特征标不同。<br>重载的实现是通过 <strong>“名称修饰/名称矫正”</strong> 来实现的。</p>
+</li>
+<li><p>函数模板是通用的函数描述，其使用泛型来定义函数，而泛型可以用具体的类型来替换，通过将类型作为参数传递给模板，编译器则可以生成该类型的相关函数。实际上，函数模板并未创建任何函数，而是告诉编译器如何定义函数。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>   <span class="token comment">// template &lt;class T></span>
+<span class="token keyword">void</span> <span class="token function">fcn</span><span class="token punctuation">(</span>T x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>作用</strong>：同一种算法应用于不同参数类型，且模板参数不一定都是泛型。注意，使用模板并不能缩短可执行程序，因为编译器会根据需求生成对应的函数，其实就跟手动定义了该函数一样，仅仅是便于开发。</p>
+<p>类似函数重载，模板也可以进行重载：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>   <span class="token comment">// original template</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span> a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    T tmp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>   <span class="token comment">// overload template</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span>T <span class="token operator">*</span>a<span class="token punctuation">,</span> T <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        T tmp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>针对特定的结构体，如果只想交换其中部分成员变量的值，那么直接采用函数模板则无法实现目标，因而还有显式具体化模板函数。非模板函数优先级高于显式具体化模板函数高于模板函数。<strong>显式具体化模板函数</strong>必须以<code>template &lt;&gt;</code>为开头：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span>job<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> job<span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 非模板</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>       <span class="token comment">// 模板</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token generic-function"><span class="token function">swap</span><span class="token generic class-name"><span class="token operator">&lt;</span>job<span class="token operator">></span></span></span> <span class="token punctuation">(</span>job<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> job<span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 显式具体化模板，swap后的&lt;job>可以省略</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实际上，模板本身不会产生函数定义，而模板实例才是函数定义(模板实例就是传入一个类型给模板，此时就是创建了一个实例，而实例本身就是函数)。通过传入类型的方式实际上采用的是隐式实例化，而显式实例化为：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span> <span class="token keyword">void</span> <span class="token generic-function"><span class="token function">swap</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>而与显式实例化相近的还有显式具体化（两种写法等价）：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token generic-function"><span class="token function">swap</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>隐式实例化、显式实例化、显式具体化统称为具体化，相同之处在于都是使用具体的类型的函数定义而不是通用描述。显式实例化和显式具体化的区别在于前者是<strong>通过模板</strong>来生成对应类型参数的代码，而后者则是“<strong>不使用模板</strong>来生成实例，而是专门为对应类型显式地定义函数”。前者以<code>template</code>开头，而后者则是<code>template &lt;&gt;</code>开头。</p>
+</blockquote>
+</li>
+<li><p>重载解析</p>
+</li>
+</ol>
+<ul>
+<li>创建候选函数列表(包括与调用函数同名地函数以及模板函数)<ul>
+<li>完全匹配(非模板函数优先级高于模板函数): 如果有多个函数可行，则指向非const指针或引用优先和非const指针或引用进行匹配，但这种只适用于指针和引用类型，对于数值类型不起作用。</li>
+<li>提升匹配(整型提升、浮点数提升)</li>
+<li>标准匹配</li>
+<li>自定义转换</li>
+</ul>
+</li>
+<li>通过候选函数列表创建可行函数列表</li>
+<li><p>确定最佳的可行函数</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span>blot<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//#1</span>
+<span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span><span class="token keyword">const</span> blot<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//#2</span>
+<span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span>blot <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//#3</span>
+<span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span><span class="token keyword">const</span> blot <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//#4</span>
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//#5,模板函数</span>
+<span class="token keyword">template</span> <span class="token keyword">void</span> <span class="token generic-function"><span class="token function">recycle</span><span class="token generic class-name"><span class="token operator">&lt;</span>blot<span class="token operator">></span></span></span><span class="token punctuation">(</span>blot <span class="token operator">&amp;</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//#6，显式实例化</span>
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token generic-function"><span class="token function">recycle</span><span class="token generic class-name"><span class="token operator">&lt;</span>blot<span class="token operator">></span></span></span><span class="token punctuation">(</span>blot <span class="token operator">&amp;</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//#7，显式具体化</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">blot</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> b<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+blot ink <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">25</span><span class="token punctuation">,</span> "spots<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token function">recycle</span><span class="token punctuation">(</span>ink<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*1和2无法比较,且会与3，4导致二义性，3>4>7>6>5*/</span>
+<span class="token comment">/*同为完全匹配，更具体的优先级越高*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  总之，重载解析将寻找最匹配的函数。如果只存在这样一个函数，那么就直接选择它；如果存在多个这样的函数，但其中只有一个非模板函数，则选择该非模板函数；如果存在多个都属于模板函数的函数，那么选择其中最具体的那个函数。如果有多个同样何时的非模板函数或模板函数，但没有一个更为具体，则报错。</p>
+</li>
+</ul>
+<ol>
+<li><code>decltype(expression) var;</code>: 定义一个var变量，其类型与expreesion的类型一致。如果expression为<strong>未被括号括起</strong>的变量，则var的类型就是该变量的类型；如果expression为一个函数，则var的类型为该函数的返回值类型(并不会调用该函数)；如果expression为被括号括起的变量，则var类型为该变量类型的引用；前三种情况不满足，则var类型等同于expression类型。</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">long</span> <span class="token function">inded</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">5.4</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span><span class="token operator">&amp;</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>pd<span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> w<span class="token punctuation">;</span>          <span class="token comment">// 1.type double</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> u <span class="token operator">=</span> y<span class="token punctuation">;</span>      <span class="token comment">// 1.type double &amp;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>pd<span class="token punctuation">)</span> v<span class="token punctuation">;</span>         <span class="token comment">// 1.type const double *</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> r<span class="token punctuation">;</span>        <span class="token comment">// 3.type double &amp;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token function">indeed</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> m<span class="token punctuation">;</span>  <span class="token comment">// 2.type long</span>
+<span class="token keyword">int</span> j <span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>k <span class="token operator">=</span> j<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>n <span class="token operator">=</span> j<span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>j<span class="token operator">+</span><span class="token number">6</span><span class="token punctuation">)</span> i1<span class="token punctuation">;</span>       <span class="token comment">// 4.type int</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token number">100L</span><span class="token punctuation">)</span> i2<span class="token punctuation">;</span>      <span class="token comment">// 4.type long</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>k<span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 4.type int</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">void</span> <span class="token function">fcn</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">typedef</span> <span class="token keyword">decltype</span><span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span> xytype<span class="token punctuation">;</span>   <span class="token comment">// 取别名</span>
+    xytype xpy <span class="token operator">=</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">auto</span> <span class="token function">fcn</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">decltype</span><span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 返回类型后边指定为decltype(x+y)</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Vyron Su</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/08/09/Cpp-Primer-Plus-Part2/">http://example.com/2022/08/09/Cpp-Primer-Plus-Part2/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Vyron Su</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-Primer-Plus/">
+                                    <span class="chip bg-color">C++ Primer Plus</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/08/09/Cpp-Primer-Plus-Part3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Cpp Primer Plus Part3">
+                        
+                        <span class="card-title">Cpp Primer Plus Part3</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-Primer-Plus/">
+                        <span class="chip bg-color">C++ Primer Plus</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/08/Computer-System-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Computer System 2">
+                        
+                        <span class="card-title">Computer System 2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            计算机系统学习笔记。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">计算机系统</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: Vyron Su<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    
+
+
+    
+
+</main>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Vyron Su</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2022";
+                    var startMonth = "3";
+                    var startDate = "23";
+                    var startHour = "19";
+                    var startMinute = "17";
+                    var startSecond = "37";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+            
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/vvvvvyron" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1640385879@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1640385879" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1640385879" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
