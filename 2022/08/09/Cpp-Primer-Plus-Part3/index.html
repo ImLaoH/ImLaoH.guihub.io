@@ -379,7 +379,98 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <ol>
+<li>不应该将函数定义和变量定义放在头文件中，否则当其他多个文件中包含了该头文件，则会导致redefinition。头文件中一般包含的内容是：</li>
+</ol>
+<ul>
+<li>函数原型</li>
+<li><h1 id="define或const定义的常量"><a href="#define或const定义的常量" class="headerlink" title="define或const定义的常量"></a>define或const定义的常量</h1></li>
+<li>结构/类声明</li>
+<li>模板声明</li>
+<li>内联函数</li>
+</ul>
+<ol>
+<li>头文件中，尖括号和双引号的区别：</li>
+</ol>
+<ul>
+<li>尖括号：在存储标准头文件的主机系统的文件系统中查找。</li>
+<li>双引号：首先查找当前工作目录或源代码目录(取决于编译器设置)，如果没找到头文件则在标准位置中寻找。</li>
+</ul>
+<ol>
+<li><p>由于不同编译器对于函数的名称修饰不同，因而使用不同的编译器进行编译，可能会由于修饰名称不同而导致函数调用和函数定义不相匹配，因而在进行链接时，应该确保所有文件都是通过同一个编译生成的。</p>
+</li>
+<li><p>存储持续性：自动存储持续性(栈)、静态存储持续性(静态/全局存储区)、线程存储持续性、动态存储持续性(堆/自由存储区)。</p>
+</li>
+</ol>
+<ul>
+<li>自动存储持续性：指在函数中声明的参数和变量，即局部变量，其作用域为局部，没有链接性。当函数中定义了两个变量，其中一个变量在内嵌的代码块中，则在该代码块中，后定义的变量可见，而块外定义的变量则暂时“隐藏”起来。当离开了该代码块后，该变量才再次可见。</li>
+<li>静态存储持续性：具有外部链接性(可在其他文件中访问，即全局变量)、内部链接性(只能在当前文件中访问，即静态全局变量)和无链接性(只能在当前函数或代码块中访问，局部静态变量)三种链接性。静态变量在程序运行期间一直存在直至程序结束时才进行销毁，因而静态变量占据单独的内存块(全局/静态存储区)。<strong>未被初始化的变量的所有位都将被设置为0</strong>，称为<strong>零初始化</strong>. 所有的静态变量都会先进行零初始化，如果某个静态变量通过简单的计算或者用常量进行初始化，则执行常量表达式初始化，否则进行动态初始化(链接阶段初始化)。<br>变量只能定义一次，其余应该为引用声明，即用extern关键字表明该变量是已有变量的引用，不需要额外的内存来创建一个新的变量，因而也不会执行初始化。当代码块中重新定义一个和全局变量同名的变量时，全局变量会被隐藏，而采用作用域解析运算符(::)置于变量前，则会使用该变量的全局版本。</li>
+</ul>
+<ol>
+<li><p>volatile：当定义了一边变量，如果多次用到该变量，编译器可能将该部分进行优化，不会重复读取该变量的内存中的值，而是将该变量的值加载到寄存器中，而后每次读取该变量时就直接从寄存器中读取。但有些情况下，某些变量会因为外部原因而被修改(非程序原因)，直接加载到寄存器可能会导致结果错误，因而volatile的作用就是避免这种情况，禁止编译器对该变量进行优化，因而每次读取该变量就需要到内存中读取。<br> mutable: 用const修饰的变量，意味着程序不应试图区修改它，而对于结构体或类而言，如果成员变量被mutable修饰，即使实例定义为const，也可以修改该实例的对应mutable成员。</p>
+ <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">data</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">mutable</span> <span class="token keyword">int</span> accesses<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> data veep <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"Claybourne Clodde"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>veep<span class="token punctuation">.</span>name<span class="token punctuation">,</span> "Joye Joux<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// invalid</span>
+veep<span class="token punctuation">.</span>accesses<span class="token operator">++</span><span class="token punctuation">;</span>        <span class="token comment">// valid</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> const：用const修饰的全局变量，实际上和static修饰的类似，其链接性为内部的。因此，如果多文件程序想共享同一组const变量，可以在某个头文件中定义该变量，然后其他文件包含该头文件即可。此外，可以通过每个文件都用<code>extern const int states;</code>来将该常量的链接性修改为外部的，但是<strong>每个文件中都需要用extern来修饰，且只有一个文件可以继续宁初始化</strong>，这与普通全局变量不同，后者在定义时不需要加上<code>extern</code>而在其他文件中才需要，常量则每个文件都需要加<code>extern</code>。</p>
+</li>
+<li><p>函数的链接性：一般的函数默认链接性为外部，即所有文件可以共享；而当某个函数用static修饰时，则该函数只能在其定义的文件中使用，而对其他文件不可见；如果外部有同名函数，该文件仍然会调用自身用static修饰的函数(前者被隐藏了). 注意，函数应该只有一次定义，因而不应该将函数定义放在头文件中，而内联函数不受此条件约束，即内联函数允许放在头文件中。</p>
+<blockquote>
+<p>函数优先级：static修饰的函数 &gt; 自定义函数 &gt; 库函数。 </p>
+</blockquote>
+</li>
+<li><p>语言链接性: <code>extern &quot;语言&quot; 返回类型 函数名(参数列表)</code>.当语言缺省时为<code>c++</code>.</p>
+</li>
+<li><p>new运算符所申请的内存和malloc一样，都是位于堆区，需要手动进行释放(delete/free)。二者的区别在于：</p>
+</li>
+</ol>
+<ul>
+<li>new是运算符，而malloc是函数，前者不需要对所需要的空间进行计算，因为它会调用所创建的对象的构造函数，因此所返回的指针也不需要进行强制类型转换；而后者只是单纯的申请一块内存，需要手动计算所需内存大小，并将所返回的内存指针进行类型转换。</li>
+<li>new申请失败后会抛出bac_alloc错误，而malloc则返回一个空指针。</li>
+<li>new可以进行重载，而malloc不能。</li>
+<li>new还可以作为定位运算符，即指定所要使用的内存地址。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>pi <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 创建一个int并初始化为6</span>
+<span class="token keyword">struct</span> <span class="token class-name">where</span><span class="token punctuation">&#123;</span><span class="token keyword">double</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+where <span class="token operator">*</span>one <span class="token operator">=</span> <span class="token keyword">new</span> where<span class="token punctuation">&#123;</span><span class="token number">2.5</span><span class="token punctuation">,</span> <span class="token number">5.3</span><span class="token punctuation">,</span> <span class="token number">7.2</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  <span class="token comment">// 创建结构体并初始化</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>     <span class="token comment">// 创建数组并初始化</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span> <span class="token punctuation">&#123;</span><span class="token number">6</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>     <span class="token comment">// 创建指针并初始化该地址中的值</span>
+<span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>      
+<span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>buf<span class="token punctuation">)</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 指定在buf中创建一个数组,需要包含&lt;new></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>命名空间</li>
+</ol>
+<ul>
+<li><p>using声明使一个名称可用，using编译指令使得所有的名称都可用。这两者会导致名称冲突的可能性，如两个命名空间中有同名名称，此时不能同时对两个空间的该名称使用using声明，否则会存在二义性（但可以进行using编译指令，但访问该名称时需要指定访问哪一个命名空间）。</p>
+</li>
+<li><p>如果名称空间和声明区域定义了相同的名称，用using声明导入该名称到该声明区域将会出错；而采用using编译时，局部变量会覆盖名称空间版本。</p>
+</li>
+<li><p>using编译指令存在可传递性，即如果对于一个具有嵌套名称空间的名称空间，采用using编译指令，会同时对外层命名空间和嵌套名称空间进行导入。</p>
+</li>
+<li>名称空间取别名：<code>namespace 别名 = 原名</code>。</li>
+<li><p>未命名的名称空间类似于static变量。</p>
+  <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">namespace</span> Jill<span class="token punctuation">&#123;</span>
+    <span class="token keyword">double</span> <span class="token function">bucket</span><span class="token punctuation">(</span><span class="token keyword">double</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">double</span> fetch<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> <span class="token class-name">Hill</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">using</span> Jill<span class="token double-colon punctuation">::</span>fetch<span class="token punctuation">;</span>  <span class="token comment">// using声明</span>
+<span class="token comment">// using namespace Jill // using编译指令</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    cin <span class="token operator">>></span> fetch<span class="token punctuation">;</span>
+    <span class="token function">other</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">other</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    cout <span class="token operator">&lt;&lt;</span> fetch<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -488,48 +579,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/09/Cpp-Primer-Plus-Part3/">
+                <a href="/2022/08/09/Linux-4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Cpp Primer Plus Part3">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Linux-4">
                         
-                        <span class="card-title">Cpp Primer Plus Part3</span>
+                        <span class="card-title">Linux-4</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Linux学习笔记4
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-Primer-Plus/">
-                        <span class="chip bg-color">C++ Primer Plus</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

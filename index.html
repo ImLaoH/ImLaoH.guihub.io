@@ -457,29 +457,6 @@
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/forCover/RL.webp');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">Computer System 2</div>
-                            <div class="description center-align">
-                                
-                                    计算机系统学习笔记。
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/08/08/Computer-System-2/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/9.jpg');">
                 <div class="container">
                     <div class="row">
@@ -492,6 +469,29 @@
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/07/12/Basic-Mathematical-Algorithm/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/forCover/RL.webp');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Computer System 2</div>
+                            <div class="description center-align">
+                                
+                                    计算机系统学习笔记。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/08/08/Computer-System-2/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -535,33 +535,21 @@ C++在C的基础上加入了面向对象编程和泛型编程。C是一种面向
                             <div class="description center-align">
                                 
                                     
+不应该将函数定义和变量定义放在头文件中，否则当其他多个文件中包含了该头文件，则会导致redefinition。头文件中一般包含的内容是：
+
+
+函数原型
+define或const定义的常量
+结构/类声明
+模板声明
+内联函数
+
+
+头文件中，尖
                                 
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/08/09/Cpp-Primer-Plus-Part3/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/forCover/RL.webp');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">DDPG</div>
-                            <div class="description center-align">
-                                
-                                    DDPG笔记。
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/04/11/DDPG/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -597,22 +585,74 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/11.jpg');">
+                 style="background-image: url('/medias/featureimages/4.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">JZOffer-51</div>
+                            <div class="title center-align">Cpp Primer Plus Part5</div>
                             <div class="description center-align">
                                 
-                                     剑指 Offer 51. 数组中的逆序对 1 题目描述
-题目链接：剑指 Offer 51. 数组中的逆序对
+                                    
+类中的静态变量(不包括静态常量)只能在类外进行初始化，该变量由所有类对象所共享，且存储在静态存储区，即使创建多个类实例，该变量也只存在一个。初始化时需要加上变量的类型、作用域运算符，但不再需要加上static关键字。
 
-在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
-示
+通过new []申
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/07/20/JZOffer-51/" class="waves-effect waves-light btn"
+                                <a href="/2022/08/11/Cpp-Primer-Plus-Part5/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/3.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Cpp Primer Plus Part4</div>
+                            <div class="description center-align">
+                                
+                                    
+类的访问控制
+
+通过类的对象即可访问类的公有成员，而只能通过类对象的公有成员函数(或友元函数)来访问对象的保护和私有成员。(类的默认控制权为私有的，而结构则是公有的)
+
+类声明中的短小成员函数会被作为内联函数来使用。
+
+类的构造函数不可以
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/08/10/Cpp-Primer-Plus-Part4/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/forCover/RL.webp');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">DDPG</div>
+                            <div class="description center-align">
+                                
+                                    DDPG笔记。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/04/11/DDPG/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -639,6 +679,33 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/05/31/JZOffer-44/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/11.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">JZOffer-51</div>
+                            <div class="description center-align">
+                                
+                                     剑指 Offer 51. 数组中的逆序对 1 题目描述
+题目链接：剑指 Offer 51. 数组中的逆序对
+
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
+示
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/20/JZOffer-51/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -704,32 +771,6 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/23.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">JZOffer-66</div>
-                            <div class="description center-align">
-                                
-                                     剑指 Offer 66. 构建乘积数组 1 题目描述
-题目链接：剑指 Offer 66. 构建乘积数组
-
-给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中 B[i] 的值是数组 A 中除了下标 i 以
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/07/JZOffer-66/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/8.jpg');">
                 <div class="container">
                     <div class="row">
@@ -745,6 +786,32 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/01/JZOffer-II-011/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/23.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">JZOffer-66</div>
+                            <div class="description center-align">
+                                
+                                     剑指 Offer 66. 构建乘积数组 1 题目描述
+题目链接：剑指 Offer 66. 构建乘积数组
+
+给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中 B[i] 的值是数组 A 中除了下标 i 以
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/07/JZOffer-66/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -796,55 +863,6 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/6.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">JZOffer-II-031</div>
-                            <div class="description center-align">
-                                
-                                     剑指 Offer II 31. 最近最少使用缓存 1 题目描述
-题目链接：剑指 Offer 62. 圆圈中最后剩下的数字
-
-运用所掌握的数据结构，设计和实现一个  LRU (Least Recently Used，最近最少使用) 缓存机制
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/06/JZOffer-II-031/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/22.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">KMP</div>
-                            <div class="description center-align">
-                                
-                                    KMP算法
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/05/KMP/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/15.jpg');">
                 <div class="container">
                     <div class="row">
@@ -860,6 +878,32 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/07/23/JZOffer-II-115/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/6.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">JZOffer-II-031</div>
+                            <div class="description center-align">
+                                
+                                     剑指 Offer II 31. 最近最少使用缓存 1 题目描述
+题目链接：剑指 Offer 62. 圆圈中最后剩下的数字
+
+运用所掌握的数据结构，设计和实现一个  LRU (Least Recently Used，最近最少使用) 缓存机制
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/06/JZOffer-II-031/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -894,6 +938,29 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/22.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">KMP</div>
+                            <div class="description center-align">
+                                
+                                    KMP算法
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/05/KMP/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/1.jpg');">
                 <div class="container">
                     <div class="row">
@@ -917,6 +984,29 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/3.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Linux-4</div>
+                            <div class="description center-align">
+                                
+                                    Linux学习笔记4
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/08/09/Linux-4/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/2.jpg');">
                 <div class="container">
                     <div class="row">
@@ -924,11 +1014,34 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                             <div class="title center-align">Linux-3</div>
                             <div class="description center-align">
                                 
-                                    Linux学习笔记2
+                                    Linux学习笔记3
                                 
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/07/06/Linux-3/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/4.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Linux-5</div>
+                            <div class="description center-align">
+                                
+                                    Linux学习笔记5
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/08/09/Linux-5/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -967,29 +1080,6 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">深度强化学习</div>
-                            <div class="description center-align">
-                                
-                                    深度强化学习笔记。
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/03/21/NN/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/forCover/RL.webp');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
                             <div class="title center-align">Notes_on_PyTorch</div>
                             <div class="description center-align">
                                 
@@ -1013,14 +1103,14 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">Reinforcement Learning</div>
+                            <div class="title center-align">深度强化学习</div>
                             <div class="description center-align">
                                 
-                                    李宏毅强化学习课程笔记。
+                                    深度强化学习笔记。
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/03/25/RL/" class="waves-effect waves-light btn"
+                                <a href="/2022/03/21/NN/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1080,32 +1170,6 @@ strcmp()接受两个字符串地址为参数，当第一个字符串的字母序
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/0.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">Value Iteration vs Policy Iteration</div>
-                            <div class="description center-align">
-                                
-                                     策略迭代 Policy Iteration
-策略迭代包括策略评估(Policy Evaluation)和策略改进(Policy Improvement)两个步骤，通过二者的交替迭代来求解MDP。
-策略评估
-给定一个Policy，通过动态规
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/03/31/Value-Iteration-vs-Policy-Iteration/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/10.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1136,6 +1200,32 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/0.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Value Iteration vs Policy Iteration</div>
+                            <div class="description center-align">
+                                
+                                     策略迭代 Policy Iteration
+策略迭代包括策略评估(Policy Evaluation)和策略改进(Policy Improvement)两个步骤，通过二者的交替迭代来求解MDP。
+策略评估
+给定一个Policy，通过动态规
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/03/31/Value-Iteration-vs-Policy-Iteration/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/20.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1152,6 +1242,29 @@ void main()&#123;
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/07/26/binarySearch-on-LIS/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/forCover/RL.webp');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Reinforcement Learning</div>
+                            <div class="description center-align">
+                                
+                                    李宏毅强化学习课程笔记。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/03/25/RL/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1192,29 +1305,6 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">ch10-of-programmercarl-1</div>
-                            <div class="description center-align">
-                                
-                                    代码随想录二刷笔记之动态规划篇-Part1
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/04/18/ch10-of-programmercarl-1/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/21.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1238,18 +1328,18 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/23.jpg');">
+                 style="background-image: url('/medias/featureimages/1.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">ch10-of-programmercarl-3</div>
+                            <div class="title center-align">ch10-of-programmercarl-1</div>
                             <div class="description center-align">
                                 
-                                    代码随想录二刷笔记之动态规划篇-Part3
+                                    代码随想录二刷笔记之动态规划篇-Part1
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/04/19/ch10-of-programmercarl-3/" class="waves-effect waves-light btn"
+                                <a href="/2022/04/18/ch10-of-programmercarl-1/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1307,18 +1397,18 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/20.jpg');">
+                 style="background-image: url('/medias/featureimages/23.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">ch11-of-programmercarl</div>
+                            <div class="title center-align">ch10-of-programmercarl-3</div>
                             <div class="description center-align">
                                 
-                                    代码随想录二刷笔记之单调栈篇
+                                    代码随想录二刷笔记之动态规划篇-Part3
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/04/18/ch11-of-programmercarl/" class="waves-effect waves-light btn"
+                                <a href="/2022/04/19/ch10-of-programmercarl-3/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1342,6 +1432,29 @@ void main()&#123;
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/04/17/ch2-of-programmercarl/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/20.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">ch11-of-programmercarl</div>
+                            <div class="description center-align">
+                                
+                                    代码随想录二刷笔记之单调栈篇
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/04/18/ch11-of-programmercarl/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1491,29 +1604,6 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/22.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">ch8-of-programmercarl-1</div>
-                            <div class="description center-align">
-                                
-                                    代码随想录二刷笔记之回溯篇-Part1
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/04/18/ch8-of-programmercarl-1/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/23.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1549,6 +1639,29 @@ void main()&#123;
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/04/19/ch8-of-programmercarl-2/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/22.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">ch8-of-programmercarl-1</div>
+                            <div class="description center-align">
+                                
+                                    代码随想录二刷笔记之回溯篇-Part1
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/04/18/ch8-of-programmercarl-1/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1629,6 +1742,34 @@ void main()&#123;
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/5.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode template</div>
+                            <div class="description center-align">
+                                
+                                     13. 罗马数字转整数 1 题目描述
+题目链接：13. 罗马数字转整数
+
+罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
+
+字符&emsp;&emsp;&emsp;数值&emsp;I&emsp;&emsp;&emsp;
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/04/10/leetcode-13/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/17.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1679,57 +1820,6 @@ fr
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/04/09/leetcode-138/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/5.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode template</div>
-                            <div class="description center-align">
-                                
-                                     13. 罗马数字转整数 1 题目描述
-题目链接：13. 罗马数字转整数
-
-罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
-
-字符&emsp;&emsp;&emsp;数值&emsp;I&emsp;&emsp;&emsp;
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/04/10/leetcode-13/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/forCover/coding.webp');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">编程语言基础</div>
-                            <div class="description center-align">
-                                
-                                    汇集C、Cpp、Python等相关的基础知识以及编程实例。
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/03/19/coding%20tips/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1851,6 +1941,112 @@ LRUCache(int capacit
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/8.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-165</div>
+                            <div class="description center-align">
+                                
+                                     LeetCode 165. 比较版本号 1 题目描述
+题目链接：165. 比较版本号
+
+给你两个版本号 version1 和 version2 ，请你比较它们。
+版本号由一个或多个修订号组成，各修订号由一个 &#39;.&#39; 连接。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/07/leetcode-165/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/forCover/coding.webp');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">编程语言基础</div>
+                            <div class="description center-align">
+                                
+                                    汇集C、Cpp、Python等相关的基础知识以及编程实例。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/03/19/coding%20tips/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/13.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode.295</div>
+                            <div class="description center-align">
+                                
+                                     LeetCode 295.数据流的中位数 1 题目描述
+题目链接：295.数据流的中位数
+题目链接：剑指 Offer 41. 数据流中的中位数
+
+中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。
+例如，
+[2,
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/03/24/leetcode-295/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/22.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-347</div>
+                            <div class="description center-align">
+                                
+                                     LeetCode 347. 前 K 个高频元素 1 题目描述
+题目链接：347. 前 K 个高频元素
+
+给你一个整数数组 nums 和一个整数 k ，请你返回其中出现频率前 k 高的元素。你可以按 任意顺序 返回答案。
+示例1：[mayb
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/01/leetcode-347/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/23.jpg');">
                 <div class="container">
                     <div class="row">
@@ -1878,22 +2074,22 @@ LRUCache(int capacit
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/8.jpg');">
+                 style="background-image: url('/medias/featureimages/16.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-165</div>
+                            <div class="title center-align">leetcode-437</div>
                             <div class="description center-align">
                                 
-                                     LeetCode 165. 比较版本号 1 题目描述
-题目链接：165. 比较版本号
+                                     437. 路径总和 III 1 题目描述
+题目链接：437. 路径总和 III
 
-给你两个版本号 version1 和 version2 ，请你比较它们。
-版本号由一个或多个修订号组成，各修订号由一个 &#39;.&#39; 连接。
+给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。
+路径 不需要从根节
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/06/07/leetcode-165/" class="waves-effect waves-light btn"
+                                <a href="/2022/07/11/leetcode-437/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -1964,33 +2160,6 @@ LRUCache(int capacit
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/22.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-347</div>
-                            <div class="description center-align">
-                                
-                                     LeetCode 347. 前 K 个高频元素 1 题目描述
-题目链接：347. 前 K 个高频元素
-
-给你一个整数数组 nums 和一个整数 k ，请你返回其中出现频率前 k 高的元素。你可以按 任意顺序 返回答案。
-示例1：[mayb
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/01/leetcode-347/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/21.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2013,6 +2182,36 @@ LRUCache(int capacit
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/14/leetcode-5/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/0.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-77</div>
+                            <div class="description center-align">
+                                
+                                     LeetCode 77. 组合 1 题目描述
+题目链接：77. 组合
+
+给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
+你可以按任何顺序返回答案。
+示例1:
+
+输入：n = 4, k = 2输出：[&em
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/03/26/leetcode-77/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2079,33 +2278,6 @@ LRUCache(int capacit
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/4.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-815</div>
-                            <div class="description center-align">
-                                
-                                     LeetCode 815. 公交路线 1 题目描述
-题目链接：815. 公交路线
-
-给你一个数组 routes ，表示一系列公交线路，其中每个 routes[i] 表示一条公交线路，第 i 辆公交车将会在上面循环行驶。
-例如，路线 rou
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/19/leetcode-815/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/5.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2151,92 +2323,6 @@ LRUCache(int capacit
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/16.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-437</div>
-                            <div class="description center-align">
-                                
-                                     437. 路径总和 III 1 题目描述
-题目链接：437. 路径总和 III
-
-给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。
-路径 不需要从根节
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/11/leetcode-437/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/13.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode.295</div>
-                            <div class="description center-align">
-                                
-                                     LeetCode 295.数据流的中位数 1 题目描述
-题目链接：295.数据流的中位数
-题目链接：剑指 Offer 41. 数据流中的中位数
-
-中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。
-例如，
-[2,
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/03/24/leetcode-295/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/0.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-77</div>
-                            <div class="description center-align">
-                                
-                                     LeetCode 77. 组合 1 题目描述
-题目链接：77. 组合
-
-给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
-你可以按任何顺序返回答案。
-示例1:
-
-输入：n = 4, k = 2输出：[&em
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/03/26/leetcode-77/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/22.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2253,6 +2339,33 @@ LRUCache(int capacit
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/07/leetcode-875/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/4.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-815</div>
+                            <div class="description center-align">
+                                
+                                     LeetCode 815. 公交路线 1 题目描述
+题目链接：815. 公交路线
+
+给你一个数组 routes ，表示一系列公交线路，其中每个 routes[i] 表示一条公交线路，第 i 辆公交车将会在上面循环行驶。
+例如，路线 rou
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/19/leetcode-815/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2314,18 +2427,18 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/10.jpg');">
+                 style="background-image: url('/medias/featureimages/9.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-biweekly-contest-80</div>
+                            <div class="title center-align">leetcode-biweekly-contest-81</div>
                             <div class="description center-align">
                                 
-                                    力扣第 80 场双周赛
+                                    力扣第 81 场双周赛
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/06/12/leetcode-biweekly-contest-80/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/26/leetcode-biweekly-contest-81/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2360,6 +2473,29 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/7.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-biweekly-contest-83</div>
+                            <div class="description center-align">
+                                
+                                    力扣第 83 场双周赛
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/24/leetcode-biweekly-contest-83/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/8.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2383,18 +2519,18 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/9.jpg');">
+                 style="background-image: url('/medias/featureimages/10.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-biweekly-contest-81</div>
+                            <div class="title center-align">leetcode-biweekly-contest-80</div>
                             <div class="description center-align">
                                 
-                                    力扣第 81 场双周赛
+                                    力扣第 80 场双周赛
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/06/26/leetcode-biweekly-contest-81/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/12/leetcode-biweekly-contest-80/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2433,18 +2569,18 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/7.jpg');">
+                 style="background-image: url('/medias/featureimages/20.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-biweekly-contest-83</div>
+                            <div class="title center-align">leetcode-weekly-contest-290</div>
                             <div class="description center-align">
                                 
-                                    力扣第 83 场双周赛
+                                    力扣第 290 场周赛
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/07/24/leetcode-biweekly-contest-83/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/12/leetcode-weekly-contest-290/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2479,29 +2615,6 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/20.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-weekly-contest-290</div>
-                            <div class="description center-align">
-                                
-                                    力扣第 290 场周赛
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/12/leetcode-weekly-contest-290/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/16.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2514,52 +2627,6 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/05/28/leetcode-weekly-contest-294/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/13.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-weekly-contest-297</div>
-                            <div class="description center-align">
-                                
-                                    力扣第 297 场周赛
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/12/leetcode-weekly-contest-297/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/11.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-weekly-contest-299</div>
-                            <div class="description center-align">
-                                
-                                    力扣第 299 场周赛
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/26/leetcode-weekly-contest-299/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2594,18 +2661,18 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/10.jpg');">
+                 style="background-image: url('/medias/featureimages/13.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-weekly-contest-300</div>
+                            <div class="title center-align">leetcode-weekly-contest-297</div>
                             <div class="description center-align">
                                 
-                                    力扣第 300 场周赛
+                                    力扣第 297 场周赛
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/07/03/leetcode-weekly-contest-300/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/12/leetcode-weekly-contest-297/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2629,6 +2696,52 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/19/leetcode-weekly-contest-298/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/11.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-weekly-contest-299</div>
+                            <div class="description center-align">
+                                
+                                    力扣第 299 场周赛
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/26/leetcode-weekly-contest-299/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/10.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-weekly-contest-300</div>
+                            <div class="description center-align">
+                                
+                                    力扣第 300 场周赛
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/03/leetcode-weekly-contest-300/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2686,6 +2799,29 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/7.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">leetcode-weekly-contest-303</div>
+                            <div class="description center-align">
+                                
+                                    力扣第 303 场周赛
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/07/24/leetcode-weekly-contest-303/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/5.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2715,29 +2851,6 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/7.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">leetcode-weekly-contest-303</div>
-                            <div class="description center-align">
-                                
-                                    力扣第 303 场周赛
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/24/leetcode-weekly-contest-303/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/18.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2755,33 +2868,6 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/18/nowcoder-HJ-16/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/20.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">nowcoder-HJ-18</div>
-                            <div class="description center-align">
-                                
-                                     HJ18 识别有效的IP地址和掩码并进行分类统计 1 题目描述
-题目链接：HJ18 识别有效的IP地址和掩码并进行分类统计
-
-请解析IP地址和对应的掩码，进行分类识别。要求按照A/B/C/D/E类地址归类，不合法的地址和掩码单独归类。
-所
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/19/nowcoder-HJ-18/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2822,22 +2908,48 @@ n 块石头放置在二维平面中的一些整数坐标点上。每个坐标点
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/23.jpg');">
+                 style="background-image: url('/medias/featureimages/9.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">nowcoder-HJ-24</div>
+                            <div class="title center-align">nowcoder-67</div>
                             <div class="description center-align">
                                 
-                                     HJ24 合唱队 1 题目描述
-题目链接：HJ24 合唱队
+                                     HJ67 24点游戏算法 1 题目描述
+题目链接：HJ67 24点游戏算法
 
-N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下的 K 位同学排成合唱队形。
-设KK位同学从左到右依次编号为 1，2…，K ，他们的身高分别为 $T_1,T_2,…,T
+给出4个1-10的数字，通过加减乘除运算，得到数字为24就算胜利,除法指实数除法运算,运算符仅允许出现在两个数字之间,本题对数字选取顺序无要求，但每个数字仅允许
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/06/22/nowcoder-HJ-24/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/23/nowcoder-HJ-67/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/20.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">nowcoder-HJ-18</div>
+                            <div class="description center-align">
+                                
+                                     HJ18 识别有效的IP地址和掩码并进行分类统计 1 题目描述
+题目链接：HJ18 识别有效的IP地址和掩码并进行分类统计
+
+请解析IP地址和对应的掩码，进行分类识别。要求按照A/B/C/D/E类地址归类，不合法的地址和掩码单独归类。
+所
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/19/nowcoder-HJ-18/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2875,21 +2987,22 @@ N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/9.jpg');">
+                 style="background-image: url('/medias/featureimages/23.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">nowcoder-67</div>
+                            <div class="title center-align">nowcoder-HJ-24</div>
                             <div class="description center-align">
                                 
-                                     HJ67 24点游戏算法 1 题目描述
-题目链接：HJ67 24点游戏算法
+                                     HJ24 合唱队 1 题目描述
+题目链接：HJ24 合唱队
 
-给出4个1-10的数字，通过加减乘除运算，得到数字为24就算胜利,除法指实数除法运算,运算符仅允许出现在两个数字之间,本题对数字选取顺序无要求，但每个数字仅允许
+N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下的 K 位同学排成合唱队形。
+设KK位同学从左到右依次编号为 1，2…，K ，他们的身高分别为 $T_1,T_2,…,T
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2022/06/23/nowcoder-HJ-67/" class="waves-effect waves-light btn"
+                                <a href="/2022/06/22/nowcoder-HJ-24/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -2959,29 +3072,6 @@ V^\pi = \sum\limits_{a \in A}\pi(a|s)Q^\pi(s,a)Q^\pi(s,a) = R^\pi(s,a) + \gamma 
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/22.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">stm32-2-INTERRUPT-1</div>
-                            <div class="description center-align">
-                                
-                                    STM学习笔记2
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/06/13/stm32-2-INTERRUPT-1/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/16.jpg');">
                 <div class="container">
                     <div class="row">
@@ -2994,6 +3084,29 @@ V^\pi = \sum\limits_{a \in A}\pi(a|s)Q^\pi(s,a)Q^\pi(s,a) = R^\pi(s,a) + \gamma 
                             </div>
                             <div class="cover-btns">
                                 <a href="/2022/06/10/stm32-1-GPIO/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/22.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">stm32-2-INTERRUPT-1</div>
+                            <div class="description center-align">
+                                
+                                    STM学习笔记2
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/06/13/stm32-2-INTERRUPT-1/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -3206,6 +3319,237 @@ V^\pi = \sum\limits_{a \in A}\pi(a|s)Q^\pi(s,a)Q^\pi(s,a) = R^\pi(s,a) + \gamma 
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2022/08/11/Cpp-Primer-Plus-Part5/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Cpp Primer Plus Part5">
+                            
+                            <span class="card-title">Cpp Primer Plus Part5</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+类中的静态变量(不包括静态常量)只能在类外进行初始化，该变量由所有类对象所共享，且存储在静态存储区，即使创建多个类实例，该变量也只存在一个。初始化时需要加上变量的类型、作用域运算符，但不再需要加上static关键字。
+
+通过new []申
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C-Primer-Plus/">
+                            <span class="chip bg-color">C++ Primer Plus</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/08/10/Cpp-Primer-Plus-Part4/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Cpp Primer Plus Part4">
+                            
+                            <span class="card-title">Cpp Primer Plus Part4</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+类的访问控制
+
+通过类的对象即可访问类的公有成员，而只能通过类对象的公有成员函数(或友元函数)来访问对象的保护和私有成员。(类的默认控制权为私有的，而结构则是公有的)
+
+类声明中的短小成员函数会被作为内联函数来使用。
+
+类的构造函数不可以
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C-Primer-Plus/">
+                            <span class="chip bg-color">C++ Primer Plus</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/08/10/Linux-6/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux-6">
+                            
+                            <span class="card-title">Linux-6</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Vyron Su
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/08/09/Linux-5/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux-5">
+                            
+                            <span class="card-title">Linux-5</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Linux学习笔记5
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/08/09/Linux-4/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Linux-4">
+                            
+                            <span class="card-title">Linux-4</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Linux学习笔记4
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2022/08/09/Cpp-Primer-Plus-Part3/">
                         <div class="card-image">
                             
@@ -3218,6 +3562,19 @@ V^\pi = \sum\limits_{a \in A}\pi(a|s)Q^\pi(s,a)Q^\pi(s,a) = R^\pi(s,a) + \gamma 
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
+                            
+                                
+不应该将函数定义和变量定义放在头文件中，否则当其他多个文件中包含了该头文件，则会导致redefinition。头文件中一般包含的内容是：
+
+
+函数原型
+define或const定义的常量
+结构/类声明
+模板声明
+内联函数
+
+
+头文件中，尖
                             
                         </div>
                         <div class="publish-info">
@@ -3546,259 +3903,6 @@ LRUCache(int capacit
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/24/leetcode-biweekly-contest-83/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="leetcode-biweekly-contest-83">
-                            
-                            <span class="card-title">leetcode-biweekly-contest-83</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                力扣第 83 场双周赛
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Cpp/">
-                            <span class="chip bg-color">Cpp</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
-                            <span class="chip bg-color">力扣周赛</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/24/leetcode-weekly-contest-303/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="leetcode-weekly-contest-303">
-                            
-                            <span class="card-title">leetcode-weekly-contest-303</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                力扣第 303 场周赛
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Cpp/">
-                            <span class="chip bg-color">Cpp</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B/">
-                            <span class="chip bg-color">力扣周赛</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/23/JZOffer-II-115/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JZOffer-II-115">
-                            
-                            <span class="card-title">JZOffer-II-115</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                 剑指 Offer II 115. 重建序列 1 题目描述
-题目链接：剑指 Offer II 115. 重建序列
-
-给定一个长度为 n 的整数数组 nums ，其中 nums 是范围为 [1，n] 的整数的排列。还提供了一个 2D 整数数组
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%88%B7%E9%A2%98/" class="post-category">
-                                    刷题
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
-                            <span class="chip bg-color">拓扑排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/23/leetcode-399/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="leetcode-399">
-                            
-                            <span class="card-title">leetcode-399</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                 LeetCode 399. 除法求值 1 题目描述
-题目链接：399. 除法求值
-
-给你一个变量对数组 equations 和一个实数值数组 values 作为已知条件，其中 equations[i] = [Ai, Bi] 和 value
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%A2%98%E8%A7%A3%E6%A8%A1%E6%9D%BF/" class="post-category">
-                                    题解模板
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
-                            <span class="chip bg-color">并查集</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%9C%89%E6%9D%83%E5%9B%BE/">
-                            <span class="chip bg-color">有权图</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/21/Topological-Sort/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Topological Sort">
-                            
-                            <span class="card-title">Topological Sort</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                 拓扑排序是什么？&emsp;&emsp;对于任何有向图而言，其拓扑排序为其所有结点的一个线性排序（对于同一个有向图而言可能存在多个这样的结点排序）。该排序满足这样的条件——对于图中的任意两个结点u和v，若存在一条有向边从u指向v，则在拓扑
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
-                            <span class="chip bg-color">拓扑排序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -3815,7 +3919,7 @@ LRUCache(int capacit
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 9</div>
+            <div class="center-align b-text-gray">1 / 10</div>
         </div>
         <div class="col s6 m4 l4">
             
