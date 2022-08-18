@@ -402,14 +402,6 @@
 <ul>
 <li>vim中输入<code>:set nu</code>可以为文件添加行号。</li>
 <li><code>mv FILE1 FILE2</code>: 将文件FILE1重命名为FILE2。</li>
-<li>标准C库IO函数中，通过<code>fopen</code>方法打开一个文件时，返回的是一个文件指针<code>FILE *fp</code>(是一个结构体)，其包含文件描述符(整型，指向已打开的文件)、文件读写指针(读写文件过程中指针/光标的实际位置)以及I/O缓冲区(内存地址，用于寻址找到对应的内存块，通常为8192byte)。</li>
-<li>数据从内存刷新到磁盘的三种情况：<ul>
-<li>强制刷新缓冲区：fflush</li>
-<li>缓冲区已满</li>
-<li>正常关闭文件: flose(), return(main函数)，exit(main函数)。</li>
-</ul>
-</li>
-<li>标准C库IO是首先由用户程序进行调用，然后将数据写到缓冲区，最后调用内核函数将缓冲区的数据刷新到磁盘中。因此，标准C库IO和Linux系统IO的关系是前者调用后者的关系。</li>
 </ul>
 
                 

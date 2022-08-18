@@ -318,116 +318,35 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -460,7 +379,123 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <ol>
+<li><p>程序是包含一系列信息的文件，这些信息描述了如何在运行时创建一个进程。</p>
+</li>
+<li><p>进程是正在运行的程序的实例。是一个具有一定独立功能的程序关于某个数据集合的一次运行活动。它是操作系统动态执行的基本单元，在传统的操作系统中，进程既是<strong>基本的分配单元</strong>，也是<strong>基本的执行单元</strong>。实际上，进程是操作系统为正在运行的程序所分配的计算机资源的抽象。</p>
+</li>
+</ol>
+<p>&emsp;&emsp;进程和程序的区别：程序是存储在计算机磁盘中的可执行程序，不占用计算机的其他资源；而进程是正在运行的程序的实例，会占用计算机的内存和CPU资源。</p>
+<p>&emsp;&emsp;从内核的角度看，<strong>进程由用户内存空间和一系列内核数据结构组成</strong>，其中用户内存空间包含了程序代码及代码所使用的变量，而内核数据结构则用于维护进程状态信息。</p>
+<ol>
+<li>单道程序VS多道程序</li>
+</ol>
+<p>&emsp;&emsp;单道程序: 在计算机内存中只允许一个的程序运行；<br>&emsp;&emsp;多道程序: 多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行,两个或两个以上程序在计算机系统中同处于开始到结束之间的状态, 这些程序共享计算机系统资源。引入多道程序设计技术的根本目的是为了<strong>提高 CPU 的利用率</strong>。微观上，同一时刻还是正在运行的程序还是只有一个。</p>
+<ol>
+<li><p>时间片：操作系统分配给每个正在运行的进程微观上的一段 CPU 时间(在Linux上为 5ms－800ms)。时间片由操作系统内核的调度程序分配给每个进程。时间片不能过于小，因为在切换时操作系统需要通过进程调度程序来保存当前的程序的执行状态，然后加载其他程序的执行状态，这个过程需要一定的时间。<br>&emsp;&emsp;时间片由操作系统内核的调度程序分配给每个进程。首先，内核会给每个进程分配<strong>相等的初始时间片</strong>，然后每个进程轮番地执行相应的时间，当所有进程都处于时间片耗尽的状态时，内核会重新为每个进程计算并分配时间片，如此往复。</p>
+<blockquote>
+<p>自行了解进程调度算法、策略。</p>
+</blockquote>
+</li>
+<li><p>并行VS并发</p>
+</li>
+</ol>
+<ul>
+<li>并行(parallel)：指在同一时刻，有多条指令在多个处理器上同时执行。</li>
+<li>并发(concurrency)：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在<strong>宏观上具有多个进程同时执行的效果</strong>，但在微观上并不是同时执行的，只是把时间分成若干段，使多个进程快速交替的执行(<strong>微观上快速切换</strong>)。</li>
+</ul>
+<ol>
+<li>进程控制块</li>
+</ol>
+<p>&emsp;&emsp;为了管理进程，内核必须对每个进程所做的事情进行清楚的描述。内核为每个进程分配一个 PCB(Processing Control Block)进程控制块，维护进程相关的信息，Linux 内核的进程控制块是 <code>task_struct</code> 结构体(位于<code>/usr/src/linux-headers-xxx/include/linux/sched.h</code>中)。</p>
+<ul>
+<li>进程id：系统中每个进程有唯一的 id，用 pid_t 类型表示，其实就是一个非负整数</li>
+<li>进程的状态：有就绪、运行、挂起、停止等状态</li>
+<li>进程切换时需要保存和恢复的一些CPU寄存器</li>
+<li>描述虚拟地址空间的信息</li>
+<li>描述控制终端的信息</li>
+<li>当前工作目录（Current Working Directory）</li>
+<li>umask 掩码</li>
+<li>文件描述符表，包含很多指向 file 结构体的指针</li>
+<li>和信号相关的信息</li>
+<li>用户 id 和组 id</li>
+<li>会话（Session）和进程组</li>
+<li>进程可以使用的资源上限（Resource Limit）</li>
+</ul>
+<blockquote>
+<p>通过<code>ulimit -a</code>可以查询计算机系统的资源上限。</p>
+</blockquote>
+<ol>
+<li>进程状态反映进程执行过程的变化。这些状态随着进程的执行和外界条件的变化而转换。在<strong>三态模型</strong>中，进程状态分为三个基本状态，即就绪态，运行态，阻塞态。在<strong>五态模型</strong>中，进程分为新建态、就绪态，运行态，阻塞态，终止态。</li>
+</ol>
+<ul>
+<li>运行态：进程占有处理器正在运行.</li>
+<li>就绪态：进程具备运行条件，等待系统分配处理器以便运行。当进程已分配到除CPU以外的所有必要资源后，只要再获得CPU，便可立即执行。在一个系统中处于就绪状态的进程可能有多个，通常将它们排成一个队列，称为<strong>就绪队列</strong>.</li>
+<li>阻塞态：又称为等待(wait)态或睡眠(sleep)态，指进程不具备运行条件，正在等待某个事件的完成.</li>
+</ul>
+<p><img src="/2022/08/10/Linux-6/state.png" alt></p>
+<blockquote>
+<p>阻塞态无法直接转换为运行态，而是需要转换为就绪态。</p>
+</blockquote>
+<ul>
+<li>新建态：进程刚被创建时的状态，尚未进入就绪队列.</li>
+<li>终止态：进程完成任务<strong>到达正常结束点</strong>，或<strong>出现无法克服的错误</strong>而异常终止，或<strong>被操作系统及有终止权的进程所终止</strong>时所处的状态。进入终止态的进程以后不再执行，但依然保留在操作系统中等待善后。一旦其他进程完成了对终止态进程的信息抽取之后，操作系统将删除该进程.</li>
+</ul>
+<blockquote>
+<p>终止后的进程无法继续运行，因为其虚拟地址空间中用户区已经被释放，而内核区等待被善后。</p>
+</blockquote>
+<ol>
+<li>相关shell指令</li>
+</ol>
+<ul>
+<li>查看进程(静态，快照)<ul>
+<li><code>ps aux/ajx</code><ul>
+<li>a：显示终端上的所有进程</li>
+<li>u: 显示进程详细信息</li>
+<li>x：显示没有控制终端的进程</li>
+<li>j: 列出与作业控制相关的信息</li>
+<li>状态：<ul>
+<li>D：不可中断</li>
+<li>R: 正在运行</li>
+<li>S: 处于睡眠状态</li>
+<li>T: 停止或被跟踪</li>
+<li>Z：僵尸进程</li>
+<li>W：进入内存交换</li>
+<li>X：死掉的进程</li>
+<li>&lt;：高优先级</li>
+<li>N：低优先级</li>
+<li>s：包含子进程</li>
+<li>+：位于前台的进程组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查看进程（动态显示）<ul>
+<li><code>top</code>，可在其后加<code>-d</code>用于指定更新的时间间隔。显示时可以通过按键对显示结果进行排序(M为按内存使用量排序、P按CPU占有率、T按进程运行时间长短、U按用户名筛选进程、K接PID为杀死对应的进程)。</li>
+</ul>
+</li>
+<li>杀死进程<ul>
+<li><code>kill [-signal] pid</code>: 杀死对应的进程</li>
+<li><code>kill -l</code>：列出所有的信号</li>
+<li><code>kill -SIGKILL pid/kill -9 pid</code>: 强制杀死对应进程</li>
+<li><code>killall name</code>: 根据进程名杀死进程</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>进程号：每个进程都由进程号来标识，其类型为 pid_t（整型），进程号的范围： 0～ 32767。进程号总是唯一的，但可以重用。当一个进程终止后，其进程号就可以再次使用。任何进程(除init进程)都是由另一个进程创建，该进程称为被创建进程的父进程，对应的进程号称为父进程号（PPID）。</li>
+</ol>
+<ul>
+<li>相关函数<ul>
+<li><code>pid_t getpid(void);</code></li>
+<li><code>pid_t getppid(void);</code></li>
+<li><code>pis_t getpgid(void);</code></li>
+</ul>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -523,7 +558,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -732,104 +771,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     
 
 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
     
 
 </main>
 
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
@@ -966,6 +918,45 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+            
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">

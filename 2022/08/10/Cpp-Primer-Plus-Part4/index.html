@@ -395,7 +395,7 @@ Stock <span class="token operator">*</span>pstock <span class="token operator">=
 </li>
 <li><p>析构函数负责完成类对象所占据的内存的回收，即销毁类对象。其函数名为构造函数前加上<code>~</code>，同样也不允许有返回值。<br> 析构函数不应该在代码中显式地进行调用。因为如果类对象是静态存储类对象时，程序结束后会自动调用析构函数；为自动存储类对象时则会在代码块结束时自行调用；而当为通过new创建的类对象时，只需通过delete即可自动调用析构函数；而当类对象为临时的副本对象时，程序结束时也会自动调用析构函数。</p>
 </li>
-<li><p>const成员函数：一般而言，定义了一个const类对象，并通过该对象访问类的成员函数时，编译器将会拒绝这一行为，因为无法确保该函数不会对类对象进行修改，因此需要定义const成员函数，通过在函数后加上const来表征：<code>void stock::show() const</code>. <strong>只要类方法不修改调用对象，就应声明为const</strong>。</p>
+<li><p>const成员函数：一般而言，定义了一个const类对象，并通过该对象访问类的成员函数时，编译器将会拒绝这一行为，因为无法确保该函数不会对类对象进行修改，因此需要定义const成员函数，通过在函数后加上const来表征：<code>void stock::show() const</code>. <strong>只要类方法不修改调用对象，就应声明为const</strong>。参数列表中的const表明不会修改参数列表的值，而成员函数成名为const表明不会修改当前对象的值。</p>
 </li>
 <li><p>this指针</p>
 <p> 假设我们希望对比两种股票，输出股价更高的那一支，则可以通过引用的方式，将其中一支股票的引用传入到另一支股票的成员函数中，然后成员函数返回股价较高的那支股票的引用，如将该函数定义为：<br> <code>const Stock&amp; topval(const Stock &amp; s) const;</code><br> 则通过下面的命令即可实现以上功能：<br> <code>top=stock1.topval(stock2);</code><br> <code>top=stock2.topval(stock1);</code><br> 但存在一个问题，当执行命令<code>top=stock1.topval(stock2);</code>时，如果stock2的股价更高则直接返回stock2即可，那么当stock1的股价更高，如何返回呢？答案是返回<code>*this</code>。<br> <code>this</code>指针指向用来调用成员函数的对象，所有类方法的this指针都设置为调用它的对象的地址，也就是说，this指向的是类对象本身的地址。因此，上边的topval方法可以写成：</p>
@@ -681,7 +681,7 @@ Time Time<span class="token double-colon punctuation">::</span><span class="toke
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Linux学习笔记6
                         
                     </div>
                     <div class="publish-info">
@@ -690,11 +690,23 @@ Time Time<span class="token double-colon punctuation">::</span><span class="toke
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Vyron Su
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                 </div>
                 
             </div>
