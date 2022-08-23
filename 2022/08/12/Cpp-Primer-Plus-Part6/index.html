@@ -342,8 +342,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%EF%BF%BD%CA%BC%EF%BF%BD/" class="post-category">
-                                �ʼ�
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
                             </a>
                         
                     </div>
@@ -380,29 +380,29 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ol>
-<li><p>���м̳���is-a��ϵ��˽�кͱ����̳���has-a��ϵ��</p>
+<li><p>公有继承是is-a关系，私有和保护继承是has-a关系。</p>
 </li>
-<li><p>��Ԫ������������ڹ��С�˽�л򱣻����֣���λ���޹ؽ�Ҫ��</p>
+<li><p>友元类的声明可以在公有、私有或保护部分，其位置无关紧要。</p>
 </li>
-<li><p>���ĳ���������Ԫ����ô����Ԫ��Ҫ�ڸ��ඨ��֮ǰ���������Ķ��塣����A�е�ĳ����������B����Ԫ����ô��AӦ������B֮ǰ������������塣</p>
+<li><p>如果某个类具有友元，那么该友元需要在该类定义之前具有完整的定义。如类A中的某个函数是类B的友元，那么类A应该在类B之前完成声明及定义。</p>
 </li>
-<li><p>Ƕ����������λ�þ�����Ƕ����������򣬼������˳������Щ���ֿ��Դ���������Ķ���</p>
+<li><p>嵌套类声明的位置决定了嵌套类的作用域，即决定了程序的哪些部分可以创建这种类的对象。</p>
 </li>
-<li><p>�쳣��</p>
+<li><p>异常：</p>
 </li>
 </ol>
 <ul>
-<li>����<code>abort()</code>��λ��<code>&lt;cstdlib&gt;</code>ͷ�ļ��У��������г��������ƵĴ������ʱ������<code>abnormal program termination</code>��ͨ�����������쳣��Ĭ�ϵ���<code>abort()</code>.</li>
-<li>���ش����룺�����������Ϊָ��������뺯���У�������������״̬�룬�����ٷ��ؽ����ֱ�ӽ����д��ָ��ָ������򼴿ɡ�</li>
-<li><p>ʹ��try-catch���ƣ�ʹ��<code>try</code>���ʶ�ض���һ�����ܱ�����Ĵ���飬��������쳣��ͨ��<code>throw</code>��������Ȼ��ͨ��<code>catch</code>���������쳣����ִ�е�<code>throw</code>���ʱ�������Ѱ�����쳣����(���ַ�����)��ƥ���<code>catch</code>�鲢ִ�����е�������û��ִ�е�<code>throw</code>������������Ӧ��<code>catch</code>�顣</p>
+<li>调用<code>abort()</code>（位于<code>&lt;cstdlib&gt;</code>头文件中），当进行除以零类似的错误操作时，发送<code>abnormal program termination</code>。通常函数发生异常会默认调用<code>abort()</code>.</li>
+<li>返回错误码：将结果变量作为指针参数传入函数中，函数本身返回状态码，而不再返回结果，直接将结果写入指针指向的区域即可。</li>
+<li><p>使用try-catch机制：使用<code>try</code>块标识特定的一场可能被激活的代码块，如果发生异常则通过<code>throw</code>来表明，然后通过<code>catch</code>块来捕获异常。当执行到<code>throw</code>语句时，程序会寻找与异常类型(如字符数组)相匹配的<code>catch</code>块并执行其中的命令；如果没有执行到<code>throw</code>语句则会跳过相应的<code>catch</code>块。</p>
   <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span>viod<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">double</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span>
     std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter two numbers: "</span><span class="token punctuation">;</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>cin <span class="token operator">>></span> x <span class="token operator">>></span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>   <span class="token comment">// try�飺�����쳣</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>   <span class="token comment">// try块：引发异常</span>
             z <span class="token operator">=</span> <span class="token function">hmean</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>    
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// catch�飺�����쳣</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// catch块：捕获异常</span>
             std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
             std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter a new pair of numbers: "</span><span class="token punctuation">;</span>
             <span class="token keyword">continue</span><span class="token punctuation">;</span>
@@ -427,11 +427,11 @@
 <li></li>
 </ol>
 <ol>
-<li><p>�����������ĳ�Ա�ܻ��Ƚ��г�ʼ�������͹��캯���еĳ�ʼ��˳���޹أ�Ҳ�͹��캯���Ĳ����б�˳���޹ء�</p>
+<li><p>类中先声明的成员总会先进行初始化，而和构造函数中的初始化顺序无关，也和构造函数的参数列表顺序无关。</p>
 </li>
-<li><p>ʹ��˽�м̳У�����Ĺ��г�Ա�ͱ�����Ա������Ϊ�������˽�г�Ա���������ķ��������Ϊ���������<strong>����</strong>�ӿڣ�����Ȼ����ͨ��������ĳ�Ա���������з��ʣ�ʹ�ù��м̳У�����Ĺ��з�������Ϊ������Ĺ��з���������ͨ�����������ֱ�ӽ��з��ʻ���Ĺ��г�Ա��ʹ�ñ����̳У�������������ֱ�ӷ��ʻ���Ĺ��г�Ա���������ڿ���ֱ�ӷ��ʻ���ı�����Ա��˽�г�Ա����Ҫͨ������ķ��������ʡ�</p>
+<li><p>使用私有继承，基类的公有成员和保护乘员都将成为派生类的私有成员，因而基类的方法不会成为派生对象的<strong>公有</strong>接口，但仍然可以通过派生类的成员函数来进行访问；使用公有继承，基类的公有方法将成为派生类的公有方法，可以通过派生类对象直接进行访问基类的公有成员；使用保护继承，派生类对象可以直接访问基类的公有成员，而在类内可以直接访问基类的保护成员，私有成员则需要通过基类的方法来访问。</p>
 </li>
-<li><p>�͹��м̳в�ͬ��ʹ��˽�м̳�ʱ��Ѷ�����Ϊһ��<strong>δ����</strong>�ļ̳ж������ӵ����У������Ҫ������Щ�����Ƴ�Ա��Ӧ��ͨ����������ʾ���캯�������Ա��ʼ���б���ʹ��<code>std::string(str)</code>������<code>name(str)</code>.���Ƶģ���Ҫͨ������������������������û���ķ�����</p>
+<li><p>和公有继承不同，使用私有继承时会把对象作为一个<strong>未命名</strong>的继承对象添加到类中，如果需要访问这些无名称成员，应该通过类名来表示构造函数，如成员初始化列表中使用<code>std::string(str)</code>而不是<code>name(str)</code>.类似的，需要通过类名和作用域运算符来调用基类的方法。</p>
 </li>
 </ol>
 
