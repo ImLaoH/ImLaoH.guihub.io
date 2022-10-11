@@ -1042,10 +1042,53 @@ vector<span class="token operator">&lt;</span>vector<span class="token operator"
         cout <span class="token operator">&lt;&lt;</span> <span class="token function">solution</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ul>
 </li>
 </ul>
+<h1 id="存图方式"><a href="#存图方式" class="headerlink" title=" 存图方式"></a><h2> 存图方式</h2></h1><ol>
+<li><p>邻接矩阵：密集图时采用，其余情况不考虑，否则对于稀疏图来说，如果节点数过大，遍历整个图将需要$n^2$的时间，从而导致超时</p>
+</li>
+<li><p>邻接表：对于稀疏图，常采用该方法，一般定义为<code>vector&lt;vector&lt;int&gt;&gt; edge(n);</code>，其中<code>n</code>为节点数</p>
+</li>
+<li><p>字典：即通过哈希表来存储图，通常定义为<code>unordered_map&lt;int, unordered_map&lt;int, int&gt;&gt; edge;</code>，分别存储边的两个端点以及对应的边权。</p>
+</li>
+<li><p>链式前向星：通过静态数组实现链表，调用add方法向图中添加对应的边。</p>
+ <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> maxn <span class="token operator">=</span> <span class="token number">10001</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> to<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> next<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> cost<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>edges<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> head<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> cnt<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> maxn<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        head<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 添加一条u->v的边权为w的有向边，当图为无向图时需要调用两次添加两条相反的边</span>
+<span class="token comment">// 因而maxn应该大于边数的两倍</span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> u<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> w<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    edges<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span><span class="token punctuation">.</span>to <span class="token operator">=</span> v<span class="token punctuation">;</span>
+    edges<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span><span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    edges<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span><span class="token punctuation">.</span>w <span class="token operator">=</span> w<span class="token punctuation">;</span>
+    head<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 遍历方法</span>
+<span class="token comment">/*
+cout &lt;&lt; "from: " &lt;&lt; i &lt;&lt; endl;
+for(int j = head[i]; j != -1; j = edge[j].next) &#123;
+    cout &lt;&lt; "to: " &lt;&lt; edge[j].to &lt;&lt; endl;
+    cout &lt;&lt; "cost: " &lt;&lt; edge[j].cost &lt;&lt; endl;
+&#125;
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
 
                 
             </div>
